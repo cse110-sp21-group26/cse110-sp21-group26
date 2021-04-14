@@ -4,34 +4,35 @@
 
 ## Team Roster:
 
-Margartia Leonova (Leader):
+### Margartia Leonova (Leader):
   
 
 
-Joshua Santillan (Leader):
+### Joshua Santillan (Leader):
 
 
 
-Karan Sidhu (Dev):
+### Karan Sidhu (Dev):
 
 
 
-Amita Stowitts (Dev):
+### Amita Stowitts (Dev):
 
 
 
-Yujie Zhang (Dev): https://yuz876.github.io/CSE110Lab1/ 
+### Yujie Zhang (Dev): 
+[Here is my webpage.](https://yuz876.github.io/CSE110Lab1/) 
 
-My major is Math CS and this is my last year in UCSD. I have a dog named Sam and I love small animals. I like Python and Java. 
-
-
-
-Alex Ramirez (Dev):
+    My major is Math CS and this is my last year in UCSD. I have a dog named Sam and I love small animals. I like Python and Java. 
 
 
 
-Anoop Gunawardhena (Dev):
+### Alex Ramirez (Dev):
 
 
 
-Calvin Qin (Designer):
+### Anoop Gunawardhena (Dev):
+
+
+
+### Calvin Qin (Designer):
