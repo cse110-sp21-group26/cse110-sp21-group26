@@ -1,5 +1,7 @@
 # Team Name : Illegal Unicorns
 
+## Brand:
+
 ## Values that our team holds in high regard:
 
 ## Team Roster:
