@@ -41,3 +41,9 @@ I like Python and Java.
 
 
 ### Calvin Qin (Designer):
+Here is my [website](https://calvq.github.io/CSE110_lab1/)!
+```
+I'm a second year computer science major at UCSD.
+I play golf and piano, but in my freetime I like to play video games.
+My favorite language is Python, but I'm best at writing C++.
+```
