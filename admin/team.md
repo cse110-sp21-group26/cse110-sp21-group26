@@ -3,6 +3,10 @@
 ## Brand:
 
 ## Values that our team holds in high regard:
+```
+Communication - We believe that having everyone on the same page can help us do our best work
+Responsibility - We believe that everyone has an important role to play on our team, and that everyone should do their best to fulfill that.
+```
 
 ## Team Roster:
 
