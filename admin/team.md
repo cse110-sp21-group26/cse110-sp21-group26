@@ -48,6 +48,10 @@ I like Python and Java.
 
 
 ### Alex Ramirez (Dev):
+[This](https://acramire.github.io/cse110/) is my webpage!
+```
+Hey Y'all! I'm a 2nd year Computer Science major at UCSD's Sixth College. Outside of programming, 
+I enjoy photography and weight lifting. My favorite languages are Java and C++.
 
 
 
