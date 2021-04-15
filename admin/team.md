@@ -15,6 +15,12 @@
 
 
 ### Karan Sidhu (Dev):
+[Here is my webpage.](https://karansidz.github.io/GitHubPagesProject/)
+```
+I'm a second year Computer Science major who's really excited to be taking this class.
+My hobbies include traveling, sports, and spending time with friends.
+My favorite langauges to code in are Java and C++.
+```
 
 
 
