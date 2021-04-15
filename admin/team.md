@@ -37,6 +37,11 @@ I like Python and Java.
 
 
 ### Anoop Gunawardhena (Dev):
+Here is my [website]( https://anoop-gunawardhena.github.io/Pages/)
+```
+I'm a third year Computer Engineering Major, my hobbies include personal fitness, sports and stand up comedy.
+My favourite language to code in is Java
+```
 
 
 
