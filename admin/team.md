@@ -52,6 +52,7 @@ I like Python and Java.
 ```
 Hey Y'all! I'm a 2nd year Computer Science major at UCSD's Sixth College. Outside of programming, 
 I enjoy photography and weight lifting. My favorite languages are Java and C++.
+```
 
 
 
