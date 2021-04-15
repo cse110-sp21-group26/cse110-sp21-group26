@@ -15,7 +15,12 @@ Responsibility - We believe that everyone has an important role to play on our t
 
 
 ### Joshua Santillan (Leader):
-
+[Check out my webpage!](https://joshuasantillan.github.io/CSE110_Lab1/)
+```
+Hey! My name is Josh. I'm a first year transfer student. I major in computer science and I'm excited to learn some real life skills in this class!
+Some of my hobbies are working out, playing video games, trying new food, and keeping in touch with friends.
+My favorite programming langauges are C++ and Javascript.
+```
 
 
 ### Karan Sidhu (Dev):
