@@ -11,7 +11,12 @@ Responsibility - We believe that everyone has an important role to play on our t
 ## Team Roster:
 
 ### Margartia Leonova (Leader):
-  
+[More about me](https://mleonova.github.io/CSE110_LAB1/)
+```
+Hey! I am Margarita. I am a first year trsnsfer student and my major is Computer Science. 
+When I am not studying I enjoy riding bicycle, hikind, playing tennis and reading. 
+My favorite language is Java. I am also interested in User Experience Design and Product Development.
+```
 
 
 ### Joshua Santillan (Leader):
