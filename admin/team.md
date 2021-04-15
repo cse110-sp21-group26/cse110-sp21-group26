@@ -37,11 +37,6 @@ My favorite langauges to code in are Java and C++.
 ```
 
 
-
-### Amita Stowitts (Dev):
-
-
-
 ### Yujie Zhang (Dev): 
 [Here is my webpage.](https://yuz876.github.io/CSE110Lab1/) 
 
