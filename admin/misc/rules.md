@@ -1,8 +1,11 @@
-### <center>Team Contract</center>
-### <center> 2021 - CSE 110 </center>
-### <center> 04/13/2021 </center>
+<img width=150 src="../branding/logo.png">
 
-#### Group 26: The Illegal Unicorns
+<h1 align="center">Team Contract</h1>
+<h2 align="center"> Spring 2021 - CSE 110 </h2>
+<h2 align="center"> 04/13/2021 </h2>
+
+
+#### 1) Group 26: The Illegal Unicorns
 
 | Team Member:      | Pronouns:	| Email: |Website: |
 | ----------- | ----------- |----------- | ----------- |
@@ -13,10 +16,12 @@
 |Karan Sidhu|He/Him/His|ksidhu@ucsd.edu|https://karansidz.github.io/GitHubPagesProject/|
 |Anoop Gunawardhena|He/Him/His|agunawar@ucsd.edu|https://anoop-gunawardhena.github.io/Pages/|
 |Joshua Santillan|He/Him/His|jsantill@ucsd.edu|https://joshuasantillan.github.io/CSE110_Lab1/|
+||
 
 #### 2) Primary Means of Communication and Expectations
 
  Our team’s primary form of communication is through our Slack channel. Each team member is expected to: keep up with what is said in the channel daily and respond when necessary. Each team member is also expected to conduct themselves appropriately and respectfully while using Slack.
+
 #### 3) Scheduling Meetings (Schedule at least one meeting as part of constructing your team agreement.)
 
 When necessary, the team will agree to set up a meeting time through the slack channel. A team member will make a When2Meet to narrow down the best times for the team members expected to attend the meeting. Additionally, at the end of every meeting the meeting’s attendees will discuss whether an additional meeting is necessary, if so, the team will agree upon another meeting time.
