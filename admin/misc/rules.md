@@ -1,4 +1,4 @@
-<img width=80 src="../branding/logo.png">
+<img width=150 src="../branding/logo.png">
 
 <h1 align="center">Team Contract</h1>
 <h2 align="center"> Spring 2021 - CSE 110 </h2>
