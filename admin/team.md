@@ -1,6 +1,7 @@
 # Team Name : Illegal Unicorns
 
 ## Brand:
+![Illegal Unicorns Logo](branding/lightlogo.png)
 
 ## Values that our team holds in high regard:
 ```
