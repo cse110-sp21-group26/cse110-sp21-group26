@@ -82,3 +82,15 @@
     6. Multiple File Types Support
       - Support add vedios into diary
       - Support add images, vedios into tasks, events 
+
+## Anoops Ideas-
+
+# - Features:
+    1. A Vault to allow the user to store more sensitive data secuely etc:- passwords, Important identificantion informatin etc.
+    2. Different font styles for the different types of bullets(tasks, events and notes) to improve rapid logging
+    3. Whenever a user igrates a task a count would show the user how many times the tasks been ignored/igrated and over how many days
+    4. An alert system that notifys the user whenever a prioritized task or event is upon them or in the near future
+    5. Allow for greater personalization of daily/monthly schedules with the user able to change the bakground color, add stickers and pictures to any notes they take.
+    6. A recap feature that recaps the most important events and completed tasks of a month, this incentivizes the user to attach a picture whenever they complete an event/experience
+    7. 
+
