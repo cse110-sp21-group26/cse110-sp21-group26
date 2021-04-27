@@ -127,11 +127,34 @@
     1. Customizable
     2. Clean design, visually pleasing
     3. Pictures / audio / video support
-   
 
-
-
-
-    
-
+## Calvin's Ideas: 
+1. Encryption for sensitive data
+2. Unlisted URLs for collaborative work on bullet journals
+3. Statistics
+    - Items completed
+    - Items forwarded
+    - Time spent on application
+4. Accessibility
+    - Light/Dark mode
+    - High-contrast mode
+    - Different Language Support
+    - Text-to-speech
+    - keyboard shortcuts
+5. Creating items/editing/tasks
+    - mark as finished
+    - migration
+    - mark as important -> automatically transfers to the future if not completed
+6. Separate Timeframes
+    - Month
+    - Day
+    - Week
+7. Customization
+    - Pictures
+    - Free-form page/whiteboarding
+    - personalized indicators
+8. Collaborative Documents/Shared Journals
+9. User Login/Accounts
+10. Optical Character Recognition
+    - scan a document into journal
 
