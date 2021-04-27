@@ -44,3 +44,5 @@
    - Track your period
 ##### Calvin:
    - Instead of having a password let's have a link that way we can avoid having to deal with passwords.
+   - Encryption for sensitive data
+   - Implement statistics section that keeps track of # of items you completed and moved forward and time spent on website.
