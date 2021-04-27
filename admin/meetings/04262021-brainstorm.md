@@ -46,3 +46,8 @@
    - Instead of having a password let's have a link that way we can avoid having to deal with passwords.
    - Encryption for sensitive data
    - Implement statistics section that keeps track of # of items you completed and moved forward and time spent on website.
+
+### Going Forward:
+We are a small team so we need to set realistic goals for our pitch.
+We do not have as many hands and brains as a larger team would have so what can we do to succeed and what kind of app should we have in mind?
+Given Deepak knows more about JS than we do, what should we do, what is a good starting point for building our structure?
