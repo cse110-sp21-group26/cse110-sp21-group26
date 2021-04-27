@@ -51,3 +51,13 @@
 We are a small team so we need to set realistic goals for our pitch.
 We do not have as many hands and brains as a larger team would have so what can we do to succeed and what kind of app should we have in mind?
 Given Deepak knows more about JS than we do, what should we do, what is a good starting point for building our structure?
+
+### Attendance ###
+- [x] Margartia Leonova
+- [x] Calvin Qin
+- [x] Alex Ramirez
+- [x] Yujie Zhang
+- [x] Amita Stowitts
+- [x] Karan Sidhu
+- [x] Anoop Gunawardhena
+- [x] Joshua Santillan
