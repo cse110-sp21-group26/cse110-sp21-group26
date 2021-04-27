@@ -92,5 +92,31 @@
     4. An alert system that notifys the user whenever a prioritized task or event is upon them or in the near future
     5. Allow for greater personalization of daily/monthly schedules with the user able to change the bakground color, add stickers and pictures to any notes they take.
     6. A recap feature that recaps the most important events and completed tasks of a month, this incentivizes the user to attach a picture whenever they complete an event/experience
-    7. 
+
+## Alejandro's Ideas:
+    1. Possibly? (Definitely more of an extra time feature) Implementing a very light version of a daily horoscope
+          - Maybe a daily bible verse?
+          - Something additional that will attract the user to use this bullet journal daily
+    2. Support for adding progress pictures (weight loss, body lifting)
+          - Gives the user affirmations, motivation to keep going?
+    3. Organization for different topics, so having the ability to create folders
+          - This could be used for seperating different categories of notes, for example, a folder for music ideas, a folder for daily tasks/school or work
+    4. Possibly? Have an option for a reminder via email for certain tasks.
+
+####    Key Ideas (from other teammates) 
+    1. Checkboxes for daily to-do check list 
+    2. Task Priority Tags/Color
+        - Being able to distuinguish task by their level of priority
+    3. Lock feature to passcode lock certain notes
+    4. Multiple file support
+    5. Calendar View (at an organizational level, being able to see all of notes in a list view?)
+    6. Folders/Organization Methods
+
+
+
+
+
+
+    
+
 
