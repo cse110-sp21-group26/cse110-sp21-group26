@@ -112,7 +112,22 @@
     5. Calendar View (at an organizational level, being able to see all of notes in a list view?)
     6. Folders/Organization Methods
 
+## Margarita's Ideas:
+    1. Lists (checkboxes to track the progress / complition) 
+          - To do list
+          - Groccery list
+    2. Calendar
+          - Keep track of important events
+    3. Diary / Note taking option
+    4. Budget planning
+    5. Water intake
+    6. Mental health
 
+#### Functionality / Design:
+    1. Customizable
+    2. Clean design, visually pleasing
+    3. Pictures / audio / video support
+   
 
 
 
