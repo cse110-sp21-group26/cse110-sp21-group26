@@ -150,7 +150,15 @@
    
 
 
-
+### Attendance ###
+- [x] Margartia Leonova
+- [x] Calvin Qin
+- [x] Alex Ramirez
+- [x] Yujie Zhang
+- [x] Amita Stowitts
+- [x] Karan Sidhu
+- [x] Anoop Gunawardhena
+- [x] Joshua Santillan
 
     
 
