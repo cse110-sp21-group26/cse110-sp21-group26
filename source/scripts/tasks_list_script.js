@@ -1,19 +1,6 @@
 // tasks_list_script.js
 // the js for tasks_list part only
 
-class TasksList {
-    //field:
-    //id
-    //text
-    //checked
-    //order
-
-    constructor(text) {
-      this.text = text;
-     
-    }
-  }
-
 
 function showTasksItem(oneTask){
 
