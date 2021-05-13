@@ -20,3 +20,7 @@ As a group we decided to go with the latter option after a review of the technol
 
 
 #### Positive outcomes
+ smaller workload for the team, improving team health and more time to focus on perfecting the rest of the product
+ 
+##### Negative outcomes
+Had to compromise on one of the integral features for the teams original conception of the product, so minimal costs of adaptation were present
