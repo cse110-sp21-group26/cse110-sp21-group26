@@ -1,0 +1,63 @@
+
+/* for tasks_list part */
+
+.tasks_list {
+
+}
+
+.tasks_list_title {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 80px;
+    opacity: 0.5;
+}
+
+.task_nofound_prompt {
+    text-align: center;
+    font-size: 20px;
+    opacity: 0.6;
+}
+
+.tasks_list_form {
+    width: 80%;
+    margin:auto;
+    text-align: left;
+    margin-bottom: 20px;
+    font-size: 20px;
+    opacity: 0.6;
+}
+
+.tasks_list_item {
+    margin-bottom: 10px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+.tasks_list_item span {
+flex-grow: 1;
+margin-left: 10px;
+margin-right: 10px;
+font-size: 22px;
+}
+
+.delete-task svg {
+    width: 12px;
+    height: 12px;
+    pointer-events: none;
+}
+.delete-task {
+    border: none;
+    background-color: transparent;
+    outline: none;
+    cursor: pointer;
+  }
+
+.tasks_list_input {
+    width: 80%;
+    padding: 10px;
+    border-radius: 4px;
+    border: 3px solid #333;
+    display: block;
+    margin:auto;
+  }
