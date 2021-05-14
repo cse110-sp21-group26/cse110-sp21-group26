@@ -1,13 +1,13 @@
 [
     {
         "text": "task1",
-        "status": completed,
+        "status": "completed",
         "id": 1,
         "pirority": 0
     },
     {
         "text": "task2",
-        "status": completed,
+        "status": "completed",
         "id": 2,
         "priority": 3
     }
