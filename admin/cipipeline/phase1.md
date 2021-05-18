@@ -48,6 +48,6 @@ we have already established a preliminary workflow that is inclusive of code-rev
 - **Task List** : This very crucial features implementation will mostly likely be complete later this week , after than incorporation to the skeleton can immediately begin
 - **Calendar** : This is another critical feature for which we hope to have a template implemented also by the end of this week.
 - **Mood tracker**: Although we have implemented the mood -tracker we are still yet to incorporate it into our skeleton
-- **Sticky Notes**: We jsut aim to finalize ona  color scheme for both the notes and our application soon as well
+- **Sticky Notes**: We jsut aim to finalize on a color scheme for both the notes and our application soon as well
 
 
