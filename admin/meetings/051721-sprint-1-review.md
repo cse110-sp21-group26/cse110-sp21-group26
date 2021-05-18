@@ -7,7 +7,7 @@
 ### Team Status 
     Below will be our tentative schedule updates:
     1. Calendar Weekly/Monthly/Daily View (Alex and Joshua)
-    2. Task List (To Dos), marked as priority/important (Yujie and Anoop) Integrete #2 and #3 together
+    2. Task List (To Dos), marked as priority/important (Yujie and Anoop)
     4. Sticky Notes (Calvin and TBD)
     5. Mood Tracker (Margarita and Joshua )
     6. Skeleton Design (Karan and TBD)
