@@ -38,4 +38,4 @@ We chose JSDoc as our format for annotating our documentation, about which more 
 
 
 As seen above our current pipelien seems very underdeveloped beccasue we are still quite new into our programming process, but as evident
-we have already established a preliminary workflow that is inclusive of code-review and testing to make our wokr more efficient.
+we have already established a preliminary workflow that is inclusive of code-review and testing to make our work more efficient.
