@@ -36,3 +36,6 @@ We chose JSDoc as our format for annotating our documentation, about which more 
 
 ![image](https://github.com/cse110-sp21-group26/cse110-sp21-group26/blob/main/admin/cipipeline/phase1.png)
 
+
+As seen above our current pipelien seems very underdeveloped beccasue we are still quite new into our programming process, but as evident
+we have already established a preliminary workflow that is inclusive of code-review and testing to make our wokr more efficient.
