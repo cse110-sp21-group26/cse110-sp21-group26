@@ -17,3 +17,10 @@ Our coding style had the following rules:
 - **camelcase**: When nameing variables and functions.
 The rest of the stle conventions we've chosen to uphld were absed in the standard javasript style linked [here](https://standardjs.com/rules.html)
 
+
+## Code quality- human review
+So far of the little functionality we've implemented we ahve started the practice of using github actions to help streamline the process, (for instance karan created issues and pull-requets in the process of designing the skeleton for the rest of us to look over at at our convenience). And we strongly feel like the pracice of creating pull-requests and issues whenever we commit is a healthy standard to observe.
+
+## Documentation
+
+
