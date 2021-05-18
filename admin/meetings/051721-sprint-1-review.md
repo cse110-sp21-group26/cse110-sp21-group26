@@ -44,7 +44,7 @@ With a few pull request and implementation quirks we started to think about our 
 
 ### Acomplished Today:
 By midnight tonight ( Monday, May 17th):
-- We will be pushing out our first checkpoint (Checkpoint 1) for our CPI-pipeline. (Our pipeline will cover all the things we have done so far, such as setting up - - local code, unit testing, deploying it, and what to do if one of the fail or succeed)
+- We will be pushing out our first checkpoint (Checkpoint 1) for our CPI-pipeline. (Our pipeline will cover all the things we have done so far, such as setting up local code, unit testing, deploying it, and what to do if one of the fail or succeed)
 - We will also be finishing our first video assignment
 - Two videos for our CI/CD Pipeline and another ADR pushed out.
 - We made a CI/CD Flow Diagram to go over everything we have accomplished thus far such as:
