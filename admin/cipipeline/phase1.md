@@ -1,7 +1,7 @@
 # Phase one of CI/CD pipeline
 
 ## Testing
-While our skeleton remains barely functional as most of our features need to be completely implemented, but this hasn't impeded our ability to test the components of our product
+While our skeleton remains barely functional as most of our features need to be completely implemented, we still found ways to test the components of our product
 that are working. so far, we've made use of the  unit testing framework Cypress to test if our skeleton is beig deployed, if any input to all the input modules is being correctly parsed and if all the urls for the links in our skeleton are not broken and working fine. We've also managed to trigger a lot of edge cases in out JSON parsing methods which we will then debug.
 
 ![image](https://github.com/cse110-sp21-group26/cse110-sp21-group26/blob/main/admin/cipipeline/pictures/cicd1.PNG)
