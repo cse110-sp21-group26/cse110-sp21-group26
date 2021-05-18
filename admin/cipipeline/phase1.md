@@ -12,4 +12,8 @@ Our coding style had the following rules:
                   its heirarchical structure was decided to be 4 spaces
 - **quoting** : All string parameters and variables are to be doublecoated, except for certain property names which are single quoted
 - **no unused variables**
-- **
+- **eqeqeq** : Always use "===" instead of "=="
+- **comma-spacing**: All commas have no space before them, but a space after them
+- **camelcase**: When nameing variables and functions.
+The rest of the stle conventions we've chosen to uphld were absed in the standard javasript style linked [here](https://standardjs.com/rules.html)
+
