@@ -34,4 +34,5 @@ We chose JSDoc as our format for annotating our documentation, about which more 
 
 ## Pipeline diagram
 
+![image](https://github.com/cse110-sp21-group26/cse110-sp21-group26/blob/main/admin/cipipeline/phase1.png)
 
