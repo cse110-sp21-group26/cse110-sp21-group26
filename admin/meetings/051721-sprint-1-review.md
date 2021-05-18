@@ -41,7 +41,6 @@ With a few pull request and implementation quirks we started to think about our 
  - Additionally, we will plan to meet by the end of this week to finalize our next video before next Monday.
  - A few things we need to get working are the following : The calendar, the task list, and integrating them all into one page.
  - By unit testing we hope to achieve a functional user testing software template by the end of the next spring.
- - After 
 
 ### Acomplished Today:
 By midnight tonight ( Monday, May 17th)
