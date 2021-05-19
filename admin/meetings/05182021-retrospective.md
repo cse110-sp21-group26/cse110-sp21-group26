@@ -28,7 +28,12 @@
   
 - **Action Plan moving forward**
    
- ![image](
+ ![image](https://github.com/cse110-sp21-group26/cse110-sp21-group26/blob/main/admin/meetings/images/Capture.PNG)
+ 
+ So the plan to bolster communication to avoid late discussions and invigorate urgency was as follows:
+ - Creating a new slack channel specific to deadlines.
+ - normalizing programming updates and using a programming progress challenge.
+ - A system where team members could immediately start helping other members when they were done with their tasks to eliminate disconnectedness.
 
 
 
