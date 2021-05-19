@@ -7,6 +7,7 @@
 - Karan Sidhu
 - Alejandro Ramirez
 - Yujie Zhang
+- Calvin Qin
 
 # Activities
 - **Team Happiness:**
