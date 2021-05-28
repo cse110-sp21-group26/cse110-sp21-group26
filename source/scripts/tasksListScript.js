@@ -3,6 +3,13 @@
 
 import Task from './Task.js';
 
+
+// for drag and drop to order tasks, (https://github.com/SortableJS/Sortable)
+// Core SortableJS (without default plugins)
+import Sortable from '../useful_node_modules/sortablejs/modular/sortable.core.esm.js';
+
+
+
 function clearDisplayedTasksItems(){
   //delete old displayed tasks items
   let tasksListDisplayTag = document.querySelectorAll(".tasks_list_item");
@@ -68,7 +75,32 @@ function renderTasksList(){
         renderOneTaskItem(onetask);
       }
     )
-  }  
+  }
+  
+  
+  
+  // drag and drop to order tasks
+  var el = document.getElementById('tasks_list_items_display');
+  // List with handle
+  Sortable.create(el, {
+      ghostClass: 'blue-background-class',
+      animation: 150,
+      // Element dragging ended
+      onEnd: function (/**Event*/evt) {
+        var itemEl = evt.item;  // dragged HTMLElement
+        evt.to;    // target list
+        evt.from;  // previous list
+        evt.oldIndex;  // element's old index within old parent
+        evt.newIndex;  // element's new index within new parent
+        evt.oldDraggableIndex; // element's old index within old parent, only counting draggable elements
+        evt.newDraggableIndex; // element's new index within new parent, only counting draggable elements
+        evt.clone // the clone element
+        evt.pullMode;  // when item is in another sortable: `"clone"` if cloning, `true` if moving
+
+        console.log("element's old index within old parent: ", evt.oldIndex);
+        console.log("element's new index within new parent: ", evt.newIndex);
+      },
+    });
 }
 
 // starts here
@@ -122,7 +154,7 @@ document.getElementById("tasks_list_form").addEventListener("submit", event => {
 });
 
 function clickOneTaskUpdateTasksList(isDeleteOneTask, taskIdClickedOn){
-  //read from LS - delete - write back into LS - render again
+  //read from LS - delete or check/uncheck - write back into LS - render again
   let myStorage = window.localStorage;
 
   let allTasksList = getExistedTasksFromLS();
@@ -178,3 +210,5 @@ function clickOneTask(event){
 // when usr delete a task
 let tasksListUlTag = document.getElementById("tasks_list_items_display");
 tasksListUlTag.addEventListener('click', event => clickOneTask(event));
+
+
