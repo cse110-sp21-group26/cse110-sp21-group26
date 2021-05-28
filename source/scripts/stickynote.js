@@ -1,6 +1,8 @@
 // const addBtn = document.querySelector("#addBtn");
 const addBtn = document.getElementById('addBtn');
-console.log(addBtn);
+// console.log(addBtn);
+var rect = addBtn.getBoundingClientRect();
+console.log(rect.top, rect.right, rect.bottom, rect.left);
 
 function itemUpdate(e){
     let tmp = document.createElement("DIV");
@@ -116,8 +118,8 @@ function dragElement(elmnt) {
         pos3 = e.clientX;
         pos4 = e.clientY;
         //set the new position 
-        elmnt.style.top = (pos4-20) + "px";
-        elmnt.style.left = (pos3-(elmnt.offsetWidth/2))+ "px";
+        elmnt.style.top = (pos4-10-rect.top) + "px";
+        elmnt.style.left = (pos3-(elmnt.offsetWidth/3)-rect.left)+ "px";
     }
 
     function closeDragElement() {

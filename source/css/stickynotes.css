@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300&display=swap');
+
 body {
     /* background:#ffb385; */
     height:100vh;
@@ -36,17 +38,19 @@ button {
 }
 .sticky-container .sticky{
     position:absolute;
-    height:280px;
-    width:220px;
+    height:140px;
+    width:110px;
     display:inline-block;
     margin:10px;
     padding:18px 10px 10px 10px;
     box-sizing: border-box;
     box-shadow: 6px 7px 12px -5px rgba(0,0,0,0.75);
-    font-size:24px;
+    font-size:18px;
     background: #ffd31d;
     resize: both;
     overflow: hidden;
+
+    font-family: 'Nunito Sans', sans-serif;
 }
 .sticky-container .sticky .draggable {
     position: absolute;
