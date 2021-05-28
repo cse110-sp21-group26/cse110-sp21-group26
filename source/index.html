@@ -7,7 +7,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bullet Journal</title>
 
+  <!-- tasks list css -->
   <link rel="stylesheet" href="./css/tasksListStyle.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>
+    
+  <!-- add other css for other parts below: -->
+
 </head>
 
 <body>
@@ -26,7 +31,6 @@
         <input autofocus id="tasks_list_input" type="text" class="tasks_list_input"  aria-label="Enter a new task" placeholder="Enter a new task ..." >  
       </form> 
       <ul id="tasks_list_items_display" class="tasks_list_items_display">
-
       </ul>  
     </div>
     <!-- tasks list part end-->
@@ -44,6 +48,7 @@
 
   <!-- tasks list Script -->
   <script src="./scripts/tasksListScript.js" type="module"></script>
+  <script src="./useful_node_modules/sortablejs/modular/sortable.core.esm.js" type="module"></script>
   <!-- add other Scripts for other parts below: -->
 </body>
 
