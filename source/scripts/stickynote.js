@@ -1,10 +1,13 @@
-// const addBtn = document.querySelector("#addBtn");
-const addBtn = document.getElementById('addBtn');
-// console.log(addBtn);
-var rect = addBtn.getBoundingClientRect();
-console.log(rect.top, rect.right, rect.bottom, rect.left);
+const addBtn = document.querySelector("#addBtn");
+var stickyCont = document.querySelector(".sticky-container");
 
-function itemUpdate(e){
+const generateCorrecter = (min, max) => (val) =>
+    val < min ? min : val > max ? max : val;
+
+var xCorr = generateCorrecter(0, stickyCont.getBoundingClientRect().width);
+var yCorr = generateCorrecter(0, stickyCont.getBoundingClientRect().height);
+
+function itemUpdate(e) {
     let tmp = document.createElement("DIV");
     tmp.innerHTML = e.target.innerHTML;
     if ((tmp.textContent || tmp.innerText) === "X---") {
@@ -12,46 +15,45 @@ function itemUpdate(e){
         tgt.innerHTML = "&#8203;";
 
         // Delete button
-        let close = document.createElement('span');
-        close.classList.add('close');
+        let close = document.createElement("span");
+        close.classList.add("close");
         close.innerHTML = "X";
         close.contentEditable = "false";
         tgt.appendChild(close);
 
         // Draggable
-        let drag = document.createElement('span');
-        drag.classList.add('draggable');
+        let drag = document.createElement("span");
+        drag.classList.add("draggable");
         drag.innerHTML = "---";
         drag.contentEditable = "false";
         tgt.appendChild(drag);
 
         close.onclick = function () {
             e.target.remove();
-        }
+        };
         dragElement(e.target);
     }
 }
 
-addBtn.addEventListener("click", ()=>{
+addBtn.addEventListener("click", () => {
     let stickyCont = document.querySelector(".sticky-container");
-    let stickySingle = document.createElement('div');
-    stickySingle.classList.add('sticky');
+    let stickySingle = document.createElement("div");
+    stickySingle.classList.add("sticky");
     stickySingle.contentEditable = "true";
-    stickySingle.setAttribute = ("role","textbox");
-    // stickySingle.setAttribute = ("placeholder","...");
+    stickySingle.setAttribute = ("role", "textbox");
     stickySingle.innerHTML = "&#8203;";
     stickyCont.appendChild(stickySingle);
 
     // Delete button
-    let close = document.createElement('span');
-    close.classList.add('close');
+    let close = document.createElement("span");
+    close.classList.add("close");
     close.innerHTML = "X";
     close.contentEditable = "false";
     stickySingle.appendChild(close);
 
     // Draggable
-    let drag = document.createElement('span');
-    drag.classList.add('draggable');
+    let drag = document.createElement("span");
+    drag.classList.add("draggable");
     drag.innerHTML = "---";
     drag.contentEditable = "false";
     stickySingle.appendChild(drag);
@@ -60,43 +62,30 @@ addBtn.addEventListener("click", ()=>{
 
     close.onclick = function () {
         stickySingle.remove();
-    }
+    };
 
     stickySingle.onclick = itemUpdate;
 
-    // Delete function. used "for" to bind delete button with 
-    // coresponding stickynote
-
-    // for (let i = 0; i < stickies.length; i++){
-    //     // xs[i].addEventListener("click", ()=> {
-    //     //     // stickies[i].style.display = "none";
-    //     //     stickies[i].remove();
-    //     // });
-    //     xs[i].onclick = function () {
-    //         stickies[i].remove();
-    //     };
-    //     // stickies[i].addEventListener("click", ()=>{
-    //     //     console.log(stickies[i].innerHTML);
-    //     // })
-    //     stickies[i].onclick = function () {
-    //         console.log(stickies[i].innerHTML);
-    //         itemUpdate;
-    //     };
-    // }
-    
-    // Random angle
-    function randomNumber(min, max) { 
-      return Math.random() * (max - min) + min; 
+    // random number function
+    function randomNumber(min, max) {
+        return Math.random() * (max - min) + min;
     }
-  
-    let color = randomNumber(1,720);
-    stickySingle.style.filter = "hue-rotate(" + color +"deg)";
+
+    let color = randomNumber(1, 720);
+    stickySingle.style.filter = "hue-rotate(" + color + "deg)";
 });
 
-// const sticky = document.querySelectorAll
+window.onresize = updateWindow;
+
+function updateWindow() {
+    let tempBound = stickyCont.getBoundingClientRect();
+    xCorr = generateCorrecter(0, tempBound.width);
+    yCorr = generateCorrecter(0, tempBound.height);
+}
 
 function dragElement(elmnt) {
-    var pos3 = 0, pos4 = 0;
+    var pos3 = 0,
+        pos4 = 0;
     elmnt.children.item(1).onmousedown = dragMouseDown;
 
     function dragMouseDown(e) {
@@ -115,11 +104,17 @@ function dragElement(elmnt) {
         e = e || window.event;
         e.preventDefault();
         // calculate the new cursor position:
-        pos3 = e.clientX;
-        pos4 = e.clientY;
-        //set the new position 
-        elmnt.style.top = (pos4-10-rect.top) + "px";
-        elmnt.style.left = (pos3-(elmnt.offsetWidth/3)-rect.left)+ "px";
+        pos3 =
+            e.clientX -
+            elmnt.offsetWidth / 2 -
+            10 -
+            addBtn.getBoundingClientRect().left;
+        pos4 = e.clientY - 70 - addBtn.getBoundingClientRect().top;
+        //set the new position
+        elmnt.style.top =
+            yCorr(yCorr(pos4 + elmnt.offsetHeight) - elmnt.offsetHeight) + "px";
+        elmnt.style.left =
+            xCorr(xCorr(pos3 + elmnt.offsetWidth) - elmnt.offsetWidth) + "px";
     }
 
     function closeDragElement() {
