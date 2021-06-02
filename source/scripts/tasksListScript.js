@@ -30,7 +30,20 @@ function renderOneTaskItem(oneTask){
     const tasksListModuleForm =  document.getElementById("tasks_list_items_display");//locate where to add
     const tasktext = oneTask.taskText;
     const isChecked = Number(oneTask.checked) === 1 ? "checked" : "unchecked";
-    const spanCheckedOrCheckedStyle = Number(oneTask.checked) === 1 ? "tasks_list_item_span_checked" : "tasks_list_item_span_unchecked";
+    let spanCheckedOrCheckedStyle;
+    if (Number(oneTask.checked) === 1){
+      if (Number(oneTask.important) === 1){
+        spanCheckedOrCheckedStyle = "tasks_list_item_span_checked_important";
+      }else{
+        spanCheckedOrCheckedStyle = "tasks_list_item_span_checked";
+      }
+    }else{
+      if (Number(oneTask.important) === 1){
+        spanCheckedOrCheckedStyle = "tasks_list_item_span_unchecked_important";
+      }else{
+        spanCheckedOrCheckedStyle = "tasks_list_item_span_unchecked";
+      }
+    }
     const taskID = oneTask.taskID;
 
     const oneTaskItem = document.createElement("li");// create new element
@@ -38,6 +51,9 @@ function renderOneTaskItem(oneTask){
     oneTaskItem.innerHTML = `
         <input id=${taskID} type="checkbox" ${isChecked}/>
         <span class=${spanCheckedOrCheckedStyle} >${tasktext}</span>
+        <button class="important_button">
+          <svg><use href="#important-mark"></use></svg>
+        </button>
         <button class="delete_task_button">
           <svg><use href="#delete-icon"></use></svg>
         </button>
@@ -64,7 +80,7 @@ function updateTasksListOrder(oldIndex, newIndex){
   allTasksList.forEach(
     (onetask) => {
       if (counterForOrder === Number(oldIndex)){
-        selectedDragItem = new Task(onetask.taskText, onetask.taskID, onetask.checked, onetask.order, onetask.date);
+        selectedDragItem = new Task(onetask.taskText, onetask.taskID, onetask.checked, onetask.important, onetask.order, onetask.date);
       }
       counterForOrder ++;
     }
@@ -140,7 +156,9 @@ function renderTasksList(){
 
         console.log("element's old index within old parent: ", evt.oldIndex);
         console.log("element's new index within new parent: ", evt.newIndex);
-        updateTasksListOrder(evt.oldIndex, evt.newIndex);
+        if (evt.oldIndex != evt.newIndex){
+          updateTasksListOrder(evt.oldIndex, evt.newIndex);
+        }
       },
     });
 }
@@ -177,7 +195,7 @@ document.getElementById("tasks_list_form").addEventListener("submit", event => {
     usrInput.focus();
   }
   // create a new task 
-  let aNewTask = new Task(usrInputText, tasksLocalStorageCounter, 0, 0, getTodayDate());
+  let aNewTask = new Task(usrInputText, tasksLocalStorageCounter, 0, 0, 0, getTodayDate());
   console.log("aNewTask: ", aNewTask)
   //  combine existing tasks and the created task into an array
   let allTasksList = getExistedTasksFromLS();
@@ -195,26 +213,36 @@ document.getElementById("tasks_list_form").addEventListener("submit", event => {
 
 });
 
-function clickOneTaskUpdateTasksList(isDeleteOneTask, taskIdClickedOn){
+function clickOneTaskUpdateTasksList(features, taskIdClickedOn){
   //read from LS - delete or check/uncheck - write back into LS - render again
   let myStorage = window.localStorage;
 
   let allTasksList = getExistedTasksFromLS();
   let newAllTasksListArray = [];
   if (allTasksList != null){
-    if (isDeleteOneTask) { // update the taskslist when delete one task
+    if (features == "delete") { // update the taskslist when delete one task
       for (let i = 0; i < allTasksList.length;  i++){
         if (Number(allTasksList[i].taskID) !== taskIdClickedOn){
           newAllTasksListArray.push(allTasksList[i]);
         }
       }
-    }else{ // update the taskslist when check or uncheck one task
+    }else if (features == "checkuncheck"){ // update the taskslist when check or uncheck one task
       for (let i = 0; i < allTasksList.length;  i++){
         if (Number(allTasksList[i].taskID) !== taskIdClickedOn){
           newAllTasksListArray.push(allTasksList[i]);
         }else{
           let checkedOrNot = Number(allTasksList[i].checked) === 1 ? 0 : 1;
-          let aNewTask = new Task(allTasksList[i].taskText, allTasksList[i].taskID, checkedOrNot, allTasksList[i].order, allTasksList[i].date);
+          let aNewTask = new Task(allTasksList[i].taskText, allTasksList[i].taskID, checkedOrNot, allTasksList[i].important, allTasksList[i].order, allTasksList[i].date);
+          newAllTasksListArray.push(aNewTask);
+        }
+      }
+    }else if (features == "important"){ // update the taskslist as important or cancel important
+      for (let i = 0; i < allTasksList.length;  i++){
+        if (Number(allTasksList[i].taskID) !== taskIdClickedOn){
+          newAllTasksListArray.push(allTasksList[i]);
+        }else{
+          let isImportant = Number(allTasksList[i].important) === 1 ? 0 : 1;
+          let aNewTask = new Task(allTasksList[i].taskText, allTasksList[i].taskID, allTasksList[i].checkedOrNot, isImportant, allTasksList[i].order, allTasksList[i].date);
           newAllTasksListArray.push(aNewTask);
         }
       }
@@ -224,7 +252,7 @@ function clickOneTaskUpdateTasksList(isDeleteOneTask, taskIdClickedOn){
   console.log("newAllTasksListArray: ", newAllTasksListArray)
   myStorage.setItem('tasksList', JSON.stringify(newAllTasksListArray));
 
-  if (isDeleteOneTask) {
+  if (features == "delete") {
     // reset counter to 0 after all tasks  have been delted
     allTasksList = getExistedTasksFromLS();
     if (allTasksList == null || Number(allTasksList.length) == 0){
@@ -235,17 +263,23 @@ function clickOneTaskUpdateTasksList(isDeleteOneTask, taskIdClickedOn){
   renderTasksList();
 }
 
+
 function clickOneTask(event){
   console.log("clickOneTask: ", event.target);
   console.log("clickOneTask on Tag: ", event.target.tagName);
+  console.log("clickOneTask class name: ", event.target.className);
   let taskIdClickedOn = Number(event.target.parentElement.querySelector("input").id);
   console.log("taskIdClickedOn: ", taskIdClickedOn);
-  if (event.target.tagName === "BUTTON"){//delete
+  if (event.target.tagName === "BUTTON" && event.target.className === "delete_task_button"){//delete
     console.log("taskIdToBeDeleted: ", taskIdClickedOn);
-    clickOneTaskUpdateTasksList(true, taskIdClickedOn);
+    clickOneTaskUpdateTasksList("delete", taskIdClickedOn);
   }else if (event.target.tagName === "INPUT") {//check or uncheck
     console.log("taskIdToBeCheckedOrUnChecked: ", taskIdClickedOn);
-    clickOneTaskUpdateTasksList(false, taskIdClickedOn);
+    clickOneTaskUpdateTasksList("checkuncheck", taskIdClickedOn);
+  }else if (event.target.tagName === "BUTTON" && event.target.className === "important_button"){//important
+    console.log("taskIdToBeDeleted: ", taskIdClickedOn);
+    console.log("get span: ", event.target.parentElement.children[1]);
+    clickOneTaskUpdateTasksList("important", taskIdClickedOn);
   }
 }
 
