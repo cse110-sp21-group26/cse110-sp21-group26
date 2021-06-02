@@ -54,6 +54,47 @@ function getExistedTasksFromLS(){
   return allTasksList;
 }
 
+
+function updateTasksListOrder(oldIndex, newIndex){
+  // step 1 read from DOM localStorage
+  let allTasksList = getExistedTasksFromLS();
+  // step 2 get the selected item
+  let selectedDragItem;
+  let counterForOrder = 0;
+  allTasksList.forEach(
+    (onetask) => {
+      if (counterForOrder === Number(oldIndex)){
+        selectedDragItem = new Task(onetask.taskText, onetask.taskID, onetask.checked, onetask.order, onetask.date);
+      }
+      counterForOrder ++;
+    }
+  )
+  console.log("selectedDragItem: ", selectedDragItem);
+  
+  // step 3: create a new taskslist and push reordered into it
+  let newAllTasksListArray = [];
+  console.log("allTasksList before reorder: ", allTasksList);
+  if (allTasksList != null){
+    counterForOrder = 0;
+    for (let i = 0; i < allTasksList.length;  i++){
+      if ( (counterForOrder === Number(oldIndex)) || (counterForOrder === Number(newIndex)) ){
+        if (counterForOrder === Number(oldIndex)){ //skip
+          i++; //skip 
+        }else if (counterForOrder === Number(newIndex)){// inject
+          newAllTasksListArray.push(selectedDragItem);
+        }
+      }
+      newAllTasksListArray.push(allTasksList[i]);
+      counterForOrder ++;
+    }
+  }
+  console.log("newAllTasksListArray after reorder: ", newAllTasksListArray);
+
+  // setp 4: replace LS and display again
+  window.localStorage.setItem('tasksList', JSON.stringify(newAllTasksListArray));
+  renderTasksList();
+}
+
 function renderTasksList(){
   clearDisplayedTasksItems();
   // step 1 read from DOM localStorage
@@ -99,6 +140,7 @@ function renderTasksList(){
 
         console.log("element's old index within old parent: ", evt.oldIndex);
         console.log("element's new index within new parent: ", evt.newIndex);
+        updateTasksListOrder(evt.oldIndex, evt.newIndex);
       },
     });
 }
