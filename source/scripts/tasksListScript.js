@@ -242,7 +242,7 @@ function clickOneTaskUpdateTasksList(features, taskIdClickedOn){
           newAllTasksListArray.push(allTasksList[i]);
         }else{
           let isImportant = Number(allTasksList[i].important) === 1 ? 0 : 1;
-          let aNewTask = new Task(allTasksList[i].taskText, allTasksList[i].taskID, allTasksList[i].checkedOrNot, isImportant, allTasksList[i].order, allTasksList[i].date);
+          let aNewTask = new Task(allTasksList[i].taskText, allTasksList[i].taskID, allTasksList[i].checked, isImportant, allTasksList[i].order, allTasksList[i].date);
           newAllTasksListArray.push(aNewTask);
         }
       }
