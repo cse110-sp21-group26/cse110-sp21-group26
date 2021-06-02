@@ -4,9 +4,6 @@ var stickyCont = document.querySelector(".sticky-container");
 const generateCorrecter = (min, max) => (val) =>
     val < min ? min : val > max ? max : val;
 
-var xCorr = generateCorrecter(0, stickyCont.getBoundingClientRect().width);
-var yCorr = generateCorrecter(0, stickyCont.getBoundingClientRect().height);
-
 function itemUpdate(e) {
     let tmp = document.createElement("DIV");
     tmp.innerHTML = e.target.innerHTML;
@@ -75,18 +72,13 @@ addBtn.addEventListener("click", () => {
     stickySingle.style.filter = "hue-rotate(" + color + "deg)";
 });
 
-window.onresize = updateWindow;
-
-function updateWindow() {
-    let tempBound = stickyCont.getBoundingClientRect();
-    xCorr = generateCorrecter(0, tempBound.width);
-    yCorr = generateCorrecter(0, tempBound.height);
-}
-
 function dragElement(elmnt) {
     var pos3 = 0,
         pos4 = 0;
     elmnt.children.item(1).onmousedown = dragMouseDown;
+
+    var xCorr = generateCorrecter(0, stickyCont.getBoundingClientRect().width);
+    var yCorr = generateCorrecter(0, stickyCont.getBoundingClientRect().height);
 
     function dragMouseDown(e) {
         e = e || window.event;
@@ -98,6 +90,9 @@ function dragElement(elmnt) {
         document.onmouseup = closeDragElement;
         // call a function whenever the cursor moves:
         document.onmousemove = elementDrag;
+
+        xCorr = generateCorrecter(0, stickyCont.getBoundingClientRect().width);
+        yCorr = generateCorrecter(0, stickyCont.getBoundingClientRect().height);
     }
 
     function elementDrag(e) {
