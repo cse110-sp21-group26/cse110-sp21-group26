@@ -32,7 +32,7 @@
     margin:auto;
     text-align: left;
     margin-bottom: 20px;
-    font-size: 20px;
+    /* font-size: 20px; */
     opacity: 0.6;
 }
 
@@ -44,6 +44,25 @@
     justify-content: space-between;
   }
 
+.tasks_list_item_span_unchecked_important {
+    flex-grow: 1;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    color: red;
+}
+
+.tasks_list_item_span_checked_important {
+    flex-grow: 1;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 24px;
+    text-decoration: line-through;
+    opacity: 0.6;
+    font-weight: bold;
+    color: red;
+}
 .tasks_list_item_span_unchecked {
     flex-grow: 1;
     margin-left: 10px;
@@ -59,6 +78,19 @@
     text-decoration: line-through;
     opacity: 0.6;
 }
+
+
+.important_button svg {
+    width: 14px;
+    height: 14px;
+    pointer-events: none;
+}
+.important_button {
+    border: none;
+    background-color: transparent;
+    outline: none;
+    cursor: pointer;
+  }
 
 .delete_task_button svg {
     width: 14px;
