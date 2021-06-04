@@ -2,7 +2,7 @@
   "name": "cse110",
   "version": "1.0.0",
   "description": "[Link](https://github.com/cse110-sp21-group26/cse110-sp21-group26/blob/main/admin/team.md) to our team page.",
-  "main": "index.js",
+  "main": "babel.config.js",
   "scripts": {
     "test": "jest --coverage"
   },
@@ -19,14 +19,15 @@
   "homepage": "https://github.com/cse110-sp21-group26/cse110-sp21-group26#readme",
   "devDependencies": {
     "@babel/core": "^7.14.3",
-    "@babel/preset-env": "^7.14.2",
-    "babel-jest": "^27.0.1",
-    "jest": "^27.0.1",
+    "@babel/plugin-syntax-jsx": "^7.12.13",
+    "@babel/preset-env": "^7.14.4",
+    "babel-jest": "^27.0.2",
+    "jest": "^27.0.3",
     "jest-puppeteer": "^5.0.4",
     "puppeteer": "^9.1.1"
   },
   "jest": {
-      "preset": "jest-puppeteer",
-      "verbose": true
+    "preset": "jest-puppeteer",
+    "verbose": true
   }
 }
