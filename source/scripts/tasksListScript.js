@@ -91,6 +91,7 @@ function updateTasksListOrder(oldIndex, newIndex){
   let newAllTasksListArray = [];
   console.log("allTasksList before reorder: ", allTasksList);
   if (allTasksList != null){
+    let alreadyInjected = 0;
     counterForOrder = 0;
     for (let i = 0; i < allTasksList.length;  i++){
       if ( (counterForOrder === Number(oldIndex)) || (counterForOrder === Number(newIndex)) ){
@@ -98,10 +99,20 @@ function updateTasksListOrder(oldIndex, newIndex){
           i++; //skip 
         }else if (counterForOrder === Number(newIndex)){// inject
           newAllTasksListArray.push(selectedDragItem);
+          alreadyInjected = 1;
         }
+      }
+      if ( (Number(oldIndex) === allTasksList.length-1) && (i === allTasksList.length) ){
+        console.log("specila case 2");
+        break;//special case 2 when the old Index is the last
       }
       newAllTasksListArray.push(allTasksList[i]);
       counterForOrder ++;
+    }
+    //special case when the new Index is the last 
+    if ( (Number(newIndex) === allTasksList.length-1) && (alreadyInjected === 0) ){
+      console.log("specila case");
+      newAllTasksListArray.push(selectedDragItem);
     }
   }
   console.log("newAllTasksListArray after reorder: ", newAllTasksListArray);
