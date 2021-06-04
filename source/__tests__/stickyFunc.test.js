@@ -36,17 +36,17 @@ test("GenerateCorrecter 1-10 on 15 => 10", () => {
 //     expect(itemUpdate).toHaveBeenCalled();
 // });
 
-// test("Stickynote Click on empty note = added empty space", () => {
-//     document.body.innerHTML =
-//         `<div class="sticky" contenteditable="true" onclick={itemUpdate}>` +
-//         `<span class="close" contenteditable="false">X</span>` +
-//         `<span class="draggable" contenteditable="false">---</span>` +
-//         `</div>`;
-//     let note = document.getElementsByClassName("sticky");
-//     console.log(document.body.innerHTML);
-//     note.onclick = itemUpdate;
-//     note.click();
-//     // console.log(note.innerText);
-// });
+test("Stickynote Click on empty note = added empty space", () => {
+    document.body.innerHTML =
+        `<div class="sticky" contenteditable="true" onclick={itemUpdate}>` +
+        `<span class="close" contenteditable="false">X</span>` +
+        `<span class="draggable" contenteditable="false">---</span>` +
+        `</div>`;
+    let note = document.getElementsByClassName("sticky");
+    console.log(document.body.innerHTML);
+    note.onclick = itemUpdate;
+    note.click();
+    // console.log(note.innerText);
+});
 
 // test("Stickynote Click on full note => no changes", () => {});
