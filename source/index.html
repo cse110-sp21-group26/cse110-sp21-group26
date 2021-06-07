@@ -11,22 +11,22 @@
         <link rel="stylesheet" href="./css/stickynotes.css" />
         <!-- tasks list css -->
         <link rel="stylesheet" href="./css/tasksListStyle.css" />
-        <link
-            rel="stylesheet"
-            href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"
         />
         <!-- add other css for other parts below: -->
+        <!--Calendar css-->
+        <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css'>
+        <link rel = "stylesheet" href="/source/css/Calendar_style.css">
+        <link rel = "stylesheet" href="./css/tab.css">
+        <link rel='stylesheet' href='./css/fullcalendar.min.css'>
+
+
     </head>
     <body>
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <button
-                        type="button"
-                        class="navbar-toggle"
-                        data-toggle="collapse"
-                        data-target="#myNavbar"
-                    >
+                    <button type="button" class="navbar-toggle" data-toggle="collapse"data-target="#myNavbar">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
@@ -34,12 +34,22 @@
                     <a class="navbar-brand" href="#">Illegal Unicorns Logo</a>
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
-                    <ul class="nav navbar-nav"></ul>
+                    <ul class="nav navbar-nav">
+                    </ul>
                 </div>
+                <div class="tab">
+                    <button class="tablinks" onclick="openTab(event, 'Calendar')">Calendar</button>
+                    <button class="tablinks" onclick="openTab(event, 'container text-center')" id="defaultOpen">Bujo</button>
+                    
+                  </div>
+                  <script>
+                    // Get the element with id="defaultOpen" and click on it
+                    document.getElementById("defaultOpen").click();
+                    </script>
             </div>
         </nav>
 
-        <div class="container text-center">
+        <div class="container text-center" id ="container text-center">
             <div class="row">
                 <!-- left section (Quote of the day + event) -->
                 <div class="col-sm-3 well">
@@ -54,32 +64,16 @@
                     </div>
                     <div class="well">
                         <p><a href="#">Events</a></p>
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
+                        <ul>
+
+                        </ul>
                     </div>
                 </div>
 
                 <!-- middle section (alert + sticky note + tasks list) -->
                 <div class="col-sm-7">
                     <div class="alert alert-info fade in">
-                        <a
-                            href="#"
-                            class="close"
-                            data-dismiss="alert"
-                            aria-label="close"
-                            >×</a
-                        >
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
                         A section for alerts that we can use if needed
                     </div>
 
@@ -188,6 +182,40 @@
                 </div>
             </div>
         </div>
+        <div class="Calendar" id="Calendar">
+
+            <div id='wrap'>
+          
+              <div id='external-events'>
+                <div id='external-events-listing'>
+                  <h4>Task Manager</h4>
+                  
+                </div>
+                <div class="dropdown">
+                    <button id = "dropbtn" class="dropbtn">Create task</button> 
+                    <div id="myDropdown" class="dropdown-content">
+                      <form id = "inputevent">
+                        <label for="eventname">Event description:</label><br>
+                        <input type="text" id="eventname" name="eventname"><br>
+                        <label for="eventtime">Event time:</label><br>
+                        <input type="time" id="eventtime" name="eventtime">
+                        <button id="eventbutton" type = "button" class ="dropbtn">Add task</button>                
+                      </form>
+                  </div>
+                </div>
+                <p id=list>
+                </p>
+              </div>
+             
+              <div id='calendar'></div>
+          
+              <div style='clear:both'></div>
+          
+            </div>
+          
+           
+          </div>
+          
 
         <!-- Don't Change This SVG part-->
         <!-- SVG for tasks list-->
@@ -245,15 +273,24 @@
 
         <!-- skeleton javascript-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src='https://code.jquery.com/jquery-1.11.2.min.js'></script>
+        <script src='https://code.jquery.com/ui/1.11.2/jquery-ui.min.js'></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js'></script>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js'></script>
+
+
+
         <!-- sticky note script -->
         <script src="./scripts/stickyScript.js" type="module"></script>
         <!-- tasks list Script -->
         <script src="./scripts/tasksListScript.js" type="module"></script>
         <script
-            src="./useful_node_modules/sortablejs/modular/sortable.core.esm.js"
-            type="module"
-        ></script>
+            src="./useful_node_modules/sortablejs/modular/sortable.core.esm.js "type="module"></script>
+        <!-- Calendar Script-->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.6/fullcalendar.min.js'></script>
+    <script  src="./scripts/Calendar_script.js"></script>
+  <script src = "./scripts/tabs.js"> </script>
         <!-- add other Scripts for other parts below: -->
     </body>
 </html>
