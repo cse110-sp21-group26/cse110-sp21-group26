@@ -1,8 +1,4 @@
 
-import {
-    clearDisplayedTasksItems,
-} from "../scripts/tasksListScript.js";
-
 describe('Tests for taskslist ', () => {
     beforeAll(async () => {
         await page.goto('https://cse110-sp21-group26.github.io/cse110-sp21-group26/source/index.html');      
@@ -20,9 +16,4 @@ describe('Tests for taskslist ', () => {
         expect(formCN).toBe("tasks_list_form");
     });
 
-    it('Test3: Test function clearDisplayedTasksItems', async () => {   
-        await clearDisplayedTasksItems(); 
-        const items = await page.$$("#tasks_list_item");
-        expect(items.length).toBe(0);
-    });
 });
