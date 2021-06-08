@@ -177,7 +177,7 @@ function renderTasksList(){
 // starts here
 document.addEventListener('DOMContentLoaded', renderTasksList);
 
-export function getTodayDate(){
+function getTodayDate(){
   let today = new Date();
   let dd = today.getDate();
   let mm =  today.getMonth()+1;
