@@ -14,4 +14,10 @@ describe('Tests for taskslist ', () => {
         const formCN = await page.$eval("#tasks_list_form", formResult => formResult.className);
         expect(formCN).toBe("tasks_list_form");
     });
+
+    it('Test3: Test function clearDisplayedTasksItems', async () => {   
+        await clearDisplayedTasksItems(); 
+        const items = await page.$$("#tasks_list_item");
+        expect(items.length).toBe(0);
+    });
 });
