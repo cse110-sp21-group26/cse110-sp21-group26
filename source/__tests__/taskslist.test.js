@@ -12,7 +12,7 @@ describe('Tests for taskslist ', () => {
     });
 
     it('Test2: Initial Home Page - Check for tasks list form', async () => {      
-        const formCN = await page.$eval("#tasks_list_form", formResult => formResult.classList);
+        const formCN = await page.$eval("#tasks_list_form", formResult => formResult.classList[0]);
         expect(formCN).toBe("tasks_list_form");
     });
 
