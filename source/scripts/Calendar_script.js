@@ -1,19 +1,124 @@
 /* initialize the external events */
+//import { renderOneTaskItem(oneTask), clearDisplayedTasksItems()} from "./tasksListScript.js" ;
 class evento {
     constructor(date, description, time) {
         this.date = date;
         this.description = description;
         this.time = time;
+        this.rendered = false;
     }
 
 }
 var anoopbox, anoopbox1, anoopbox2, anoopbox3;
+var runonce = false;
+var onetime = false;
 const eventMap = new Map();
+//document.addEventListener('DOMContentLoaded', startRender);
+window.onbeforeunload = function (e) {
+    window.onunload = function () {
+        updateLS();
+    }
+    return undefined;
+};
+
 
 dropdown = document.getElementById("dropbtn");
 dropdown.addEventListener("click", function () {
     document.getElementById("myDropdown").classList.toggle("show");
 })
+
+
+
+function gatherEvents() {
+    if (runonce == false) {
+        var found = false;
+        mystorage = window.localStorage;
+        let skeletons = document.getElementsByClassName("fc-content-skeleton");
+        for (var k = 0; k < mystorage.length; k++) {
+            date = mystorage.key(k);
+            if (date.includes("-") == false) {
+                continue;
+            }
+            prearry = JSON.parse(mystorage.getItem(date));
+            var res = [];
+            for (var i in prearry) {
+                res.push(prearry[i]);
+                //console.log(prearry[i]);
+            }
+            /*for(t = 0; t < res.length;t++){
+            console.log(res[t].date);
+            }
+            console.log(res.length);*/
+            for (n = 0; n < res.length; n++) {
+                for (i = 0; i < skeletons.length; i++) {
+                    table = skeletons[i].firstChild;
+                    thead = table.firstChild;
+                    tbod = table.lastChild;
+                    theadrow = thead.firstChild;
+                    tbodrows = tbod.children;
+                    theadcells = theadrow.children;
+                    for (h = 0; h < theadcells.length; h++) {
+                        if (theadcells[h].getAttribute("data-date") === date) {
+                            for (g = 0; g < tbodrows.length; g++) {
+                                tbodcells = tbodrows[g].children;
+                                if (tbodcells[h].className === "fc-event-container") {
+                                    continue;
+                                } else {
+                                    found = true;
+                                    tbodcells[h].className = "fc-event-container";
+                                    anchor = document.createElement("A")
+                                    anchor.className = "fc-day-grid-event fc-event fc-start fc-end  fc-draggable"
+                                    div1 = document.createElement("DIV");
+                                    div1.className = "fc-content";
+                                    span1 = document.createElement("span");
+                                    span1.className = "fc-time";
+                                    span1.innerHTML = res[n].time
+                                    span2 = document.createElement("span");
+                                    span2.className = "fc-title";
+                                    span2.innerHTML = res[n].description;
+                                    div1.appendChild(span1);
+                                    div1.appendChild(span2);
+                                    anchor.appendChild(div1);
+                                    tbodcells[h].appendChild(anchor);
+                                    break;
+                                }
+                            }
+                            if (found === false) {
+                                newrow = document.createElement("tr");
+                                for (m = 0; m < 7; m++) {
+                                    td = document.createElement("td");
+                                    if (m == h) {
+                                        td.className = "fc-event-container";
+                                        anchor = document.createElement("A")
+                                        anchor.className = "fc-day-grid-event fc-event fc-start fc-end  fc-draggable"
+                                        div1 = document.createElement("DIV");
+                                        div1.className = "fc-content";
+                                        span1 = document.createElement("span");
+                                        span1.className = "fc-time";
+                                        span1.innerHTML = res[n].time
+                                        span2 = document.createElement("span");
+                                        span2.className = "fc-title";
+                                        span2.innerHTML = res[n].description;
+                                        div1.appendChild(span1);
+                                        div1.appendChild(span2);
+                                        anchor.appendChild(div1);
+                                        td.appendChild(anchor);
+                                    }
+                                    newrow.appendChild(td);
+                                }
+
+                                tbod.appendChild(newrow);
+                            }
+                        }
+                    }
+
+                }
+                found = false;
+            }
+        }
+        runonce = true;
+    }
+}
 window.onclick = function (event) {
     if (!event.target.matches('.dropbtn')) {
         var dropdowns = document.getElementsByClassName("dropdown-content");
@@ -27,195 +132,376 @@ window.onclick = function (event) {
     }
 }
 
+function reverseformat(date) {
+    let size = date.length;
+    let year = date.substring(0, 4);
+    let month = date.substring(5, 7);
+    let day = date.substring(8, size);
+    return new String(month + "-" + day + "-" + year);
+}
+
 function populator() {
+    let mystorage = window.localStorage;
     anoopbox = document.querySelectorAll("td.fc-day.fc-widget-content");
-    anoopbox1 = document.getElementsByTagName("td");
-    // console.log(anoopbox);
-    //console.log(anoopbox1);
-    qday = document.querySelector('div.well');
-    //console.log(qday);
-    well1 = qday.children;
-    div1 = well1[1]
-    para = div1.children;
-    kids = para[1].children;
-    if (kids.length > 0) {
-        for (l = 0; l < kids.length; l++) {
-            kids[l].remove();
-        }
-    }
+
     for (i = 0; i < anoopbox.length; i++) {
         let holder = anoopbox[i].getAttribute("data-date");
-        anoopbox[i].addEventListener('click', function () {
-
-            para[0].innerHTML = holder;
-            if (eventMap.has(holder)) {
-                let holderarr = eventMap[holder];
-                for (i = 0; i < holderarr.length; i++) {
-                    eventus = holderarr[i];
-                    let evententry = document.createElement("li");
-                    evententry.id = eventus.description + "" + eventus.time;
-                    evententry.innerHTML = eventus.description + "@" + eventus.time;
-                    para[1].appendChild(evententry);
+        //set1.add(holder);
+        if (holder == today() && onetime == false) {
+            var eventbox = document.getElementById("eventcage");
+            var list_present = eventbox.querySelector("#event_list")
+            var titlepre = eventbox.querySelector("#daydate");
+            titlepre.innerHTML = reverseformat(holder);
+            if (mystorage.getItem(holder) != undefined) {
+                touse = JSON.parse(mystorage.getItem(holder));
+                console.log("priorly created");
+                evlist = document.createElement("UL");
+                evlist.id = "event_list"
+                for (k = 0; k < touse.length; k++) {
+                    eve = touse[k].description + " @ " + touse[k].time;
+                    evo = document.createElement("LI");
+                    evo.innerHTML = eve;
+                    evlist.appendChild(evo);
                 }
-
+                eventbox.appendChild(evlist);
+            }
+            let tasksListDisplayTag = document.querySelectorAll(".tasks_list_item");
+            tasksListDisplayTag.forEach(element => {
+                element.remove();
+            });
+            //delete no task prompt
+            let noTaskPrompt = document.querySelectorAll(".task_nofound_prompt");
+            if (noTaskPrompt) {
+                noTaskPrompt.forEach(element => {
+                    element.remove();
+                });
             }
 
-            //console.log(para);
-            //console.log(well1);
-            //console.log(div1);
+            tasklist = mystorage.getItem("tasksList");
+            if (tasklist != null) {
+                ref_tasklist = JSON.parse(tasklist);
+                var arry = [];
+                for (var m in ref_tasklist) {
+                    arry.push(ref_tasklist[m]);
+                }
+                for (b = 0; b < arry.length; b++) {
+                    if (arry[b].date == reverseformat(holder)) {
+                        const tasksListModuleForm = document.getElementById("tasks_list_items_display"); //locate where to add
+                        const tasktext = arry[b].taskText;
+                        const isChecked = Number(arry[b].checked) === 1 ? "checked" : "unchecked";
+                        let spanCheckedOrCheckedStyle;
+                        if (Number(arry[b].checked) === 1) {
+                            if (Number(arry[b].important) === 1) {
+                                spanCheckedOrCheckedStyle = "tasks_list_item_span_checked_important";
+                            } else {
+                                spanCheckedOrCheckedStyle = "tasks_list_item_span_checked";
+                            }
+                        } else {
+                            if (Number(arry[b].important) === 1) {
+                                spanCheckedOrCheckedStyle = "tasks_list_item_span_unchecked_important";
+                            } else {
+                                spanCheckedOrCheckedStyle = "tasks_list_item_span_unchecked";
+                            }
+                        }
+                        const taskID = arry[b].taskID;
+
+                        const oneTaskItem = document.createElement("li"); // create new element
+                        oneTaskItem.setAttribute('class', `tasks_list_item`);
+                        oneTaskItem.innerHTML = `
+        <input id=${taskID} type="checkbox" ${isChecked}/>
+        <span class=${spanCheckedOrCheckedStyle} >${tasktext}</span>
+        <button class="important_button">
+          <svg><use href="#important-mark"></use></svg>
+        </button>
+        <button class="delete_task_button">
+          <svg><use href="#delete-icon"></use></svg>
+        </button>
+    `;
+                        tasksListModuleForm.appendChild(oneTaskItem); //inject
+
+                    }
+                }
+            }
+            onetime = true;
+        }
+        anoopbox[i].addEventListener("click", function () {
+            var eventbox = document.getElementById("eventcage");
+            var mapindic = false;
+            var storindic = false;
+            var list_present = eventbox.querySelector("#event_list")
+            var titlepre = eventbox.querySelector("#daydate");
+            //fconsole.log(list_present);
+            if (list_present != undefined) {
+                list_present.remove();
+            }
+            titlepre.innerHTML = reverseformat(holder);
+            //eventbox.firstChild.innerHTML = holder;
+
+            if (eventMap.has(holder)) {
+                mapindic = true;
+                console.log("present in map");
+            }
+            if (mystorage.getItem(holder) != undefined) {
+                storindic = true;
+                console.log("present in loc storage");
+            }
+            if (storindic == true && mapindic == true) {
+                touse = JSON.parse(mystorage.getItem(holder));
+                console.log("priorly created");
+                evlist = document.createElement("UL");
+                evlist.id = "event_list"
+                for (k = 0; k < touse.length; k++) {
+                    eve = touse[k].description + " @ " + touse[k].time;
+                    evo = document.createElement("LI");
+                    evo.innerHTML = eve;
+                    evlist.appendChild(evo);
+                }
+                var arrus = eventMap.get(holder);
+                for (k = 0; k < arrus.length; k++) {
+                    steve = arrus[k].description + " @ " + arrus[k].time;
+                    stevo = document.createElement("LI");
+                    stevo.innerHTML = steve;
+                    evlist.appendChild(stevo);
+                }
+                eventbox.appendChild(evlist);
+
+            } else if (mapindic == true && storindic == false) {
+                console.log("new");
+                evlist = document.createElement("UL");
+                evlist.id = "event_list"
+                var arrus = eventMap.get(holder);
+                for (k = 0; k < arrus.length; k++) {
+                    eve = arrus[k].description + " @ " + arrus[k].time;
+                    evo = document.createElement("LI");
+                    evo.innerHTML = eve;
+                    evlist.appendChild(evo);
+                }
+                eventbox.appendChild(evlist);
 
 
-        }, false);
+
+            } else if (storindic == true && mapindic == false) {
+                touse = JSON.parse(mystorage.getItem(holder));
+                console.log("priorly created");
+                evlist = document.createElement("UL");
+                evlist.id = "event_list"
+                for (k = 0; k < touse.length; k++) {
+                    eve = touse[k].description + " @ " + touse[k].time;
+                    evo = document.createElement("LI");
+                    evo.innerHTML = eve;
+                    evlist.appendChild(evo);
+                }
+                eventbox.appendChild(evlist);
+
+            }
+            let tasksListDisplayTag = document.querySelectorAll(".tasks_list_item");
+            tasksListDisplayTag.forEach(element => {
+                element.remove();
+            });
+            //delete no task prompt
+            let noTaskPrompt = document.querySelectorAll(".task_nofound_prompt");
+            if (noTaskPrompt) {
+                noTaskPrompt.forEach(element => {
+                    element.remove();
+                });
+            }
+            tasklist = mystorage.getItem("tasksList");
+            if (tasklist != null) {
+                ref_tasklist = JSON.parse(tasklist);
+                var arry = [];
+                for (var m in ref_tasklist) {
+                    arry.push(ref_tasklist[m]);
+                }
+                for (b = 0; b < arry.length; b++) {
+                    console.log(arry[b].date);
+                    console.log(reverseformat(holder));
+
+                    if (arry[b].date == reverseformat(holder)) {
+                        console.log("has tasks");
+                        console.log(arry[b]);
+                        const tasksListModuleForm = document.getElementById("tasks_list_items_display"); //locate where to add
+                        const tasktext = arry[b].taskText;
+                        const isChecked = Number(arry[b].checked) === 1 ? "checked" : "unchecked";
+                        let spanCheckedOrCheckedStyle;
+                        if (Number(arry[b].checked) === 1) {
+                            if (Number(arry[b].important) === 1) {
+                                spanCheckedOrCheckedStyle = "tasks_list_item_span_checked_important";
+                            } else {
+                                spanCheckedOrCheckedStyle = "tasks_list_item_span_checked";
+                            }
+                        } else {
+                            if (Number(arry[b].important) === 1) {
+                                spanCheckedOrCheckedStyle = "tasks_list_item_span_unchecked_important";
+                            } else {
+                                spanCheckedOrCheckedStyle = "tasks_list_item_span_unchecked";
+                            }
+                        }
+                        const taskID = arry[b].taskID;
+
+                        const oneTaskItem = document.createElement("li"); // create new element
+                        oneTaskItem.setAttribute('class', `tasks_list_item`);
+                        oneTaskItem.innerHTML = `
+                       <input id=${taskID} type="checkbox" ${isChecked}/>
+                       <span class=${spanCheckedOrCheckedStyle} >${tasktext}</span>
+                       <button class="important_button">
+                         <svg><use href="#important-mark"></use></svg>
+                       </button>
+                       <button class="delete_task_button">
+                         <svg><use href="#delete-icon"></use></svg>
+                       </button>
+                   `;
+                        tasksListModuleForm.appendChild(oneTaskItem); //inject }
+                        //console.log("found task");
+
+                    }
+                }
+            }
+        });
+        //console.log(set1);
 
     }
 }
 
-function populatorcmplx(title, date, time) {
-    anoopbox3 = document.querySelectorAll("td.fc-day.fc-widget-content");
-    //anoopbox1 = document.getElementsByTagName("td");
-    // console.log(anoopbox);
-    //console.log(anoopbox1);
-    for (i = 0; i < anoopbox3.length; i++) {
-        let holder = anoopbox3[i].getAttribute("data-date");
-        if (holder == date) {
-            anoopbox3[i].addEventListener('click', function () {
 
-                qday = document.querySelector('div.well');
-                //console.log(qday);
-                well1 = qday.children;
+function updateLS() {
+    console.log("hi");
+    let mystorage = window.localStorage;
+    const iterator_entries = eventMap.entries();
+    for (p = 0; p < eventMap.size; p++) {
+        counter = iterator_entries.next().value;
+        if (mystorage.getItem(counter[0]) === null) {
+            mystorage.setItem(counter[0], JSON.stringify(counter[1]));
+        } else {
+            var arr = JSON.parse(mystorage.getItem(counter[0]));
+            var res = [];
+            for (var i in arr) {
+                res.push(arr[i]);
 
-                div1 = well1[1];
-                para = div1.children;
-                para[0].innerHTML = date;
-                //eventbox  = div1.children;
-                //para[0].innerHTML = holder;
-                //newvent = document.createElement("textarea");
-
-                //newvent.value = title + "@" + time;
-                let evententry = document.createElement("li");
-                evententry.id = title + "" + time;
-                evententry.innerHTML = title + "@" + time;
-
-                if (para[1].contains(document.getElementById(evententry.id))) {
-                    alert("event already exists");
-                } else {
-
-                    para[1].appendChild(evententry);
-                }
-
-            }, false);
-
+            }
+            var final = res.concat(counter[1]);
+            mystorage.setItem(counter[0], JSON.stringify(final));
         }
     }
+    console.log(mystorage);
+    //mystorage.clear();
+}
+
+function checker() {
+    let mystorage = window.localStorage;
+    console.log("bruh");
+    for (k = 0; k < mystorage.length; k++) {
+        var name = mystorage.key(k);
+        var arr = mystorage.getItem(name);
+        var str = JSON.parse(arr);
+        var res = [];
+        for (var i in str) {
+            res.push(str[i]);
+        }
+        // console.log(res);
+    }
+}
+
+function deletenewlyadded() {
+    var todlt = document.querySelector("td.fc-event-container");
+    var minidlt = todlt.children
+    for (l = 0; l < minidlt.length; l++) {
+        minidlt[l].remove();
+    }
+    todlt.removeAttribute("class");
+}
+
+function today() {
+    let today = new Date();
+    let dd = today.getDate();
+    let mm = today.getMonth() + 1;
+    let yyyy = today.getFullYear();
+    var m, d;
+    if (mm < 10) {
+        m = "0" + mm;
+    } else {
+        m = mm;
+    }
+    if (dd < 10) {
+        d = "0" + dd;
+    } else {
+        d = dd;
+    }
+    today = yyyy + '-' + m + '-' + d;
+    return today;
 }
 
 function eventpopulator() {
-/*anoopbox2 = document.querySelectorAll("div.fc-content-skeleton")
-console.log(anoopbox2);
-for (i = 0; i < anoopbox2.length;i++){
-    var table = anoopbox2[i].firstChild;
-    
-}*/
-for (i = 0; i < anoopbox2.length; i++) {
-    var table = anoopbox2[i].firstChild;
-    var bod = table.lastChild;
-    var rows = bod.children;
-    var head = table.firstChild;
-    var headrow = head.firstChild;
-    var headies = headrow.children;
-    //console.log(rows);
+    anoopbox2 = document.querySelectorAll("div.fc-content-skeleton")
+    document.createAttribute("position-count");
+    let mystorage = window.localStorage;
 
-    for (k = 0; k < rows.length; k++) {
-        var bodies = rows[k].children;
-        for (j = 0; j < bodies.length; j++) {
-            if (bodies[j].className == "fc-event-container") {
+    //console.log(anoopbox2);
+    for (i = 0; i < anoopbox2.length; i++) {
+        var table = anoopbox2[i].firstChild;
+        var tbody = table.lastChild;
+        var thead = table.firstChild;
+        var headrow = thead.firstChild;
+        var headholders = headrow.children;
+        var rows = tbody.children;
+        var arrcount = new Array();
 
-                //console.log(j);
-                // console.log(bodies[j]);
-                var aclass = bodies[j].firstChild;
-                //console.log(aclass);
-                var divimp = aclass.firstChild;
-                //console.log(divimp);
-                var spanos = divimp.firstChild;
-                var time = spanos.innerHTML;
+        for (k = 0; k < rows.length; k++) {
+            var tdholders = rows[k].children;
+            if (tdholders.length == 7) {
+                for (h = 0; h < tdholders.length; h++) {
+                    if (tdholders[h].className == "fc-event-container") {
+                        arrcount.push(h);
+                        var time = tdholders[h].querySelector(".fc-time").innerHTML;
+                        var description = tdholders[h].querySelector(".fc-title").innerHTML;
+                        var date = headholders[h].getAttribute("data-date");
+                        //console.log(time, description, date);
+                        if (eventMap[date] == undefined) {
+                            var eventarr = new Array();
+                            eventos = new evento(date, description, time);
 
-                var thanos = divimp.children[1];
-                var title = thanos.innerHTML;
-                console.log(title);
-                console.log(time);
-                //console.log(spanos.innerHTML);
 
-                if (k == 0) {
-                    n = j;
-                } else {
-                    n = j + 1;
-                }
-                var date = headies[n].getAttribute("data-date");
-                console.log(date);
-                if (eventMap[date] == undefined) {
-                    console.log("untapped date");
-                    var eventarr = new Array();
-                    let eventos = new evento(date, title, time);
-                    eventarr.push(eventos);
-                    eventMap[date] = eventarr;
-                } else if (eventMap[date] != undefined) {
-                    console.log("date has events");
-                    var present = 0;
-                    let eventdos = new evento(date, title, time);
-                    console.log(eventdos.description);
-                    console.log(eventMap[date][0].description);
-                    for (k = 0; k < eventMap[date].length; k++) {
-                        if (eventMap[date][k].description == eventdos.description) {
-                            if (eventMap[date][k].time == eventdos.time) {
-                                console.log("identical");
-                                present = 1;
-                            }
+                            eventarr.push(eventos);
+                            // console.log(JSON.stringify(eventarr));
+                            eventMap.set(date, eventarr);
                         }
-                    }
-                    if (present == 0) {
-                        eventMap[date].push(eventdos);
 
                     }
+                }
+            } else {
+                for (l = 0; l < tdholders.length; l++) {
+                    var dateindex = arrcount[l];
 
+                    console.log("same day ");
+                    var time = tdholders[l].querySelector(".fc-time").innerHTML;
+                    var description = tdholders[l].querySelector(".fc-title").innerHTML;
+                    //console.log(time, description);
 
+                    var date = headholders[dateindex].getAttribute("data-date");
+                    eventdos = new evento(date, description, time);
+                    //console.log(time, description, date);
+                    arr = eventMap.get(date);
+                    arr.push(eventdos);
+                    //console.log(JSON.stringify(arr));
 
+                    eventMap.set(date, arr);
 
                 }
             }
-            //populatorcmplx(title, date, time);
+            //console.log(table.lastChild);
         }
     }
+    //updateLS();
+    //console.log(eventMap);
+    runonce = false;
+    //deletenewlyadded();
+    //gatherEvents();
+    //gatherEvents();//console.log("recognize");
+    //print =  document.querySelector("div.fc-content");
+    //console.log(print);
+    gatherEvents();
+    populator();
 }
-console.log(eventMap);
-populator();
 
-}
-    /*anoopbox2 = document.querySelectorAll("div.fc-content-skeleton");
-    
-
-
-
-
-
-/*$('#external-events .fc-event').each(function () {
-
-    // store data so the calendar knows to render an event upon drop
-
-    $(this).data('event', {
-        title: $.trim($(this).text()),
-        // use the element's text as the event title
-
-        stick: true // maintain when user navigates 
-    });
-
-    // make the event draggable using jQuery UI
-    $(this).draggable({
-        zIndex: 999,
-        revert: true, // will cause the event to go back to its
-        revertDuration: 0 //  original position after the drag
-    });
-
-});*/
 
 var taskbox = document.getElementById('external-events-listing');
 var addbtn = document.getElementById("eventbutton");
@@ -273,9 +559,7 @@ function validateForm() {
 
 }
 
-function mapupdater() {
 
-}
 
 /* initialize the calendar */
 
@@ -289,8 +573,9 @@ $('#calendar').fullCalendar({
     droppable: true, // this allows things to be dropped onto the calendar
     dragRevertDuration: 0,
     drop: function () {
-        //console.log("event dropped");
+
         eventpopulator();
+        //gatherEvents();
         // is the "remove after drop" checkbox checked?
         if (!$('#drop-remove').is(':checked')) {
             // if so, remove the element from the "Draggable Events" list
@@ -337,8 +622,12 @@ var isEventOverDiv = function (x, y) {
 
 };
 
+
+
 var lastweek = document.getElementsByClassName("fc-prev-button fc-button fc-state-default fc-corner-left");
 lastweek[0].addEventListener("click", function () {
+    runonce = false;
+    gatherEvents();
     populator();
     //eventpopulator();
 
@@ -346,20 +635,30 @@ lastweek[0].addEventListener("click", function () {
 });
 var nextweek = document.getElementsByClassName("fc-next-button fc-button fc-state-default fc-corner-right");
 nextweek[0].addEventListener("click", function () {
+    runonce = false;
+    gatherEvents();
     populator();
     //eventpopulator();
 
 });
 var tod = document.getElementsByClassName("fc-today-button fc-button fc-state-default fc-corner-left fc-corner-right");
 tod[0].addEventListener("click", function () {
+    runonce = false;
+    gatherEvents();
     populator();
     // eventpopulator();
 
 });
-
+month = document.getElementsByClassName("fc-month-button fc-button fc-state-default fc-corner-left fc-state-active");
+month[0].remove();
+week = document.getElementsByClassName("fc-agendaWeek-button fc-button fc-state-default");
+week[0].remove();
+day = document.getElementsByClassName("fc-agendaDay-button fc-button fc-state-default fc-corner-right");
+day[0].remove();
 populator();
-
+//checker();
+//today();
 
 
 // anoopbox1 = anoopbox.querySelectorAll("td.fc-day fc-widget-content fc-sun fc-past");
-//console.log(anoopbox1);
+//console.log(anoopbox1)
