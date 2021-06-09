@@ -25,5 +25,5 @@ function quotes() {
 	// Generate an index so that we can get a random quote
 	index = Math.floor(Math.random() * quotes.length);
 
-	console.log(quotes[index]);
+	document.getElementById("quote").innerHTML = quotes[index];
 }
