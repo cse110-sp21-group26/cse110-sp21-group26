@@ -179,7 +179,7 @@ function renderTasksList() {
   }
 
   // starts here
-  document.addEventListener('DOMContentLoaded', renderTasksList);
+ // document.addEventListener('DOMContentLoaded', renderTasksList);
 
   function getTodayDate() {
     let today = new Date();
