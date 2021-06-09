@@ -4,15 +4,18 @@
   <title>Bootstrap Example</title>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1"
-        name="viewport"><!-- skeleton css-->
+        name="viewport">
+  <!-- skeleton css-->
   <link href="./css/skeletonStyle.css"
-        rel="stylesheet"><!-- sticky notes css -->
+        rel="stylesheet">
+  <!-- sticky notes css -->
   <link href="./css/stickynotes.css"
-        rel="stylesheet"><!-- tasks list css -->
+        rel="stylesheet">
+  <!-- tasks list css -->
   <link href="./css/tasksListStyle.css"
         rel="stylesheet">
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"
-        rel="stylesheet"><!-- add other css for other parts below: -->
+        rel="stylesheet">
   <!--Calendar css-->
   <link href="/source/css/custom.css"
         rel="stylesheet"
@@ -92,7 +95,8 @@
           <br>
         </div>
       </div>
-    </div><!-- left section (Quote of the day + event) -->
+    </div>
+    <!-- left section (Quote of the day + event) -->
     <div class="col-sm-3 well">
       <div class="well">
         <br>
@@ -104,7 +108,8 @@
       <div class="well">
         <p><a href="#">Events</a></p>
       </div>
-    </div><!-- middle section (alert + sticky note + tasks list) -->
+    </div>
+    <!-- middle section (alert + sticky note + tasks list) -->
     <div class="col-sm-7">
       <!-- enter the mood tracker here -->
       <div class="row">
@@ -120,7 +125,7 @@
                       <div class="rect"></div>
                       <div class="rect"></div>
                     </div>
-                    <h3>How are you feeling today?</h3>
+                    <h3 class="moodh3">How are you feeling today?</h3>
                     <div class="mood-selector">
                       <ul id="moods">
                         <li id="mood-great"><img id="mood1"
@@ -150,14 +155,15 @@
                              width="100"></li>
                       </ul>
                     </div>
-                  </div><!-- Anxiety Level Tracker -->
+                  </div>
+                  <!-- Anxiety Level Tracker -->
                   <div class="card-motivation">
                     <div class="top">
                       <div class="rect"></div>
                       <div class="rect"></div>
                       <div class="rect"></div>
                     </div>
-                    <h3>What is your motivation level?</h3>
+                    <h3 class="moodh3">What is your motivation level?</h3>
                     <div class="rates">
                       <div class="dot"
                            id="motdot1"
@@ -187,15 +193,16 @@
                     </div>
                     <div class="rates-subscript">
                       <label>Low</label> <label>High</label>
-                    </div><!-- Stress Level Tracker -->
+                    </div>
                   </div>
+                  <!-- Stress Level Tracker -->
                   <div class="card-stress">
                     <div class="top">
                       <div class="rect"></div>
                       <div class="rect"></div>
                       <div class="rect"></div>
                     </div>
-                    <h3>What is your stress level?</h3>
+                    <h3 class="moodh3">What is your stress level?</h3>
                     <div class="rates">
                       <div class="dot"
                            id="strdot1"
@@ -239,7 +246,8 @@
             </div>
           </div>
         </div>
-      </div><!-- enter the sticky notes here -->
+      </div>
+      <!-- enter the sticky notes here -->
       <div class="row">
         <div class="col-sm-12">
           <div class="panel panel-default text-left">
@@ -252,7 +260,8 @@
             </div>
           </div>
         </div>
-      </div><!-- enter the tasks list here -->
+      </div>
+      <!-- enter the tasks list here -->
       <div class="row">
         <div class="col-sm-12">
           <div class="panel panel-default text-left">
@@ -315,7 +324,9 @@
       <div id='calendar'></div>
       <div style='clear:both'></div>
     </div>
-  </div><!-- Don't Change This SVG part-->
+  </div>
+  
+  <!-- Don't Change This SVG part-->
   <!-- SVG for tasks list-->
   <svg class="tasks_list_svg">
   <defs>
@@ -332,8 +343,9 @@
       "m224 0c-123.710938 0-224 100.289062-224 224s100.289062 224 224 224 224-100.289062 224-224c-.132812-123.65625-100.34375-223.867188-224-224zm124.449219 325.824219c4.15625 4.015625 5.828125 9.964843 4.363281 15.558593s-5.835938 9.964844-11.429688 11.429688-11.542968-.207031-15.558593-4.363281l-101.824219-101.824219-101.824219 101.824219c-6.277343 6.0625-16.257812 5.976562-22.429687-.195313s-6.257813-16.152344-.195313-22.429687l101.824219-101.824219-101.824219-101.824219c-4.15625-4.015625-5.828125-9.964843-4.363281-15.558593s5.835938-9.964844 11.429688-11.429688 11.542968.207031 15.558593 4.363281l101.824219 101.824219 101.824219-101.824219c6.277343-6.0625 16.257812-5.976562 22.429687.195313s6.257813 16.152344.195313 22.429687l-101.824219 101.824219zm0 0"
             fill="orange"></path>
     </symbol>
-  </defs></svg> <!-- skeleton javascript-->
-   
+  </defs></svg> 
+  
+  <!-- skeleton javascript-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
   <script src='https://code.jquery.com/jquery-1.11.2.min.js'></script> 
   <script src='https://code.jquery.com/ui/1.11.2/jquery-ui.min.js'></script> 
@@ -342,13 +354,15 @@
   <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js'></script> <!-- sticky note script -->
    
   <script src="./scripts/stickyScript.js"
-        type="module"></script> <!-- tasks list Script -->
-   
+        type="module"></script> 
+        
+  <!-- tasks list Script -->
   <script src="./scripts/tasksListScript.js"
         type="module"></script> 
   <script src="./useful_node_modules/sortablejs/modular/sortable.core.esm.js"
-        type="module"></script> <!-- Calendar Script-->
+        type="module"></script> 
    
+  <!-- Calendar Script-->
   <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.6/fullcalendar.min.js'></script> 
   <script src="./scripts/Calendar_script.js"></script> 
   <script src="./scripts/tabs.js"></script> 
