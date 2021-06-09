@@ -26,6 +26,6 @@ function quotes() {
 	index = Math.floor(Math.random() * quotes.length);
 
 
-	document.getElementById("quote").innerHTML = quotes[index];
+	document.getElementById("getQuote").textContent = quotes[index];
 
 }
