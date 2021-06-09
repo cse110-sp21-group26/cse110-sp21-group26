@@ -56,8 +56,10 @@
 
 .top{
     display:flex;
-    padding-top:5px;
+    padding-top:1px;
     justify-content: center;
+    width: 100%;
+    align-items: center;
 }
 
 .rect{
@@ -181,3 +183,4 @@ label:first-child{
  .rates-subscript {
     text-align: center;
  }
+ 
