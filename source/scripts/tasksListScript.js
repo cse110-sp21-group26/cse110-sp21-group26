@@ -10,7 +10,7 @@ import Sortable from '../useful_node_modules/sortablejs/modular/sortable.core.es
 
 
 
-function clearDisplayedTasksItems(){
+export function clearDisplayedTasksItems(){
   //delete old displayed tasks items
   let tasksListDisplayTag = document.querySelectorAll(".tasks_list_item");
   tasksListDisplayTag.forEach(element => {
@@ -26,7 +26,7 @@ function clearDisplayedTasksItems(){
 }
 
 
-function renderOneTaskItem(oneTask){
+export function renderOneTaskItem(oneTask){
     const tasksListModuleForm =  document.getElementById("tasks_list_items_display");//locate where to add
     const tasktext = oneTask.taskText;
     const isChecked = Number(oneTask.checked) === 1 ? "checked" : "unchecked";
@@ -182,8 +182,20 @@ function getTodayDate(){
   let dd = today.getDate();
   let mm =  today.getMonth()+1;
   let yyyy = today.getFullYear();
-
-  today = mm +'/' + dd + '/' + yyyy;
+  var m,d;
+  if(mm < 10){
+    m = "0"+mm;
+  }
+  else{
+     m = mm;
+  }
+  if(dd < 10){
+    d = "0" + dd;
+  }
+  else{
+    d = dd;
+  }
+  today = m +'-' + d + '-' + yyyy;
   console.log("today: ", today);
   return today;
 }

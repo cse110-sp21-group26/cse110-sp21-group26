@@ -24,6 +24,8 @@ function openTab(evt, classname) {
      // console.log(tabcontent1);
       tabcontent1[0].style.visibility = "visible";
       tabcontent1[0].style.display = "block";
+      console.log("cal");
+      gatherEvents();
       
     }
     else{
