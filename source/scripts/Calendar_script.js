@@ -194,9 +194,38 @@ function populator() {
             }
             for(b = 0; b < arry.length; b++){
                if(arry[b].date == reverseformat(holder)){
-                $.getScript("./scripts/tasksListScript.js",function(){
-                    renderOneTaskItem(arry[b]);
-                    });
+                const tasksListModuleForm =  document.getElementById("tasks_list_items_display");//locate where to add
+    const tasktext = arry[b].taskText;
+    const isChecked = Number(arry[b].checked) === 1 ? "checked" : "unchecked";
+    let spanCheckedOrCheckedStyle;
+    if (Number(arry[b].checked) === 1){
+      if (Number(arry[b].important) === 1){
+        spanCheckedOrCheckedStyle = "tasks_list_item_span_checked_important";
+      }else{
+        spanCheckedOrCheckedStyle = "tasks_list_item_span_checked";
+      }
+    }else{
+      if (Number(arry[b].important) === 1){
+        spanCheckedOrCheckedStyle = "tasks_list_item_span_unchecked_important";
+      }else{
+        spanCheckedOrCheckedStyle = "tasks_list_item_span_unchecked";
+      }
+    }
+    const taskID = arry[b].taskID;
+
+    const oneTaskItem = document.createElement("li");// create new element
+    oneTaskItem.setAttribute('class', `tasks_list_item`);
+    oneTaskItem.innerHTML = `
+        <input id=${taskID} type="checkbox" ${isChecked}/>
+        <span class=${spanCheckedOrCheckedStyle} >${tasktext}</span>
+        <button class="important_button">
+          <svg><use href="#important-mark"></use></svg>
+        </button>
+        <button class="delete_task_button">
+          <svg><use href="#delete-icon"></use></svg>
+        </button>
+    `;
+    tasksListModuleForm.appendChild(oneTaskItem);//inject
              
                }
             }
@@ -301,18 +330,48 @@ function populator() {
                if(arry[b].date == reverseformat(holder)){
                    console.log("has tasks");
                    console.log(arry[b]);
-                $.getScript("./scripts/tasksListScript.js",function(){
-                    renderOneTaskItem(arry[b]);
-                    }); }
+                   const tasksListModuleForm =  document.getElementById("tasks_list_items_display");//locate where to add
+                   const tasktext = arry[b].taskText;
+                   const isChecked = Number(arry[b].checked) === 1 ? "checked" : "unchecked";
+                   let spanCheckedOrCheckedStyle;
+                   if (Number(arry[b].checked) === 1){
+                     if (Number(arry[b].important) === 1){
+                       spanCheckedOrCheckedStyle = "tasks_list_item_span_checked_important";
+                     }else{
+                       spanCheckedOrCheckedStyle = "tasks_list_item_span_checked";
+                     }
+                   }else{
+                     if (Number(arry[b].important) === 1){
+                       spanCheckedOrCheckedStyle = "tasks_list_item_span_unchecked_important";
+                     }else{
+                       spanCheckedOrCheckedStyle = "tasks_list_item_span_unchecked";
+                     }
+                   }
+                   const taskID = arry[b].taskID;
+               
+                   const oneTaskItem = document.createElement("li");// create new element
+                   oneTaskItem.setAttribute('class', `tasks_list_item`);
+                   oneTaskItem.innerHTML = `
+                       <input id=${taskID} type="checkbox" ${isChecked}/>
+                       <span class=${spanCheckedOrCheckedStyle} >${tasktext}</span>
+                       <button class="important_button">
+                         <svg><use href="#important-mark"></use></svg>
+                       </button>
+                       <button class="delete_task_button">
+                         <svg><use href="#delete-icon"></use></svg>
+                       </button>
+                   `;
+                   tasksListModuleForm.appendChild(oneTaskItem);//inject }
                     //console.log("found task");
 
             }
         }
-      }); 
-}
+    }
+});
 //console.log(set1);
 
 }
+    }
 
 
 function updateLS(){
