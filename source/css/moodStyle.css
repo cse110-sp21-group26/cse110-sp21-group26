@@ -5,23 +5,21 @@
     list-style: none;
     text-align: center;
     padding-left: 0;
-    /*margin-bottom: 40px;*/
+    margin-bottom: 50px;
 }
 
 #moods li {
     border-radius: 40px;
     display: inline-block;
-    margin-right: 0px;
-    width: 40px;
-    height: 40px;
+    margin-right: 50px;
+    width: 50px;
+    height: 50px;
     transition: all .1s ease-in;
     cursor: pointer;
 }
 
 #moods li:hover {
-    box-shadow: 15px 20px 20px rgb(167, 157, 157);
-    -webkit-transform: scale(1.2);
-    -ms-transform: scale(1.2);
+    box-shadow: 30px 35px 30px rgb(107, 105, 105);
     transform: scale(1.2);
 }
 
@@ -31,6 +29,8 @@
 #mood-choice{
     line-height: 50px;
     display: none;
+    font-family: Mulish;
+    font-weight: 500;
 }
 .top{
     display:flex;
@@ -42,7 +42,7 @@
     font-family: Mulish;
     font-style: normal;
     font-weight: 600;
-    font-size: 19px;
+    font-size: 15px;
     color: black;
     margin-top:35px;
 }
@@ -60,29 +60,35 @@
 }
 
 .rect{
-    width:125px;
-    height:5px;
+    width:80px;
+    height:4px;
     background:#0d9797;
     border-radius:4.3px;
     margin-right: 5px;
     margin-left: 5px;
 }
 
-.card-mood .rect:nth-child(2){
+
+.card-mood .rect:nth-child(1){
     background:rgb(0, 0, 0);
     margin-right:5px;
     margin-left: 5px;
 }
 
-.card-motivation .rect:nth-child(1){
+.card-motivation .rect:nth-child(2){
+    background:rgb(0, 0, 0);
+    margin-right:5px;
+    margin-left: 5px;
+}
+.card-stress .rect:nth-child(3){
     background:rgb(0, 0, 0);
     margin-right:5px;
     margin-left: 5px;
 }
 
 .dot{
-    height:30px;
-    width:30px;
+    height:50px;
+    width:50px;
     display:flex;
     align-items:center;
     justify-content:center;
@@ -118,7 +124,8 @@ label:first-child{
 
 .flex-container {
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
+
     background-color:transparent;
 }
 .flex-container > div {
@@ -129,10 +136,13 @@ label:first-child{
 }
 
 .flex-container > div:nth-of-type(1){
-    flex-basis: 120px;
+    flex-basis: 100%;
 }
 .flex-container > div:nth-of-type(2){
-    flex-basis: 100px;
+    flex-basis: 20px;
+}
+.flex-container > div:nth-of-type(3){
+    flex-basis: 20px;
 }
 
 .mood-btn {
@@ -145,15 +155,14 @@ label:first-child{
     background: linear-gradient(-45deg, #6185ba, #8b8d98, #af8b6d, #d3a06c, #f4a342);
     background-size: 250% 250%;
      animation: gradientBG 3s ease-in 1s infinite reverse both running;
-    padding: 20px 100px;
-    margin-left: 600px;
+    padding: 20px 200px;
+    margin-left: 120px;
     color: black;
     text-transform:uppercase;
     border-radius: 100px;
     font-size: 10px;
     transition: .3s;
     /* place holder */
-    margin-left: 50px;
     display: none;
  }
  @keyframes gradientBG {

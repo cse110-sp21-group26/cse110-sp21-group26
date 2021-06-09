@@ -39,24 +39,16 @@
       <div class="collapse navbar-collapse"
            id="myNavbar">
         <ul class="nav navbar-nav">
-          <li class="active">
-            <a href="#">Home</a>
+          <li>
+            <a href="#"
+                onclick="openTab(event, 'container text-center')">Bujo</a>
           </li>
           <li>
-            <a href="#">Messages</a>
+            <a href="#"
+                onclick="openTab(event, 'Calendar')">Calendar</a>
           </li>
         </ul>
       </div>
-      <div class="tab">
-        <button class="tablinks"
-             onclick="openTab(event, 'Calendar')">Calendar</button> <button class="tablinks"
-             id="defaultOpen"
-             onclick="openTab(event, 'container text-center')">Bujo</button>
-      </div>
-      <script>
-                    // Get the element with id="defaultOpen" and click on it
-                    document.getElementById("defaultOpen").click();
-      </script>
     </div>
   </nav>
   <div class="container text-center"
@@ -89,42 +81,47 @@
                       <div class="top">
                         <div class="rect"></div>
                         <div class="rect"></div>
+                        <div class="rect"></div>
                       </div>
                       <h3>How are you feeling today?</h3>
                       <div class="mood-selector">
                         <ul id="moods">
-                          <li id="mood-great"><img onclick="moodClicked('Great')"
+                          <li id="mood-great"><img id="mood1"
+                               onclick="moodClicked('Great',this.id)"
                                src="./resources/smileyImages/great_orange.png"
                                title="great"
-                               width="60"></li>
-                          <li id="mood-good"><img onclick="moodClicked('Good')"
+                               width="100"></li>
+                          <li id="mood-good"><img id="mood2"
+                               onclick="moodClicked('Good',this.id)"
                                src="./resources/smileyImages/good_brown.png"
                                title="good"
-                               width="60"></li>
-                          <li id="mood-okay"><img onclick="moodClicked('Okay')"
+                               width="100"></li>
+                          <li id="mood-okay"><img id="mood3"
+                               onclick="moodClicked('Okay',this.id)"
                                src="./resources/smileyImages/okay_gray.png"
                                title="okay"
-                               width="60"></li>
-                          <li id="mood-bad"><img onclick="moodClicked('Bad')"
+                               width="100"></li>
+                          <li id="mood-bad"><img id="mood4"
+                               onclick="moodClicked('Bad',this.id)"
                                src="./resources/smileyImages/bad_gray.png"
                                title="bad"
-                               width="60"></li>
-                          <li id="mood-awful"><img onclick="moodClicked('Awful')"
+                               width="100"></li>
+                          <li id="mood-awful"><img id="mood5"
+                               onclick="moodClicked('Awful',this.id)"
                                src="./resources/smileyImages/awful_grayBlue.png"
                                title="awful"
-                               width="60"></li>
+                               width="100"></li>
                         </ul>
                         <p id="mood-choice">You picked</p>
-                      </div><button class="mood-btn"
-                           id="moodBtn"
-                           onclick="storeData()">submit</button>
+                      </div>
                     </div><!-- Anxiety Level Tracker -->
                     <div class="card-motivation">
                       <div class="top">
                         <div class="rect"></div>
                         <div class="rect"></div>
+                        <div class="rect"></div>
                       </div>
-                      <h3 id="moodh3">What is your motivation level?</h3>
+                      <h3>What is your motivation level?</h3>
                       <div class="rates">
                         <div class="dot"
                              id="motdot1"
@@ -155,42 +152,51 @@
                       <div class="rates-subscript">
                         <label>Low</label> <label>High</label>
                       </div><!-- Stress Level Tracker -->
-                      <div class="card-stress">
-                        <h3 id="moodh3">What is your stress level?</h3>
-                        <div class="rates">
-                          <div class="dot"
-                               id="strdot1"
-                               onclick="dotColorOnCLickStr(1)">
-                            1
-                          </div>
-                          <div class="dot"
-                               id="strdot2"
-                               onclick="dotColorOnCLickStr(2)">
-                            2
-                          </div>
-                          <div class="dot"
-                               id="strdot3"
-                               onclick="dotColorOnCLickStr(3)">
-                            3
-                          </div>
-                          <div class="dot"
-                               id="strdot4"
-                               onclick="dotColorOnCLickStr(4)">
-                            4
-                          </div>
-                          <div class="dot"
-                               id="strdot5"
-                               onclick="dotColorOnCLickStr(5)">
-                            5
-                          </div>
+                    </div>
+                    <div class="card-stress">
+                      <div class="top">
+                        <div class="rect"></div>
+                        <div class="rect"></div>
+                        <div class="rect"></div>
+                      </div>
+                      <h3>What is your stress level?</h3>
+                      <div class="rates">
+                        <div class="dot"
+                             id="strdot1"
+                             onclick="dotColorOnCLickStr(1)">
+                          1
                         </div>
-                        <div class="rates-subscript">
-                          <label>Low</label> <label>High</label>
+                        <div class="dot"
+                             id="strdot2"
+                             onclick="dotColorOnCLickStr(2)">
+                          2
+                        </div>
+                        <div class="dot"
+                             id="strdot3"
+                             onclick="dotColorOnCLickStr(3)">
+                          3
+                        </div>
+                        <div class="dot"
+                             id="strdot4"
+                             onclick="dotColorOnCLickStr(4)">
+                          4
+                        </div>
+                        <div class="dot"
+                             id="strdot5"
+                             onclick="dotColorOnCLickStr(5)">
+                          5
                         </div>
                       </div>
+                      <div class="rates-subscript">
+                        <label>Low</label> <label>High</label>
+                      </div>
                     </div>
-                  </div>
+                  </div><button class="mood-btn"
+                        id="moodBtn"
+                        onclick="storeData()">submit</button>
                 </form><br>
+                <br>
+                <br>
                 <!--==  <button type="button" class="btn btn-default btn-sm">
                 <span class="glyphicon glyphicon-thumbs-up"></span> Corresponding Emojis/Favicons
               </button>     =-->

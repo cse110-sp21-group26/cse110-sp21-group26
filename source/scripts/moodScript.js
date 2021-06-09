@@ -6,11 +6,20 @@ var getMotLevel;
 var getStrLevel;
 
 
-function moodClicked(e){
+function moodClicked(e,id){
     moodClickedValidation = true;
+ 
     showMood = document.getElementById('mood-choice');
-    showMood.textContent = "You picked " + e +"."
-    showMood.style.display = 'block';
+
+    //Reset the scale back to 1
+    for(let I = 1; I <= 5; I++){
+         document.getElementById("mood"+I).style.transform = "scale(1)";
+    } 
+    document.getElementById(id).style.transform = "scale(1.4)"; 
+    document.getElementById(id).style.textShadow = "10px 10px #ff0000";
+
+    showMood.textContent = "You feel " + e +"."
+    showMood.style.display = 'block';    
     btnDisplay();
 }
 
@@ -40,5 +49,5 @@ function dotColorOnCLickStr(e) {
 } 
 
 function storeData(){
-    alert(getStrLevel + " " + getMotLevel);
+    console.log(getStrLevel + " " + getMotLevel);
 }
