@@ -4,16 +4,15 @@
 #moods {
     list-style: none;
     text-align: center;
-    padding-left: 0;
+    width: 100%;
+    padding-left: 1px;
     margin-bottom: 55px;
+    margin: center;
 }
 
 #moods li {
     border-radius: 40px;
     display: inline-block;
-    margin-right: 50px;
-    width: 50px;
-    height: 50px;
     transition: all .15s ease-in;
     cursor: pointer;
 }
@@ -52,14 +51,15 @@
 
 .rates {
     display: inline-flex;
-    margin-left:48px;
-    margin-top:5px;
+    width: 100%;
 }
 
 .top{
     display:flex;
-    padding-top:5px;
+    padding-top:1px;
     justify-content: center;
+    width: 100%;
+    align-items: center;
 }
 
 .rect{
@@ -91,7 +91,7 @@
 
 .dot{
     height:50px;
-    width:50px;
+    width:20%;
     display:flex;
     align-items:center;
     justify-content:center;
@@ -128,15 +128,11 @@ label:first-child{
 .flex-container {
     display: flex;
     flex-wrap: wrap;
-
     background-color:transparent;
+    align-items: center;
+    justify-content: center;
 }
-.flex-container > div {
-    width: 400px;
-    margin: 10px;
-    text-align: center;
-    line-height: 0px;
-}
+
 
 .flex-container > div:nth-of-type(1){
     flex-basis: 100%;
@@ -178,5 +174,13 @@ label:first-child{
      100% {
          background-position: 0% 50%;
      }
+ }
+ 
+ .moodh3 {
+    margin-top: 10px;
+    text-align: center;
+ }
+ .rates-subscript {
+    text-align: center;
  }
  
