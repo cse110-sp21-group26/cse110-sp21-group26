@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 function quotes() {
 	//Creating an array to store quotes
 	var quotes = new Array();
@@ -27,5 +28,5 @@ function quotes() {
 
 
 	document.getElementById("quote").innerHTML = quotes[index];
-}
 
+}

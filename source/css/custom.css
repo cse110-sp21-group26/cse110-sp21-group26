@@ -2,13 +2,8 @@
     width: 400px;
     margin-left: -240px;
 }
-
 .row{
     width: 750px;
-    margin-top: 0px;
-    margin-right: 500px;
-    margin-left: 500px;
-
 }
 
 .col-sm-2.well{
@@ -16,3 +11,5 @@
     margin-bottom: -750px;
     margin-left: 925px;
 }
+
+
