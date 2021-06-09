@@ -54,233 +54,233 @@
   <div class="container text-center"
        id="container text-center">
     <div class="row">
-      <!-- left section (Quote of the day + event) -->
-      <div class="col-sm-3 well">
-        <div class="well">
-          <p><a href="#">Quote of the Day</a></p><br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-        </div>
-        <div class="well">
-          <p><a href="#">Events</a></p>
-        </div>
-      </div><!-- middle section (alert + sticky note + tasks list) -->
-      <div class="col-sm-7">
-        <!-- enter the mood tracker here -->
-        <div class="row">
-          <div class="col-sm-12">
-            <div class="panel panel-default text-left">
-              <div class="panel-body">
-                <!--==  <p contenteditable="true"></p> -->
-                <form>
-                  <div class="flex-container">
-                    <div class="card-mood">
-                      <div class="top">
-                        <div class="rect"></div>
-                        <div class="rect"></div>
-                        <div class="rect"></div>
-                      </div>
-                      <h3>How are you feeling today?</h3>
-                      <div class="mood-selector">
-                        <ul id="moods">
-                          <li id="mood-great"><img id="mood1"
-                               onclick="moodClicked('Great',this.id)"
-                               src="./resources/smileyImages/great_orange.png"
-                               title="great"
-                               width="100"></li>
-                          <li id="mood-good"><img id="mood2"
-                               onclick="moodClicked('Good',this.id)"
-                               src="./resources/smileyImages/good_brown.png"
-                               title="good"
-                               width="100"></li>
-                          <li id="mood-okay"><img id="mood3"
-                               onclick="moodClicked('Okay',this.id)"
-                               src="./resources/smileyImages/okay_gray.png"
-                               title="okay"
-                               width="100"></li>
-                          <li id="mood-bad"><img id="mood4"
-                               onclick="moodClicked('Bad',this.id)"
-                               src="./resources/smileyImages/bad_gray.png"
-                               title="bad"
-                               width="100"></li>
-                          <li id="mood-awful"><img id="mood5"
-                               onclick="moodClicked('Awful',this.id)"
-                               src="./resources/smileyImages/awful_grayBlue.png"
-                               title="awful"
-                               width="100"></li>
-                        </ul>
-                        <p id="mood-choice">You picked</p>
-                      </div>
-                    </div><!-- Anxiety Level Tracker -->
-                    <div class="card-motivation">
-                      <div class="top">
-                        <div class="rect"></div>
-                        <div class="rect"></div>
-                        <div class="rect"></div>
-                      </div>
-                      <h3>What is your motivation level?</h3>
-                      <div class="rates">
-                        <div class="dot"
-                             id="motdot1"
-                             onclick="dotColorOnCLickMot(1)">
-                          1
-                        </div>
-                        <div class="dot"
-                             id="motdot2"
-                             onclick="dotColorOnCLickMot(2)">
-                          2
-                        </div>
-                        <div class="dot"
-                             id="motdot3"
-                             onclick="dotColorOnCLickMot(3)">
-                          3
-                        </div>
-                        <div class="dot"
-                             id="motdot4"
-                             onclick="dotColorOnCLickMot(4)">
-                          4
-                        </div>
-                        <div class="dot"
-                             id="motdot5"
-                             onclick="dotColorOnCLickMot(5)">
-                          5
-                        </div>
-                      </div>
-                      <div class="rates-subscript">
-                        <label>Low</label> <label>High</label>
-                      </div><!-- Stress Level Tracker -->
-                    </div>
-                    <div class="card-stress">
-                      <div class="top">
-                        <div class="rect"></div>
-                        <div class="rect"></div>
-                        <div class="rect"></div>
-                      </div>
-                      <h3>What is your stress level?</h3>
-                      <div class="rates">
-                        <div class="dot"
-                             id="strdot1"
-                             onclick="dotColorOnCLickStr(1)">
-                          1
-                        </div>
-                        <div class="dot"
-                             id="strdot2"
-                             onclick="dotColorOnCLickStr(2)">
-                          2
-                        </div>
-                        <div class="dot"
-                             id="strdot3"
-                             onclick="dotColorOnCLickStr(3)">
-                          3
-                        </div>
-                        <div class="dot"
-                             id="strdot4"
-                             onclick="dotColorOnCLickStr(4)">
-                          4
-                        </div>
-                        <div class="dot"
-                             id="strdot5"
-                             onclick="dotColorOnCLickStr(5)">
-                          5
-                        </div>
-                      </div>
-                      <div class="rates-subscript">
-                        <label>Low</label> <label>High</label>
-                      </div>
-                    </div>
-                  </div><button class="mood-btn"
-                        id="moodBtn"
-                        onclick="storeData()">submit</button>
-                </form><br>
-                <br>
-                <br>
-                <!--==  <button type="button" class="btn btn-default btn-sm">
-                <span class="glyphicon glyphicon-thumbs-up"></span> Corresponding Emojis/Favicons
-              </button>     =-->
-              </div>
-            </div>
-          </div>
-        </div><!-- enter the sticky notes here -->
-        <div class="row">
-          <div class="col-sm-12">
-            <div class="panel panel-default text-left">
-              <div class="panel-body"
-                   id="sticky-section">
-                <button id="addBtn">Add New</button>
-                <div class="sticky-container">
-                  <!-- Sticky Notes go here -->
-                </div>
-              </div>
-            </div>
-          </div>
-        </div><!-- enter the tasks list here -->
-        <div class="row">
-          <div class="col-sm-12">
-            <div class="panel panel-default text-left">
-              <div class="panel-body">
-                <!-- tasks list part begin-->
-                <div class="tasks_list"
-                     id="tasks_list">
-                  <div class="tasks_list_title"
-                       id="tasks_list_title">
-                    Tasks List
-                  </div>
-                  <form class="tasks_list_form"
-                        id="tasks_list_form"
-                        name="tasks_list_form">
-                    <input aria-label="Enter a new task"
-                          autofocus=""
-                          class="tasks_list_input"
-                          id="tasks_list_input"
-                          placeholder="Enter a new task ..."
-                          type="text">
-                  </form>
-                  <ul class="tasks_list_items_display"
-                      id="tasks_list_items_display"></ul>
-                </div><!-- tasks list part end-->
-              </div>
-            </div>
-          </div>
-        </div>
-      </div><!-- right section (calender + mood tracker) -->
+      <!-- right section (calender + mood tracker) -->
       <!-- calender -->
       <div class="col-sm-2 well">
         <!--== <div class="thumbnail">  =-->
-        <p>Calendar</p>
-        <p><strong>Today's date</strong></p>
-        <p>Sat: May 15th, 2021</p>
-        <p><strong>Things to finish today:</strong></p>
-        <p>Important things will come first</p>
-        <p>Here are the less important things</p><!---  <button class="btn btn-primary">Any button we might need to add event, etc.</button>  =-->
-        <!--- </div>  =-->
-      </div><!-- mood  tracker summary -->
-      <div class="col-sm-2 well">
-        <p>Mood Tracker Summary</p><br>
+        <div class="mini-calendar">
+          <p>Calendar</p>
+          <p><strong>Today's date</strong></p>
+          <p>Sat: May 15th, 2021</p>
+          <p><strong>Things to finish today:</strong></p>
+          <p>Important things will come first</p>
+          <p>Here are the less important things</p><!---  <button class="btn btn-primary">Any button we might need to add event, etc.</button>  =-->
+          <!--- </div>  =-->
+        </div><br>
         <br>
         <br>
         <br>
         <br>
         <br>
         <br>
+        <div class="moodTrackerSummary">
+          <p>Mood Tracker Summary</p><br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+        </div>
+      </div>
+    </div><!-- left section (Quote of the day + event) -->
+    <div class="col-sm-3 well">
+      <div class="well">
+        <p><a href="#">Quote of the Day</a></p><br>
         <br>
         <br>
         <br>
         <br>
         <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
+      </div>
+      <div class="well">
+        <p><a href="#">Events</a></p>
+      </div>
+    </div><!-- middle section (alert + sticky note + tasks list) -->
+    <div class="col-sm-7">
+      <!-- enter the mood tracker here -->
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="panel panel-default text-left">
+            <div class="panel-body">
+              <!--==  <p contenteditable="true"></p> -->
+              <form>
+                <div class="flex-container">
+                  <div class="card-mood">
+                    <div class="top">
+                      <div class="rect"></div>
+                      <div class="rect"></div>
+                      <div class="rect"></div>
+                    </div>
+                    <h3>How are you feeling today?</h3>
+                    <div class="mood-selector">
+                      <ul id="moods">
+                        <li id="mood-great"><img id="mood1"
+                             onclick="moodClicked('Great',this.id)"
+                             src="./resources/smileyImages/great_orange.png"
+                             title="great"
+                             width="100"></li>
+                        <li id="mood-good"><img id="mood2"
+                             onclick="moodClicked('Good',this.id)"
+                             src="./resources/smileyImages/good_brown.png"
+                             title="good"
+                             width="100"></li>
+                        <li id="mood-okay"><img id="mood3"
+                             onclick="moodClicked('Okay',this.id)"
+                             src="./resources/smileyImages/okay_gray.png"
+                             title="okay"
+                             width="100"></li>
+                        <li id="mood-bad"><img id="mood4"
+                             onclick="moodClicked('Bad',this.id)"
+                             src="./resources/smileyImages/bad_gray.png"
+                             title="bad"
+                             width="100"></li>
+                        <li id="mood-awful"><img id="mood5"
+                             onclick="moodClicked('Awful',this.id)"
+                             src="./resources/smileyImages/awful_grayBlue.png"
+                             title="awful"
+                             width="100"></li>
+                      </ul>
+                    </div>
+                  </div><!-- Anxiety Level Tracker -->
+                  <div class="card-motivation">
+                    <div class="top">
+                      <div class="rect"></div>
+                      <div class="rect"></div>
+                      <div class="rect"></div>
+                    </div>
+                    <h3>What is your motivation level?</h3>
+                    <div class="rates">
+                      <div class="dot"
+                           id="motdot1"
+                           onclick="dotColorOnCLickMot(1)">
+                        1
+                      </div>
+                      <div class="dot"
+                           id="motdot2"
+                           onclick="dotColorOnCLickMot(2)">
+                        2
+                      </div>
+                      <div class="dot"
+                           id="motdot3"
+                           onclick="dotColorOnCLickMot(3)">
+                        3
+                      </div>
+                      <div class="dot"
+                           id="motdot4"
+                           onclick="dotColorOnCLickMot(4)">
+                        4
+                      </div>
+                      <div class="dot"
+                           id="motdot5"
+                           onclick="dotColorOnCLickMot(5)">
+                        5
+                      </div>
+                    </div>
+                    <div class="rates-subscript">
+                      <label>Low</label> <label>High</label>
+                    </div><!-- Stress Level Tracker -->
+                  </div>
+                  <div class="card-stress">
+                    <div class="top">
+                      <div class="rect"></div>
+                      <div class="rect"></div>
+                      <div class="rect"></div>
+                    </div>
+                    <h3>What is your stress level?</h3>
+                    <div class="rates">
+                      <div class="dot"
+                           id="strdot1"
+                           onclick="dotColorOnCLickStr(1)">
+                        1
+                      </div>
+                      <div class="dot"
+                           id="strdot2"
+                           onclick="dotColorOnCLickStr(2)">
+                        2
+                      </div>
+                      <div class="dot"
+                           id="strdot3"
+                           onclick="dotColorOnCLickStr(3)">
+                        3
+                      </div>
+                      <div class="dot"
+                           id="strdot4"
+                           onclick="dotColorOnCLickStr(4)">
+                        4
+                      </div>
+                      <div class="dot"
+                           id="strdot5"
+                           onclick="dotColorOnCLickStr(5)">
+                        5
+                      </div>
+                    </div>
+                    <div class="rates-subscript">
+                      <label>Low</label> <label>High</label>
+                    </div>
+                  </div>
+                </div>
+                <p id="mood-choice"></p><button class="mood-btn"
+                      id="moodBtn"
+                      onclick="storeData()">submit</button>
+              </form><br>
+              <br>
+              <!--==  <button type="button" class="btn btn-default btn-sm">
+                <span class="glyphicon glyphicon-thumbs-up"></span> Corresponding Emojis/Favicons
+              </button>     =-->
+            </div>
+          </div>
+        </div>
+      </div><!-- enter the sticky notes here -->
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="panel panel-default text-left">
+            <div class="panel-body"
+                 id="sticky-section">
+              <button id="addBtn">Add New</button>
+              <div class="sticky-container">
+                <!-- Sticky Notes go here -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div><!-- enter the tasks list here -->
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="panel panel-default text-left">
+            <div class="panel-body">
+              <!-- tasks list part begin-->
+              <div class="tasks_list"
+                   id="tasks_list">
+                <div class="tasks_list_title"
+                     id="tasks_list_title">
+                  Tasks List
+                </div>
+                <form class="tasks_list_form"
+                      id="tasks_list_form"
+                      name="tasks_list_form">
+                  <input aria-label="Enter a new task"
+                        autofocus=""
+                        class="tasks_list_input"
+                        id="tasks_list_input"
+                        placeholder="Enter a new task ..."
+                        type="text">
+                </form>
+                <ul class="tasks_list_items_display"
+                    id="tasks_list_items_display"></ul>
+              </div><!-- tasks list part end-->
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
