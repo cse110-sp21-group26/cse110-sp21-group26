@@ -27,5 +27,5 @@ function quotes() {
 
 
 	document.getElementById("quote").innerHTML = quotes[index];
-}
 
+}
