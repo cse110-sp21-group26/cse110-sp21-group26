@@ -1,0 +1,17 @@
+.col-sm-3.well {
+    width: 400px;
+    margin-left: -240px;
+}
+.row{
+    width: 750px;
+}
+
+.col-sm-2.well{
+    width: 400px;
+    margin-right: 0px;
+    margin-top: -900px;
+    margin-left: 915px;
+    margin-bottom: 915px;
+}
+
+
