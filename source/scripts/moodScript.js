@@ -22,8 +22,8 @@ function moodClicked(e,id){
     showMood = document.getElementById('mood-choice');
 
     //Reset the scale back to 1
-    for(let I = 1; I <= 5; I++){
-         document.getElementById("mood"+I).style.transform = "scale(1)";
+    for(let i = 1; i <= 5; i++){
+         document.getElementById("mood"+i).style.transform = "scale(1)";
     } 
     document.getElementById(id).style.transform = "scale(1.4)"; 
     document.getElementById(id).style.textShadow = "10px 10px #ff0000";
@@ -33,8 +33,8 @@ function moodClicked(e,id){
     btnDisplay();
 }
 /**
- * Checks button requirements
- * if all validaitons are true button will display
+ * Checks button validations
+ * if all true -> submit button will display
  */
 function btnDisplay(){
     let btnToggle = document.getElementById('moodBtn');
