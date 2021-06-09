@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 function quotes() {
 	//Creating an array to store quotes
 	var quotes = new Array();
