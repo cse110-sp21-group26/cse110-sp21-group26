@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 function quotes() {
 	//Creating an array to store quotes
 	var quotes = new Array();
@@ -27,6 +26,6 @@ function quotes() {
 	index = Math.floor(Math.random() * quotes.length);
 
 
-	document.getElementById("quote").innerHTML = quotes[index];
+	document.getElementById("getQuote").textContent = quotes[index];
 
 }
