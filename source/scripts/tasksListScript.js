@@ -130,7 +130,7 @@ function renderTasksList() {
   console.log(allTasksList);
   let arr =[];
   for(var j in allTasksList){
-    if(allTasksList[j].date == getTodayDate()){
+    if(allTasksList[j].date == getdateofauthoring()){
     arr.push(allTasksList[j]);
   }
 }
