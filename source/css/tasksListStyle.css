@@ -123,3 +123,8 @@
     margin:auto;
     margin-bottom: 20px;
 }
+
+.tasks_list_date_in_item {
+    border: none;
+    width: 120px;
+}

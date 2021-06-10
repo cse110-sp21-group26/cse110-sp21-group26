@@ -45,12 +45,15 @@ export function renderOneTaskItem(oneTask){
       }
     }
     const taskID = oneTask.taskID;
+    const taskDate = oneTask.date;
+    console.log("taskID: ", taskID, "taskDate: ", taskDate)
 
     const oneTaskItem = document.createElement("li");// create new element
     oneTaskItem.setAttribute('class', `tasks_list_item`);
     oneTaskItem.innerHTML = `
         <input id=${taskID} type="checkbox" ${isChecked}/>
         <span class=${spanCheckedOrCheckedStyle} >${tasktext}</span>
+        <input class="tasks_list_date_in_item" id="tasks_list_date_in_item" type="date" value=${taskDate}>
         <button class="important_button">
           <svg><use href="#important-mark"></use></svg>
         </button>
