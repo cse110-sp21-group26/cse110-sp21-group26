@@ -10,7 +10,7 @@ function openTab(evt, classname) {
     //}
     //console.log(tabcontent1[0]);
     //console.log(tabcontent2);
-    tabcontent1[0].style.visibility = "hidden";
+    tabcontent1[0].style.display = "none";
     tabcontent2[0].style.display = "none";
   
     // Get all elements with class="tablinks" and remove the class "active"
@@ -24,6 +24,8 @@ function openTab(evt, classname) {
      // console.log(tabcontent1);
       tabcontent1[0].style.visibility = "visible";
       tabcontent1[0].style.display = "block";
+      let  tod = document.getElementsByClassName("fc-today-button fc-button fc-state-default fc-corner-left fc-corner-right");
+      tod[0].click();
       console.log("cal");
       gatherEvents();
       
