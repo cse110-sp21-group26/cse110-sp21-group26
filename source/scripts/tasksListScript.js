@@ -202,7 +202,7 @@ function renderTasksList() {
     return today;
   }
   function getdateofauthoring(){
-    date = document.getElementById("daydate");
+    let date = document.getElementById("daydate");
     return date.innerHTML;
   }
 
