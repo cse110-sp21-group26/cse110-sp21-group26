@@ -127,8 +127,15 @@ function renderTasksList() {
   clearDisplayedTasksItems();
   // step 1 read from DOM localStorage
   let allTasksList = getExistedTasksFromLS();
+  console.log(allTasksList);
+  let arr =[];
+  for(var j in allTasksList){
+    if(allTasksList[j].date == getTodayDate()){
+    arr.push(allTasksList[j]);
+  }
+}
   // step 2: if no task, then show  prompt
-  if (allTasksList == null || allTasksList.length === 0) {
+  if (arr == null || arr.length === 0) {
     console.log("show no task prompt");
     let tasksListModuleTitle = document.getElementById("tasks_list_title"); //locate where to add
     const noTaskFoudnPrompt = document.createElement("div"); // create new element
@@ -138,11 +145,13 @@ function renderTasksList() {
   } else {
     // step 3: if has task, then show tasks
     console.log("allTasksList.length: ", allTasksList.length);
-    allTasksList.forEach(
+    arr.forEach(
       (onetask) => {
         console.log("read onetask: ", onetask)
+        console.log(onetask.date);
         renderOneTaskItem(onetask);
-      }
+      
+    }
     )
   }
 
@@ -179,7 +188,7 @@ function renderTasksList() {
   }
 
   // starts here
- // document.addEventListener('DOMContentLoaded', renderTasksList);
+  document.addEventListener('DOMContentLoaded', renderTasksList);
 
   function getTodayDate() {
     let today = new Date();
@@ -315,3 +324,7 @@ function renderTasksList() {
   // when usr delete a task
   let tasksListUlTag = document.getElementById("tasks_list_items_display");
   tasksListUlTag.addEventListener('click', event => clickOneTask(event));
+//<<<<<<< Updated upstream
+// tasks_list_script.js
+// the js for tasks_list part only
+

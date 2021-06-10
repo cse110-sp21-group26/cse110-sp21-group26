@@ -1,5 +1,7 @@
 /* initialize the external events */
 //import { renderOneTaskItem(oneTask), clearDisplayedTasksItems()} from "./tasksListScript.js" ;
+
+
 class evento {
     constructor(date, description, time) {
         this.date = date;
@@ -9,6 +11,35 @@ class evento {
     }
 
 }
+document.addEventListener('DOMContentLoaded', function(){
+    console.log("started");
+    let datebox = document.getElementById("daydate");
+    datebox.innerHTML = reverseformat(today());
+    let mystorage = window.localStorage;
+    if(mystorage.getItem(today()) != undefined){
+        console.log("priorly created");
+        arrtoday = JSON.parse(mystorage.getItem(today()));
+        let usuable  =[];
+        for(var i in arrtoday){
+            console.log(i);
+            usuable.push(arrtoday[i]);
+        }
+        var eventbox = document.getElementById("eventcage");
+        //var list_present = eventbox.querySelector("#event_list")
+           var  evlist = document.createElement("UL");
+           evlist.id = "event_list";
+           console.log(usuable.length);
+            for (k = 0; k < usuable.length; k++) {
+                eve = usuable[k].description + " @ " + usuable[k].time;
+                evo = document.createElement("LI");
+                evo.innerHTML = eve;
+                evlist.appendChild(evo);
+            }
+            eventbox.appendChild(evlist);
+
+    }
+    });
+
 var anoopbox, anoopbox1, anoopbox2, anoopbox3;
 var runonce = false;
 var onetime = false;
@@ -20,7 +51,6 @@ window.onbeforeunload = function (e) {
     }
     return undefined;
 };
-
 
 dropdown = document.getElementById("dropbtn");
 dropdown.addEventListener("click", function () {
@@ -146,85 +176,7 @@ function populator() {
 
     for (i = 0; i < anoopbox.length; i++) {
         let holder = anoopbox[i].getAttribute("data-date");
-        //set1.add(holder);
-        if (holder == today() && onetime == false) {
-            var eventbox = document.getElementById("eventcage");
-            var list_present = eventbox.querySelector("#event_list")
-            var titlepre = eventbox.querySelector("#daydate");
-            titlepre.innerHTML = reverseformat(holder);
-            if (mystorage.getItem(holder) != undefined) {
-                touse = JSON.parse(mystorage.getItem(holder));
-                console.log("priorly created");
-                evlist = document.createElement("UL");
-                evlist.id = "event_list"
-                for (k = 0; k < touse.length; k++) {
-                    eve = touse[k].description + " @ " + touse[k].time;
-                    evo = document.createElement("LI");
-                    evo.innerHTML = eve;
-                    evlist.appendChild(evo);
-                }
-                eventbox.appendChild(evlist);
-            }
-            let tasksListDisplayTag = document.querySelectorAll(".tasks_list_item");
-            tasksListDisplayTag.forEach(element => {
-                element.remove();
-            });
-            //delete no task prompt
-            let noTaskPrompt = document.querySelectorAll(".task_nofound_prompt");
-            if (noTaskPrompt) {
-                noTaskPrompt.forEach(element => {
-                    element.remove();
-                });
-            }
-
-            tasklist = mystorage.getItem("tasksList");
-            if (tasklist != null) {
-                ref_tasklist = JSON.parse(tasklist);
-                var arry = [];
-                for (var m in ref_tasklist) {
-                    arry.push(ref_tasklist[m]);
-                }
-                for (b = 0; b < arry.length; b++) {
-                    if (arry[b].date == reverseformat(holder)) {
-                        const tasksListModuleForm = document.getElementById("tasks_list_items_display"); //locate where to add
-                        const tasktext = arry[b].taskText;
-                        const isChecked = Number(arry[b].checked) === 1 ? "checked" : "unchecked";
-                        let spanCheckedOrCheckedStyle;
-                        if (Number(arry[b].checked) === 1) {
-                            if (Number(arry[b].important) === 1) {
-                                spanCheckedOrCheckedStyle = "tasks_list_item_span_checked_important";
-                            } else {
-                                spanCheckedOrCheckedStyle = "tasks_list_item_span_checked";
-                            }
-                        } else {
-                            if (Number(arry[b].important) === 1) {
-                                spanCheckedOrCheckedStyle = "tasks_list_item_span_unchecked_important";
-                            } else {
-                                spanCheckedOrCheckedStyle = "tasks_list_item_span_unchecked";
-                            }
-                        }
-                        const taskID = arry[b].taskID;
-
-                        const oneTaskItem = document.createElement("li"); // create new element
-                        oneTaskItem.setAttribute('class', `tasks_list_item`);
-                        oneTaskItem.innerHTML = `
-        <input id=${taskID} type="checkbox" ${isChecked}/>
-        <span class=${spanCheckedOrCheckedStyle} >${tasktext}</span>
-        <button class="important_button">
-          <svg><use href="#important-mark"></use></svg>
-        </button>
-        <button class="delete_task_button">
-          <svg><use href="#delete-icon"></use></svg>
-        </button>
-    `;
-                        tasksListModuleForm.appendChild(oneTaskItem); //inject
-
-                    }
-                }
-            }
-            onetime = true;
-        }
-        anoopbox[i].addEventListener("click", function () {
+         anoopbox[i].addEventListener("click", function () {
             var eventbox = document.getElementById("eventcage");
             var mapindic = false;
             var storindic = false;
@@ -649,13 +601,14 @@ tod[0].addEventListener("click", function () {
     // eventpopulator();
 
 });
+
 month = document.getElementsByClassName("fc-month-button fc-button fc-state-default fc-corner-left fc-state-active");
 month[0].remove();
 week = document.getElementsByClassName("fc-agendaWeek-button fc-button fc-state-default");
 week[0].remove();
 day = document.getElementsByClassName("fc-agendaDay-button fc-button fc-state-default fc-corner-right");
 day[0].remove();
-populator();
+//populator();
 //checker();
 //today();
 
