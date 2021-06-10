@@ -324,3 +324,7 @@ function renderTasksList() {
   // when usr delete a task
   let tasksListUlTag = document.getElementById("tasks_list_items_display");
   tasksListUlTag.addEventListener('click', event => clickOneTask(event));
+//<<<<<<< Updated upstream
+// tasks_list_script.js
+// the js for tasks_list part only
+
