@@ -7667,7 +7667,7 @@ button.close {
 	border-radius: 10px
 }
 .Calendar {
-	visibility: hidden;
+	display: none;
 }
 .carousel-indicators .active {
 	width: 12px;
