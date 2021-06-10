@@ -51,6 +51,8 @@
     font-size: 24px;
     font-weight: bold;
     color: red;
+    word-wrap:break-word;
+    width: 160px;
 }
 
 .tasks_list_item_span_checked_important {
@@ -62,12 +64,16 @@
     opacity: 0.6;
     font-weight: bold;
     color: red;
+    word-wrap:break-word;
+    width: 160px;
 }
 .tasks_list_item_span_unchecked {
     flex-grow: 1;
     margin-left: 10px;
     margin-right: 10px;
     font-size: 22px;
+    word-wrap:break-word;
+    width: 160px;
 }
 
 .tasks_list_item_span_checked {
@@ -77,6 +83,8 @@
     font-size: 22px;
     text-decoration: line-through;
     opacity: 0.6;
+    word-wrap:break-word;
+    width: 160px;
 }
 
 
@@ -126,5 +134,4 @@
 
 .tasks_list_date_in_item {
     border: none;
-    width: 120px;
 }
