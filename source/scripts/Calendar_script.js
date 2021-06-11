@@ -14,7 +14,7 @@ class evento {
 document.addEventListener('DOMContentLoaded', function(){
     console.log("started");
     let datebox = document.getElementById("daydate");
-    datebox.innerHTML = reverseformat(today());
+    datebox.innerHTML = "Events Today";
     let mystorage = window.localStorage;
     if(mystorage.getItem(today()) != undefined){
         console.log("priorly created");
@@ -186,7 +186,7 @@ function populator() {
             if (list_present != undefined) {
                 list_present.remove();
             }
-            titlepre.innerHTML = reverseformat(holder);
+            titlepre.innerHTML = "Events on " + reverseformat(holder);
             //eventbox.firstChild.innerHTML = holder;
 
             if (eventMap.has(holder)) {
@@ -246,72 +246,11 @@ function populator() {
                 eventbox.appendChild(evlist);
 
             }
-            let tasksListDisplayTag = document.querySelectorAll(".tasks_list_item");
-            tasksListDisplayTag.forEach(element => {
-                element.remove();
-            });
-            //delete no task prompt
-            let noTaskPrompt = document.querySelectorAll(".task_nofound_prompt");
-            if (noTaskPrompt) {
-                noTaskPrompt.forEach(element => {
-                    element.remove();
-                });
-            }
-            tasklist = mystorage.getItem("tasksList");
-            if (tasklist != null) {
-                ref_tasklist = JSON.parse(tasklist);
-                var arry = [];
-                for (var m in ref_tasklist) {
-                    arry.push(ref_tasklist[m]);
-                }
-                for (b = 0; b < arry.length; b++) {
-                    console.log(arry[b].date);
-                    console.log(reverseformat(holder));
-
-                    if (arry[b].date == reverseformat(holder)) {
-                        console.log("has tasks");
-                        console.log(arry[b]);
-                        const tasksListModuleForm = document.getElementById("tasks_list_items_display"); //locate where to add
-                        const tasktext = arry[b].taskText;
-                        const isChecked = Number(arry[b].checked) === 1 ? "checked" : "unchecked";
-                        let spanCheckedOrCheckedStyle;
-                        if (Number(arry[b].checked) === 1) {
-                            if (Number(arry[b].important) === 1) {
-                                spanCheckedOrCheckedStyle = "tasks_list_item_span_checked_important";
-                            } else {
-                                spanCheckedOrCheckedStyle = "tasks_list_item_span_checked";
-                            }
-                        } else {
-                            if (Number(arry[b].important) === 1) {
-                                spanCheckedOrCheckedStyle = "tasks_list_item_span_unchecked_important";
-                            } else {
-                                spanCheckedOrCheckedStyle = "tasks_list_item_span_unchecked";
-                            }
-                        }
-                        const taskID = arry[b].taskID;
-
-                        const oneTaskItem = document.createElement("li"); // create new element
-                        oneTaskItem.setAttribute('class', `tasks_list_item`);
-                        oneTaskItem.innerHTML = `
-                       <input id=${taskID} type="checkbox" ${isChecked}/>
-                       <span class=${spanCheckedOrCheckedStyle} >${tasktext}</span>
-                       <button class="important_button">
-                         <svg><use href="#important-mark"></use></svg>
-                       </button>
-                       <button class="delete_task_button">
-                         <svg><use href="#delete-icon"></use></svg>
-                       </button>
-                   `;
-                        tasksListModuleForm.appendChild(oneTaskItem); //inject }
-                        //console.log("found task");
+            
 
                     }
-                }
-            }
-        });
-        //console.log(set1);
-
-    }
+         )};
+        
 }
 
 
