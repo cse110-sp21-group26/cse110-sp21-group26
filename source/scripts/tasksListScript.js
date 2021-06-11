@@ -33,6 +33,7 @@ function listenOnAndupdateTaskItemDate(){
       event.preventDefault();
       //get new usr date input
       const wantedItemId = "tasks_list_date_in_item"+i;
+      console.log("wantedItemId: ", wantedItemId);
       const newUsrDateInput = document.getElementById(wantedItemId);
       console.log("newUsrDateInput: ", newUsrDateInput);
       const newUsrDaTeInputValue = newUsrDateInput.value;
