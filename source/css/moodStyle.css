@@ -28,7 +28,7 @@
 #moods li:last-child {
     margin-right: 0px;
 }
-#mood-choice{
+#moodCap{
     line-height: 20px;
     font-style: normal;
     font-weight: normal;
@@ -36,6 +36,8 @@
     display: none;
     font-family: Mulish;
     text-align: center;
+    margin-top: 30px;
+    transition: .3s;
 }
 
 
@@ -64,7 +66,7 @@
 .rect{
     width:80px;
     height:4px;
-    background:#0d9797;
+    background: black;
     border-radius:4.3px;
     margin-right: 5px;
     margin-left: 5px;
@@ -72,18 +74,18 @@
 
 
 .card-mood .rect:nth-child(1){
-    background:rgb(0, 0, 0);
+    background: #9ab1d6;
     margin-right:5px;
     margin-left: 5px;
 }
 
 .card-motivation .rect:nth-child(2){
-    background:rgb(0, 0, 0);
+    background: #9ab1d6;
     margin-right:5px;
     margin-left: 5px;
 }
 .card-stress .rect:nth-child(3){
-    background:rgb(0, 0, 0);
+    background: #9ab1d6;
     margin-right:5px;
     margin-left: 5px;
 }
@@ -107,7 +109,7 @@
 }
     
 .dot:hover{
-    background: #18a89c;
+    background: #9ab1d6;
 }
 
 .rates-subscript label{
@@ -150,7 +152,7 @@ label:first-child{
     outline: 0;
     /* styles */
     position: relative;
-    background: linear-gradient(-45deg, #6185ba, #8b8d98, #af8b6d, #d3a06c, #f4a342);
+    background: linear-gradient(-45deg, #6185ba, #8b8d98, #af8b6d, #d3a06c, #c5c3c0);
     background-size: 250% 250%;
      animation: gradientBG 3s ease-in 1s infinite reverse both running;
     padding: 20px 200px;

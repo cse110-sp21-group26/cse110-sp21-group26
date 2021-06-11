@@ -34,18 +34,13 @@ google.charts.setOnLoadCallback(drawMotivationChart);
  */
 function moodClicked(e,id){
     moodClickedValidation = true;
- 
-    showMood = document.getElementById('mood-choice');
-
     //Reset the scale back to 1
     for(let i = 1; i <= 5; i++){
          document.getElementById("mood"+i).style.transform = "scale(1)";
     } 
     document.getElementById(id).style.transform = "scale(1.4)"; 
     document.getElementById(id).style.textShadow = "10px 10px #ff0000";
-
-   /* showMood.textContent = "You feel " + e +"." */
-    showMood.style.display = 'block';    
+  
     btnDisplay();
 }
 /**
@@ -71,7 +66,7 @@ function btnDisplay(){
 function dotColorOnCLickMot(e) {
     for(let I = 1; I <= 5; I++)
         document.getElementById("motdot"+I).style.background = "#FFFFFF"; 
-    document.getElementById("motdot"+e).style.background = "#18a89c";  
+    document.getElementById("motdot"+e).style.background = "#9ab1d6";  
     getMotLevel = e;
     motValidation = true;
     btnDisplay();
@@ -84,7 +79,7 @@ function dotColorOnCLickMot(e) {
 function dotColorOnCLickStr(e) {
     for(let I = 1; I <= 5; I++)
         document.getElementById("strdot"+I).style.background = "#FFFFFF";
-    document.getElementById("strdot"+e).style.background = "#18a89c";  
+    document.getElementById("strdot"+e).style.background = "#9ab1d6";  
     getStrLevel = e;
     strValidation = true;
 
@@ -137,6 +132,11 @@ function resetMood(){
     localStorage.getItem(fullDate3) === null
   ) {
     window.localStorage.setItem(fullDate3, JSON.stringify(moodObject));
+  }
+  else{
+    showCapped = document.getElementById('moodCap');
+    showCapped.textContent = "Daily limit Reached. You have already checked in 3 times today.";
+     showCapped.style.display = 'block';  
   }
 }
 
