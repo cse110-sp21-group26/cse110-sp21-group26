@@ -15,6 +15,8 @@ export function itemUpdate(e) {
     console.log(e);
     let tmp = document.createElement("div");
     tmp.innerHTML = e.target.innerHTML;
+
+    //If the inner html is only the close and drag, then we know the stickynote is empty
     if ((tmp.textContent || tmp.innerText) === "X---") {
         let tgt = e.target;
         tgt.innerHTML = "&#8203;";
@@ -67,6 +69,7 @@ export function dragElement(elmnt) {
         // call a function whenever the cursor moves:
         document.onmousemove = elementDrag;
 
+        //generate bounding functions for the stickynote
         xCorr = generateCorrecter(0, stickyCont.getBoundingClientRect().width);
         yCorr = generateCorrecter(0, stickyCont.getBoundingClientRect().height);
     }
