@@ -136,7 +136,6 @@ for(let I=0; I <= 6; I++) {
     for(let I=1; I <= 3; I++) {
         var record = newDate.toLocaleDateString() + '/' + I;
         var retrievedObject = JSON.parse(localStorage.getItem(record));
-        console.log(retrievedObject.mood);
         if(retrievedObject !== null) {
             if(retrievedObject.mood == 1) {
                 weeklyMood[0]++;
