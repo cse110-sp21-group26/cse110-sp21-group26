@@ -12,7 +12,9 @@ var motivation = [];
 var stress = [];
 var days;
 //===============
-
+//Getters
+let btnToggle = document.getElementById('moodBtn');
+//=================
 //==================
 //Load Google Charts 
 google.charts.load("current", {packages:["corechart"]});
@@ -42,7 +44,7 @@ function moodClicked(e,id){
     document.getElementById(id).style.transform = "scale(1.4)"; 
     document.getElementById(id).style.textShadow = "10px 10px #ff0000";
 
-    showMood.textContent = "You feel " + e +"." 
+   /* showMood.textContent = "You feel " + e +"." */
     showMood.style.display = 'block';    
     btnDisplay();
 }
@@ -58,7 +60,6 @@ function getMood(e){
  * if all true -> submit button will display
  */
 function btnDisplay(){
-    let btnToggle = document.getElementById('moodBtn');
     if(strValidation && motValidation && moodClickedValidation)
         btnToggle.style.display = 'block';
 }
@@ -89,6 +90,15 @@ function dotColorOnCLickStr(e) {
 
     btnDisplay();
 } 
+
+function resetMood(){
+  btnToggle.style.display = 'none';
+  for(let I = 1; I <= 5; I++){
+    document.getElementById("motdot"+I).style.background = "#FFFFFF"; 
+    document.getElementById("strdot"+I).style.background = "#FFFFFF";
+    document.getElementById("mood"+I).style.transform = "scale(1)";
+  }
+}
 /**
  * Store Mood-Tracker data to local storage
  * Uses today's date + record number to store each object
