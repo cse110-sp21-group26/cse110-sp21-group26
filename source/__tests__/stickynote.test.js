@@ -1,5 +1,5 @@
 describe("Sticky Note Testing ", () => {
-    beforeEach(async () => {
+    beforeAll(async () => {
         // await page.goto("http://127.0.0.1:5500");
         await page.goto(
             "https://cse110-sp21-group26.github.io/cse110-sp21-group26/"
@@ -11,6 +11,6 @@ describe("Sticky Note Testing ", () => {
 
     it("Test1: Initial Home Page - Check for Add New button", async () => {
         const addBtn = await page.$$("#addBtn");
-        // expect(addBtn).toBeTruthy();
+        expect(addBtn).toBeTruthy();
     });
 });
