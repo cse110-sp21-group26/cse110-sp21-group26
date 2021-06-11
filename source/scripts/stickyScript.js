@@ -4,6 +4,9 @@ const addBtn = document.querySelector("#addBtn");
 var stickyCont = document.querySelector(".sticky-container");
 const myStorage = window.localStorage;
 
+/**
+ * When the document loads, fetch all sticky notes found in local storage and load them into the webpage
+ */
 document.addEventListener("DOMContentLoaded", () => {
     let stickyList = getLSData();
     if (stickyList === null) {
@@ -48,6 +51,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
+/**
+ * Before the webpage unloads, store all of the stickynotes found in the page into local storage.
+ */
 window.addEventListener("beforeunload", () => {
     let newStickyList = [];
     for (let i = 0; i < stickyCont.children.length; i++) {
@@ -64,6 +70,9 @@ window.addEventListener("beforeunload", () => {
     myStorage.setItem("stickynote", JSON.stringify(newStickyList));
 });
 
+/**
+ * Everytime the add button is clicked, we add a new stickynote into the webpage.
+ */
 addBtn.addEventListener("click", () => {
     let stickySingle = document.createElement("div");
     stickySingle.classList.add("sticky");
