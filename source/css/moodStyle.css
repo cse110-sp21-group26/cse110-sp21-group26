@@ -183,3 +183,17 @@ label:first-child{
     text-align: center;
  }
  
+ #chartTitle {
+     color: black;
+     font-family: 'Open Sans';
+     font-size: 17px;
+     font-weight: 300;
+ }
+
+ #stmChartTitle {
+    color: black;
+    font-family: 'Open Sans';
+    font-size: 17px;
+    font-weight: 300;
+    margin-bottom: 30px;
+ }
