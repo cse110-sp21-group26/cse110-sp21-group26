@@ -98,7 +98,11 @@ function resetMood(){
     document.getElementById("strdot"+I).style.background = "#FFFFFF";
     document.getElementById("mood"+I).style.transform = "scale(1)";
   }
+  strValidation = false;
+  motValidation = false;
+  moodClickedValidation = false
 }
+
 /**
  * Store Mood-Tracker data to local storage
  * Uses today's date + record number to store each object
@@ -113,9 +117,9 @@ function storeData(){
     let fullDate1 = month + '/' + day + '/' + year + '/' + 1;
     let fullDate2 = month + '/' + day + '/' + year + '/' + 2;
     let fullDate3 = month + '/' + day + '/' + year + '/' + 3;
-
-    let moodObject = { 'mood': getMoodLevel,  'anxiety': getMotLevel, 'stress': getStrLevel };
     
+    let moodObject = { 'mood': getMoodLevel,  'anxiety': getMotLevel, 'stress': getStrLevel };
+
     if (localStorage.getItem(fullDate1) === null) {
         window.localStorage.setItem(fullDate1, JSON.stringify(moodObject));
     } else if(localStorage.getItem(fullDate1) !== null && localStorage.getItem(fullDate2) === null) {
@@ -132,7 +136,7 @@ for(let I=0; I <= 6; I++) {
     for(let I=1; I <= 3; I++) {
         var record = newDate.toLocaleDateString() + '/' + I;
         var retrievedObject = JSON.parse(localStorage.getItem(record));
-
+        console.log(retrievedObject.mood);
         if(retrievedObject !== null) {
             if(retrievedObject.mood == 1) {
                 weeklyMood[0]++;
@@ -180,100 +184,104 @@ if(todayDay == 0) {
     days = ['Sun', 'Mon', 'Tu', 'Wed', 'Thu', 'Fri', 'Sat'];
 }
 
+
 /**
-   * Draw pie chart to track weekly mood
-   */
-function drawMoodChart() {
-    var data = google.visualization.arrayToDataTable([
-      ['Task', 'Hours per Day'],
-      ['Great', weeklyMood[0]],
-      ['Good', weeklyMood[1]],
-      ['Ok', weeklyMood[2]],
-      ['Bad', weeklyMood[3]],
-      ['Awful', weeklyMood[4]]
-    ]);
+ * Draw pie chart to track weekly mood
+ */
+ function drawMoodChart() {
+  var data = google.visualization.arrayToDataTable([
+    ["Task", "Hours per Day"],
+    ["Great", weeklyMood[0]],
+    ["Good", weeklyMood[1]],
+    ["Ok", weeklyMood[2]],
+    ["Bad", weeklyMood[3]],
+    ["Awful", weeklyMood[4]],
+  ]);
 
-    var options = {
-      legend: { position: 'bottom'},
-      width: 230,
-      height: 300,
-      title: 'Weekly Mood',
-      titleTextStyle: {
-          bold: false,
+  var options = {
+    legend: { position: "bottom" },
+    width: 230,
+    height: 300,
+    title: "Weekly Mood",
+    title: { position: "none" },
+    colors: ["#f4a342", "#d3a06c", "#af8b6d", "#8b8d98", "#6185ba"],
+    is3D: true,
+  };
+
+  var chart = new google.visualization.PieChart(
+    document.getElementById("moodChart")
+  );
+  chart.draw(data, options);
+}
+
+/**
+ * Draw bar chart for weekly stress level
+ */
+function drawStressChart() {
+  var data = google.visualization.arrayToDataTable([
+    ["Days", "Entry 1", "Entry 2", "Entry 3"],
+    [days[0], stress[18], stress[19], stress[20]],
+    [days[1], stress[15], stress[16], stress[17]],
+    [days[2], stress[12], stress[13], stress[14]],
+    [days[3], stress[9], stress[10], stress[11]],
+    [days[4], stress[6], stress[7], stress[8]],
+    [days[5], stress[3], stress[4], stress[5]],
+    [days[6], stress[0], stress[1], stress[2]],
+  ]);
+
+  var options = {
+    width: 230,
+    height: 200,
+    vAxis: {
+      viewWindow: {
+        min: 0,
       },
-      colors: ['#f4a342', '#d3a06c', '#af8b6d', '#8b8d98', '#6185ba'],
-      is3D: true,
-    };
+    },
+    colors: ["#f3b49f", "#ec8f6e", "#e6693e"],
+    chart: {
+      title: "Weekly Stress Level",
+      title: { position: "none" },
+    },
+    legend: { position: "none" },
+  };
 
-    var chart = new google.visualization.PieChart(document.getElementById('moodChart'));
-    chart.draw(data, options);
-  }
+  var chart = new google.charts.Bar(document.getElementById("stressChart"));
 
+  chart.draw(data, google.charts.Bar.convertOptions(options));
+}
 
-  /**
-   * Draw bar chart for weekly stress level
-   */
-  function drawStressChart() {
-    var data = google.visualization.arrayToDataTable([
-      ['Days', 'Entry 1', 'Entry 2', 'Entry 3'],
-      [days[0], stress[18], stress[19], stress[20]],
-      [days[1], stress[15], stress[16], stress[17]],
-      [days[2], stress[12], stress[13], stress[14]],
-      [days[3], stress[9], stress[10], stress[11]],
-      [days[4], stress[6], stress[7], stress[8]],
-      [days[5], stress[3], stress[4], stress[5]],
-      [days[6], stress[0], stress[1], stress[2]]
-    ]);
+/**
+ * Draw bar chart for weekly motivation
+ */
+function drawMotivationChart() {
+  var data = google.visualization.arrayToDataTable([
+    ["Days", "Entry 1", "Entry 2", "Entry 3"],
+    [days[0], motivation[18], motivation[19], motivation[20]],
+    [days[1], motivation[15], motivation[16], motivation[17]],
+    [days[2], motivation[12], motivation[13], motivation[14]],
+    [days[3], motivation[9], motivation[10], motivation[11]],
+    [days[4], motivation[6], motivation[7], motivation[8]],
+    [days[5], motivation[3], motivation[4], motivation[5]],
+    [days[6], motivation[0], motivation[1], motivation[2]],
+  ]);
 
-    var options = {
-      width: 200,
-      height: 200,
-      vAxis: {
-        viewWindow: {
-          min: 0
-        }
+  var options = {
+    width: 230,
+    height: 200,
+    vAxis: {
+      viewWindow: {
+        min: 0,
       },
-      colors: ['#f3b49f', '#ec8f6e', '#e6693e'],
-      chart: {
-        title: 'Weekly Stress Level'
-      }
-    };
+    },
+    colors: ["#a05998", "#c47cbb", "#e7b0e0"],
+    chart: {
+      title: "Weekly Motivation Level",
+      title: { position: "none" },
+    },
+    legend: { position: "none" },
+  };
 
-    var chart = new google.charts.Bar(document.getElementById('stressChart'));
+  var chart = new google.charts.Bar(document.getElementById("motivationChart"));
 
-    chart.draw(data, google.charts.Bar.convertOptions(options));
-  }
-
-  /**
-   * Draw bar chart for weekly motivation
-   */
-  function drawMotivationChart() {
-    var data = google.visualization.arrayToDataTable([
-      ['Days', 'Entry 1', 'Entry 2', 'Entry 3'],
-      [days[0], motivation[18], motivation[19], motivation[20]],
-      [days[1], motivation[15], motivation[16], motivation[17]],
-      [days[2], motivation[12], motivation[13], motivation[14]],
-      [days[3], motivation[9], motivation[10], motivation[11]],
-      [days[4], motivation[6], motivation[7], motivation[8]],
-      [days[5], motivation[3], motivation[4], motivation[5]],
-      [days[6], motivation[0], motivation[1], motivation[2]]
-    ]);
-
-    var options = {
-      width: 100,
-      height: 100,
-      vAxis: {
-        viewWindow: {
-          min: 0
-        }
-      },
-      colors: ['#a05998', '#c47cbb', '#e7b0e0'],
-      chart: {
-        title: 'Weekly Motivation Level'
-      }
-    };
-
-    var chart = new google.charts.Bar(document.getElementById('motivationChart'));
-
-    chart.draw(data, google.charts.Bar.convertOptions(options));
-  }
+  chart.draw(data, google.charts.Bar.convertOptions(options));
+}
