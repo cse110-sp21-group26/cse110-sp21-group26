@@ -55,6 +55,12 @@ a {
 	background-color: transparent
 }
 
+#getQuote {
+	text-align: center;
+	font: 400 1.5em/125% 'Tangerine', Helvetica, Sans-serif;
+	color: #333;
+}
+
 a:active,
 a:hover {
 	outline: 0
