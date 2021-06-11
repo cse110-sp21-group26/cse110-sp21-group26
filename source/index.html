@@ -4,9 +4,7 @@
   <title>Bullet Journal</title>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1"
-        name="viewport"><!-- Favicon -->
-  <link href="./resources/logo.ico"
-        rel="icon"><!-- skeleton css-->
+        name="viewport"><!-- skeleton css-->
   <link href="./css/skeletonStyle.css"
         rel="stylesheet"><!-- sticky notes css -->
   <link href="./css/stickynotes.css"
@@ -33,7 +31,7 @@
   <link href="./css/custom.css"
         rel="stylesheet"
         type="text/css">
-  <link href="http://fonts.googleapis.com/css?family=Tangerine"
+  <link href="https://fonts.googleapis.com/css?family=Tangerine"
         rel="stylesheet"
         type="text/css">
 </head>
@@ -243,13 +241,11 @@
                       id="tasks_list_form"
                       name="tasks_list_form">
                   <input aria-label="Enter a new task"
+                        autofocus=""
                         class="tasks_list_input"
                         id="tasks_list_input"
                         placeholder="Enter a new task ..."
-                        type="text"> <input class="tasks_list_date_input"
-                        id="tasks_list_date_input"
-                        type="date"
-                        value="">
+                        type="text">
                 </form>
                 <ul class="tasks_list_items_display"
                     id="tasks_list_items_display"></ul>
@@ -260,24 +256,26 @@
       </div>
     </div>
     <div class="col-sm-3">
-      <!--== <div class="thumbnail">  =-->
       <div class="panel panel-default text-left">
         <div class="panel-body">
-          <div id="moodChart">
-            <!-- <div id="stressChart"> -->
-            <!-- <div id="motivationChart"> -->
-          </div>
+          <p id="chartTitle">Mood Weekly Summary</p>
+          <div id="moodChart"></div>
         </div>
       </div>
     </div>
     <div class="col-sm-3">
-      <!--== <div class="thumbnail">  =-->
       <div class="panel panel-default text-left">
         <div class="panel-body">
-          <div id="stressChart">
-            <!-- <div id="stressChart"> -->
-            <!-- <div id="motivationChart"> -->
-          </div>
+          <p id="stmChartTitle">Stress Summary</p>
+          <div id="stressChart"></div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="panel panel-default text-left">
+        <div class="panel-body">
+          <p id="stmChartTitle">Motivation Summary</p>
+          <div id="motivationChart"></div>
         </div>
       </div>
     </div>
