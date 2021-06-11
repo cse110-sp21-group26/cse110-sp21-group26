@@ -108,86 +108,91 @@ function resetMood(){
  * Uses today's date + record number to store each object
  * If all 3 records are stored, no additional records will be stored for this day
  */
-function storeData(){
-    let storeDate = new Date();
-    let month = storeDate.getMonth()+1;
-    let day = storeDate.getDate();
-    let year = storeDate.getFullYear();
-    
-    let fullDate1 = month + '/' + day + '/' + year + '/' + 1;
-    let fullDate2 = month + '/' + day + '/' + year + '/' + 2;
-    let fullDate3 = month + '/' + day + '/' + year + '/' + 3;
-    
-    let moodObject = { 'mood': getMoodLevel,  'anxiety': getMotLevel, 'stress': getStrLevel };
+ function storeData() {
+  let storeDate = new Date();
+  let month = storeDate.getMonth() + 1;
+  let day = storeDate.getDate();
+  let year = storeDate.getFullYear();
 
-    if (localStorage.getItem(fullDate1) === null) {
-        window.localStorage.setItem(fullDate1, JSON.stringify(moodObject));
-    } else if(localStorage.getItem(fullDate1) !== null && localStorage.getItem(fullDate2) === null) {
-        window.localStorage.setItem(fullDate2, JSON.stringify(moodObject));
-    } else if(localStorage.getItem(fullDate1) !== null && localStorage.getItem(fullDate2) !== null && localStorage.getItem(fullDate3) === null) {
-        window.localStorage.setItem(fullDate3, JSON.stringify(moodObject));
-    }
+  let fullDate1 = month + "/" + day + "/" + year + "/" + 1;
+  let fullDate2 = month + "/" + day + "/" + year + "/" + 2;
+  let fullDate3 = month + "/" + day + "/" + year + "/" + 3;
+
+  let moodObject = {
+    mood: getMoodLevel,
+    anxiety: getMotLevel,
+    stress: getStrLevel,
+  };
+
+  if (localStorage.getItem(fullDate1) === null) {
+    window.localStorage.setItem(fullDate1, JSON.stringify(moodObject));
+  } else if (
+    localStorage.getItem(fullDate1) !== null &&
+    localStorage.getItem(fullDate2) === null
+  ) {
+    window.localStorage.setItem(fullDate2, JSON.stringify(moodObject));
+  } else if (
+    localStorage.getItem(fullDate1) !== null &&
+    localStorage.getItem(fullDate2) !== null &&
+    localStorage.getItem(fullDate3) === null
+  ) {
+    window.localStorage.setItem(fullDate3, JSON.stringify(moodObject));
+  }
 }
 
-for(let I=0; I <= 6; I++) {
-    var newDate = new Date();
-    newDate.setDate(newDate.getDate()-I);
+for (let I = 0; I <= 6; I++) {
+  var newDate = new Date();
+  newDate.setDate(newDate.getDate() - I);
 
-    for(let I=1; I <= 3; I++) {
-        var record = newDate.toLocaleDateString() + '/' + I;
-        var retrievedObject = JSON.parse(localStorage.getItem(record));
-        if(retrievedObject !== null) {
-            if(retrievedObject.mood == 1) {
-                weeklyMood[0]++;
-            }
-            else if(retrievedObject.mood == 2) {
-                weeklyMood[1]++;
-            }
-            else if(retrievedObject.mood == 3) {
-                weeklyMood[2]++;
-            }
-            else if(retrievedObject.mood == 4) {
-                weeklyMood[3]++;
-            }
-            else if(retrievedObject.mood == 5) {
-                weeklyMood[4]++;
-            }
+  for (let I = 1; I <= 3; I++) {
+    var record = newDate.toLocaleDateString() + "/" + I;
+    var retrievedObject = JSON.parse(localStorage.getItem(record));
 
-            stress.push(retrievedObject.stress);
-            motivation.push(retrievedObject.anxiety);
+    if (retrievedObject !== null) {
+      if (retrievedObject.mood == 1) {
+        weeklyMood[0]++;
+      } else if (retrievedObject.mood == 2) {
+        weeklyMood[1]++;
+      } else if (retrievedObject.mood == 3) {
+        weeklyMood[2]++;
+      } else if (retrievedObject.mood == 4) {
+        weeklyMood[3]++;
+      } else if (retrievedObject.mood == 5) {
+        weeklyMood[4]++;
+      }
 
-        } else if(retrievedObject === null) {
-            stress.push(0);
-            motivation.push(0);
-        }
-        
+      stress.push(retrievedObject.stress);
+      motivation.push(retrievedObject.anxiety);
+    } else if (retrievedObject === null) {
+      stress.push(0);
+      motivation.push(0);
     }
+  }
 }
 
 var date = new Date();
 var todayDay = date.getDay();
 
-if(todayDay == 0) {
-    days = ['Mon','Tu','Wed','Thu','Fri','Sat','Sun'];
-} else if(todayDay == 1) {
-    days = ['Tu','Wed','Thu','Fri','Sat','Sun', 'Mon'];
-} else if(todayDay == 2) {
-    days = ['Wed','Thu','Fri','Sat','Sun', 'Mon', 'Tu'];
-} else if(todayDay == 3) {
-    days = ['Thu','Fri','Sat','Sun', 'Mon', 'Tu', 'Wed'];
-} else if(todayDay == 4) {
-    days = ['Fri','Sat','Sun', 'Mon', 'Tu', 'Wed', 'Thu'];
-} else if(todayDay == 5) {
-    days = ['Sat','Sun', 'Mon', 'Tu', 'Wed', 'Thu', 'Fri'];
-} else if(todayDay == 6) {
-    days = ['Sun', 'Mon', 'Tu', 'Wed', 'Thu', 'Fri', 'Sat'];
+if (todayDay == 0) {
+  days = ["M", "Tu", "W", "Th", "F", "Sa", "Su"];
+} else if (todayDay == 1) {
+  days = ["Tu", "W", "Th", "F", "Sa", "Su", "M"];
+} else if (todayDay == 2) {
+  days = ["W", "Th", "F", "Sa", "Su", "M", "Tu"];
+} else if (todayDay == 3) {
+  days = ["Th", "F", "Sa", "Su", "M", "Tu", "W"];
+} else if (todayDay == 4) {
+  days = ["F", "Sa", "Su", "M", "Tu", "W", "Th"];
+} else if (todayDay == 5) {
+  days = ["Sa", "Su", "M", "Tu", "W", "Th", "F"];
+} else if (todayDay == 6) {
+  days = ["Su", "M", "Tu", "W", "Th", "F", "S"];
 }
-
 
 /**
  * Draw pie chart to track weekly mood
  */
- function drawMoodChart() {
+function drawMoodChart() {
   var data = google.visualization.arrayToDataTable([
     ["Task", "Hours per Day"],
     ["Great", weeklyMood[0]],
