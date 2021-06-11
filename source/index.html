@@ -4,21 +4,17 @@
   <title>Bullet Journal</title>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1"
-        name="viewport">
-  <!-- Favicon -->
-  <link rel="icon" href="./resources/logo.ico">
-  <!-- skeleton css-->
+        name="viewport"><!-- Favicon -->
+  <link href="./resources/logo.ico"
+        rel="icon"><!-- skeleton css-->
   <link href="./css/skeletonStyle.css"
-        rel="stylesheet">
-  <!-- sticky notes css -->
+        rel="stylesheet"><!-- sticky notes css -->
   <link href="./css/stickynotes.css"
-        rel="stylesheet">
-  <!-- tasks list css -->
+        rel="stylesheet"><!-- tasks list css -->
   <link href="./css/tasksListStyle.css"
         rel="stylesheet">
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"
-        rel="stylesheet">
-  <!--Calendar css-->
+        rel="stylesheet"><!--Calendar css-->
   <link href="./css/custom.css"
         rel="stylesheet"
         type="text/css">
@@ -39,8 +35,7 @@
         type="text/css">
   <link href="http://fonts.googleapis.com/css?family=Tangerine"
         rel="stylesheet"
-        type="text/css"/>
-  
+        type="text/css">
 </head>
 <body onload="quotes()">
   <nav class="navbar navbar-inverse">
@@ -52,7 +47,7 @@
            id="myNavbar">
         <ul class="nav navbar-nav">
           <li>
-            <a href="#" 
+            <a href="#"
                 onclick="openTab(event, 'container text-center')">Bujo</a>
           </li>
           <li>
@@ -209,7 +204,8 @@
                 </div>
                 <p id="mood-choice"></p><button class="mood-btn"
                       id="moodBtn"
-                      onclick="storeData()">submit</button>
+                      onclick="storeData();resetMood();"
+                      type="button">submit</button>
               </form><br>
               <br>
               <!--==  <button type="button" class="btn btn-default btn-sm">
@@ -250,8 +246,10 @@
                         class="tasks_list_input"
                         id="tasks_list_input"
                         placeholder="Enter a new task ..."
-                        type="text">
-                  <input class="tasks_list_date_input" id="tasks_list_date_input" type="date" value="">
+                        type="text"> <input class="tasks_list_date_input"
+                        id="tasks_list_date_input"
+                        type="date"
+                        value="">
                 </form>
                 <ul class="tasks_list_items_display"
                     id="tasks_list_items_display"></ul>
