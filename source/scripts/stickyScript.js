@@ -4,11 +4,17 @@ const addBtn = document.querySelector("#addBtn");
 var stickyCont = document.querySelector(".sticky-container");
 const myStorage = window.localStorage;
 
+/**
+ * When the document loads, fetch all sticky notes found in local storage and load them into the webpage
+ */
 document.addEventListener("DOMContentLoaded", () => {
+    //Get the data from local storage
     let stickyList = getLSData();
     if (stickyList === null) {
         return;
     }
+
+    //for each sticky note, get the data found and create a new note, setting each field
     stickyList.forEach((note) => {
         let [text, filter, top, left, width, height] = note;
 
@@ -48,8 +54,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
+/**
+ * Before the webpage unloads, store all of the stickynotes found in the page into local storage.
+ */
 window.addEventListener("beforeunload", () => {
     let newStickyList = [];
+    // add each sticky note field into LS as a tuple
     for (let i = 0; i < stickyCont.children.length; i++) {
         newStickyList.push([
             stickyCont.children[i].innerText,
@@ -61,10 +71,15 @@ window.addEventListener("beforeunload", () => {
         ]);
     }
 
+    // store the information
     myStorage.setItem("stickynote", JSON.stringify(newStickyList));
 });
 
+/**
+ * Everytime the add button is clicked, we add a new stickynote into the webpage.
+ */
 addBtn.addEventListener("click", () => {
+    // General Stickynote
     let stickySingle = document.createElement("div");
     stickySingle.classList.add("sticky");
     stickySingle.contentEditable = "true";
@@ -86,12 +101,15 @@ addBtn.addEventListener("click", () => {
     drag.contentEditable = "false";
     stickySingle.appendChild(drag);
 
+    // Make draggable
     dragElement(stickySingle);
 
+    // Close function
     close.onclick = function () {
         stickySingle.remove();
     };
 
+    // Ensure writable
     stickySingle.onclick = itemUpdate;
 
     // random number function
@@ -99,6 +117,7 @@ addBtn.addEventListener("click", () => {
         return Math.random() * (max - min) + min;
     }
 
+    // Random color generation
     let color = randomNumber(1, 720);
     stickySingle.style.filter = "hue-rotate(" + color + "deg)";
 });

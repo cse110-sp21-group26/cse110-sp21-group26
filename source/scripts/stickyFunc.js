@@ -1,10 +1,22 @@
+/**
+ * Function to return a bounding function between two inputs.
+ * @param {number} min Minimum bound for function
+ * @param {number} max Maximum bound for function
+ * @returns
+ */
 export const generateCorrecter = (min, max) => (val) =>
     val < min ? min : val > max ? max : val;
 
+/**
+ * This functino ensures that a clicked stickynote will alwyas be able to have editable text
+ * @param {ClickEvent} e Event passed in from a sticky note being clicked
+ */
 export function itemUpdate(e) {
     console.log(e);
     let tmp = document.createElement("div");
     tmp.innerHTML = e.target.innerHTML;
+
+    //If the inner html is only the close and drag, then we know the stickynote is empty
     if ((tmp.textContent || tmp.innerText) === "X---") {
         let tgt = e.target;
         tgt.innerHTML = "&#8203;";
@@ -30,6 +42,10 @@ export function itemUpdate(e) {
     }
 }
 
+/**
+ * Function that makes an element draggable, specifically for sticky notes
+ * @param {Element} elmnt StickyNote to be made draggable
+ */
 export function dragElement(elmnt) {
     var pos3 = 0,
         pos4 = 0;
@@ -39,6 +55,10 @@ export function dragElement(elmnt) {
     var xCorr = generateCorrecter(0, stickyCont.getBoundingClientRect().width);
     var yCorr = generateCorrecter(0, stickyCont.getBoundingClientRect().height);
 
+    /**
+     * Function to make an element draggable on mouseclick
+     * @param {Element} e Element to be clicked for dragging
+     */
     function dragMouseDown(e) {
         e = e || window.event;
         e.preventDefault();
@@ -49,10 +69,15 @@ export function dragElement(elmnt) {
         // call a function whenever the cursor moves:
         document.onmousemove = elementDrag;
 
+        //generate bounding functions for the stickynote
         xCorr = generateCorrecter(0, stickyCont.getBoundingClientRect().width);
         yCorr = generateCorrecter(0, stickyCont.getBoundingClientRect().height);
     }
 
+    /**
+     * This function calculates the position for the element being dragged
+     * @param {Element} e Element that needs to be dragged
+     */
     function elementDrag(e) {
         e = e || window.event;
         e.preventDefault();
@@ -70,6 +95,9 @@ export function dragElement(elmnt) {
             xCorr(xCorr(pos3 + elmnt.offsetWidth) - elmnt.offsetWidth) + "px";
     }
 
+    /**
+     * Function to make sure that once the mouse is released, the element is no longer dragged
+     */
     function closeDragElement() {
         // stop moving when mouse button is released:
         document.onmouseup = null;
@@ -77,6 +105,10 @@ export function dragElement(elmnt) {
     }
 }
 
+/**
+ * Function to retrieve data from local storage
+ * @returns LocalStored Data containing a list of stickynotes
+ */
 export function getLSData() {
     const myStorage = window.localStorage;
     let stickyNotes = JSON.parse(myStorage.getItem("stickynote"));

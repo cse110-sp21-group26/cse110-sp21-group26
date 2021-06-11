@@ -136,7 +136,7 @@ function resetMood(){
   else{
     showCapped = document.getElementById('moodCap');
     showCapped.textContent = "Daily limit Reached. You have already checked in 3 times today.";
-     showCapped.style.display = 'block';  
+    showCapped.style.display = 'block';  
   }
 }
 
