@@ -10,7 +10,7 @@ var getMotLevel;
 var getStrLevel;
 var motivation = [];
 var stress = [];
-var days;
+var days = [];
 //===============
 //Getters
 let btnToggle = document.getElementById('moodBtn');
