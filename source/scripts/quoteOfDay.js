@@ -1,3 +1,7 @@
+/**
+* Randomly pull a random quote from our array of quotes to be featured as quote of the day on the bullet journal by calculating a random index and grabbing that quote
+* from the array.
+*/
 function quotes() {
 	//Creating an array to store quotes
 	var quotes = new Array();
@@ -22,10 +26,10 @@ function quotes() {
 	quotes[18] = "Be nice to people on the way up, because you may meet them on the way down.";
 	quotes[19] = "When we strive to become better than we are, everything around us becomes better too."
 
-	// Generate an index so that we can get a random quote
+	// Generate an index so that we can pick a random quote from the quotes array
 	index = Math.floor(Math.random() * quotes.length);
 
-
+	// Make sure that the appropriate Quote of the Day section of the BuJo gets populated with the chosen quote
 	document.getElementById("getQuote").textContent = quotes[index];
 
 }
