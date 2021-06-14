@@ -3,6 +3,7 @@ describe('Tests for taskslist ', () => {
     beforeAll(async () => {
         await page.goto('https://cse110-sp21-group26.github.io/cse110-sp21-group26/source/index.html');      
         await page.waitForTimeout(500);
+        jest.setTimeout(30000);
     });
   
     
