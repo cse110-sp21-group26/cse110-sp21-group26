@@ -1,8 +1,40 @@
-/* initialize the external events */
-//import { renderOneTaskItem(oneTask), clearDisplayedTasksItems()} from "./tasksListScript.js" ;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Calendar_script_prime.js</title>
 
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Calendar_script_prime.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>
+/** Class representing a event. */
 
 class evento {
+    /**Creates an event
+     * @param a string date
+     * @param a string description
+     * @param a string time
+     */
     constructor(date, description, time) {
         this.date = date;
         this.description = description;
@@ -11,7 +43,20 @@ class evento {
     }
 
 }
+/**
+ * Listens to the loading of a page and populates the initial event box
+ * 
+ * @method
+ * @param Someone loading the app
+ * @listens to app being loaded
+ */
 document.addEventListener('DOMContentLoaded', function(){
+    month = document.getElementsByClassName("fc-month-button fc-button fc-state-default fc-corner-left fc-state-active");
+month[0].remove();
+week = document.getElementsByClassName("fc-agendaWeek-button fc-button fc-state-default");
+week[0].remove();
+day = document.getElementsByClassName("fc-agendaDay-button fc-button fc-state-default fc-corner-right");
+day[0].remove();
     console.log("started");
     let datebox = document.getElementById("daydate");
     datebox.innerHTML = "Events Today";
@@ -29,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function(){
            var  evlist = document.createElement("UL");
            evlist.id = "event_list";
            console.log(usuable.length);
-            for (k = 0; k < usuable.length; k++) {
+            for (k = 0; k &lt; usuable.length; k++) {
                 eve = usuable[k].description + " @ " + usuable[k].time;
                 evo = document.createElement("LI");
                 evo.innerHTML = eve;
@@ -39,12 +84,34 @@ document.addEventListener('DOMContentLoaded', function(){
 
     }
     });
-
+/**
+ * Used as helper variables to store collections of events
+ * @type {evento}
+ */
 var anoopbox, anoopbox1, anoopbox2, anoopbox3;
+/**
+ * used as a helper variable to fetch events
+ * @type {boolean}
+ */
 var runonce = false;
+/**
+ * used as a helper variable to fetch events
+ * @type {boolean}
+ */
 var onetime = false;
+/**
+ * used to store dates and corresponding events
+ * @type {Map}
+ */
 const eventMap = new Map();
 //document.addEventListener('DOMContentLoaded', startRender);
+/**
+ * listens to the windos being closed and updates local storage
+ * 
+ * @member
+ * @param {} e a function to run when someone closes to update local storage
+ * @listens onbeforeunload
+ */
 window.onbeforeunload = function (e) {
     window.onunload = function () {
         updateLS();
@@ -58,13 +125,17 @@ dropdown.addEventListener("click", function () {
 })
 
 
-
+/**
+ * gathers events form local storage to be rendered
+ * @method
+ *
+ */
 function gatherEvents() {
     if (runonce == false) {
         var found = false;
         mystorage = window.localStorage;
         let skeletons = document.getElementsByClassName("fc-content-skeleton");
-        for (var k = 0; k < mystorage.length; k++) {
+        for (var k = 0; k &lt; mystorage.length; k++) {
             date = mystorage.key(k);
             if (date.includes("-") == false) {
                 continue;
@@ -75,21 +146,21 @@ function gatherEvents() {
                 res.push(prearry[i]);
                 //console.log(prearry[i]);
             }
-            /*for(t = 0; t < res.length;t++){
+            /*for(t = 0; t &lt; res.length;t++){
             console.log(res[t].date);
             }
             console.log(res.length);*/
-            for (n = 0; n < res.length; n++) {
-                for (i = 0; i < skeletons.length; i++) {
+            for (n = 0; n &lt; res.length; n++) {
+                for (i = 0; i &lt; skeletons.length; i++) {
                     table = skeletons[i].firstChild;
                     thead = table.firstChild;
                     tbod = table.lastChild;
                     theadrow = thead.firstChild;
                     tbodrows = tbod.children;
                     theadcells = theadrow.children;
-                    for (h = 0; h < theadcells.length; h++) {
+                    for (h = 0; h &lt; theadcells.length; h++) {
                         if (theadcells[h].getAttribute("data-date") === date) {
-                            for (g = 0; g < tbodrows.length; g++) {
+                            for (g = 0; g &lt; tbodrows.length; g++) {
                                 tbodcells = tbodrows[g].children;
                                 if (tbodcells[h].className === "fc-event-container") {
                                     continue;
@@ -115,7 +186,7 @@ function gatherEvents() {
                             }
                             if (found === false) {
                                 newrow = document.createElement("tr");
-                                for (m = 0; m < 7; m++) {
+                                for (m = 0; m &lt; 7; m++) {
                                     td = document.createElement("td");
                                     if (m == h) {
                                         td.className = "fc-event-container";
@@ -149,11 +220,18 @@ function gatherEvents() {
         runonce = true;
     }
 }
+/**
+ * closes the event creator box whenever the user clicks outside of it
+ * 
+ * @method
+ * @param {*} event of user clicking away
+ * @listens onclick
+ */
 window.onclick = function (event) {
     if (!event.target.matches('.dropbtn')) {
         var dropdowns = document.getElementsByClassName("dropdown-content");
         var i;
-        for (i = 0; i < dropdowns.length; i++) {
+        for (i = 0; i &lt; dropdowns.length; i++) {
             var openDropdown = dropdowns[i];
             if (openDropdown.classList.contains('show')) {
                 openDropdown.classList.remove('show');
@@ -161,7 +239,12 @@ window.onclick = function (event) {
         }
     }
 }
-
+/**
+ * A method that converts the format of date to a reverse form
+ * @method
+ * @param {*} date 
+ * @returns the reversed string
+ */
 function reverseformat(date) {
     let size = date.length;
     let year = date.substring(0, 4);
@@ -169,12 +252,17 @@ function reverseformat(date) {
     let day = date.substring(8, size);
     return new String(month + "-" + day + "-" + year);
 }
-
+/**
+ * A method that establishes event listeners for when an user clicks on calendar squares
+ * 
+ * @method
+ * @return none, creates event listeners
+ */
 function populator() {
     let mystorage = window.localStorage;
     anoopbox = document.querySelectorAll("td.fc-day.fc-widget-content");
 
-    for (i = 0; i < anoopbox.length; i++) {
+    for (i = 0; i &lt; anoopbox.length; i++) {
         let holder = anoopbox[i].getAttribute("data-date");
          anoopbox[i].addEventListener("click", function () {
             var eventbox = document.getElementById("eventcage");
@@ -197,19 +285,19 @@ function populator() {
                 storindic = true;
                 console.log("present in loc storage");
             }
-            if (storindic == true && mapindic == true) {
+            if (storindic == true &amp;&amp; mapindic == true) {
                 touse = JSON.parse(mystorage.getItem(holder));
                 console.log("priorly created");
                 evlist = document.createElement("UL");
                 evlist.id = "event_list"
-                for (k = 0; k < touse.length; k++) {
+                for (k = 0; k &lt; touse.length; k++) {
                     eve = touse[k].description + " @ " + touse[k].time;
                     evo = document.createElement("LI");
                     evo.innerHTML = eve;
                     evlist.appendChild(evo);
                 }
                 var arrus = eventMap.get(holder);
-                for (k = 0; k < arrus.length; k++) {
+                for (k = 0; k &lt; arrus.length; k++) {
                     steve = arrus[k].description + " @ " + arrus[k].time;
                     stevo = document.createElement("LI");
                     stevo.innerHTML = steve;
@@ -217,12 +305,12 @@ function populator() {
                 }
                 eventbox.appendChild(evlist);
 
-            } else if (mapindic == true && storindic == false) {
+            } else if (mapindic == true &amp;&amp; storindic == false) {
                 console.log("new");
                 evlist = document.createElement("UL");
                 evlist.id = "event_list"
                 var arrus = eventMap.get(holder);
-                for (k = 0; k < arrus.length; k++) {
+                for (k = 0; k &lt; arrus.length; k++) {
                     eve = arrus[k].description + " @ " + arrus[k].time;
                     evo = document.createElement("LI");
                     evo.innerHTML = eve;
@@ -232,12 +320,12 @@ function populator() {
 
 
 
-            } else if (storindic == true && mapindic == false) {
+            } else if (storindic == true &amp;&amp; mapindic == false) {
                 touse = JSON.parse(mystorage.getItem(holder));
                 console.log("priorly created");
                 evlist = document.createElement("UL");
                 evlist.id = "event_list"
-                for (k = 0; k < touse.length; k++) {
+                for (k = 0; k &lt; touse.length; k++) {
                     eve = touse[k].description + " @ " + touse[k].time;
                     evo = document.createElement("LI");
                     evo.innerHTML = eve;
@@ -253,12 +341,15 @@ function populator() {
         
 }
 
-
+/**
+ * Updates local storage
+ * @method
+ */
 function updateLS() {
     console.log("hi");
     let mystorage = window.localStorage;
     const iterator_entries = eventMap.entries();
-    for (p = 0; p < eventMap.size; p++) {
+    for (p = 0; p &lt; eventMap.size; p++) {
         counter = iterator_entries.next().value;
         if (mystorage.getItem(counter[0]) === null) {
             mystorage.setItem(counter[0], JSON.stringify(counter[1]));
@@ -277,42 +368,24 @@ function updateLS() {
     //mystorage.clear();
 }
 
-function checker() {
-    let mystorage = window.localStorage;
-    console.log("bruh");
-    for (k = 0; k < mystorage.length; k++) {
-        var name = mystorage.key(k);
-        var arr = mystorage.getItem(name);
-        var str = JSON.parse(arr);
-        var res = [];
-        for (var i in str) {
-            res.push(str[i]);
-        }
-        // console.log(res);
-    }
-}
 
-function deletenewlyadded() {
-    var todlt = document.querySelector("td.fc-event-container");
-    var minidlt = todlt.children
-    for (l = 0; l < minidlt.length; l++) {
-        minidlt[l].remove();
-    }
-    todlt.removeAttribute("class");
-}
-
+/**
+ * Gets todays date 
+ * @method
+ * @returns todays date
+ */
 function today() {
     let today = new Date();
     let dd = today.getDate();
     let mm = today.getMonth() + 1;
     let yyyy = today.getFullYear();
     var m, d;
-    if (mm < 10) {
+    if (mm &lt; 10) {
         m = "0" + mm;
     } else {
         m = mm;
     }
-    if (dd < 10) {
+    if (dd &lt; 10) {
         d = "0" + dd;
     } else {
         d = dd;
@@ -320,6 +393,10 @@ function today() {
     today = yyyy + '-' + m + '-' + d;
     return today;
 }
+/**
+ * assigns events to dates through the Map
+ * A@method
+ */
 
 function eventpopulator() {
     anoopbox2 = document.querySelectorAll("div.fc-content-skeleton")
@@ -327,7 +404,7 @@ function eventpopulator() {
     let mystorage = window.localStorage;
 
     //console.log(anoopbox2);
-    for (i = 0; i < anoopbox2.length; i++) {
+    for (i = 0; i &lt; anoopbox2.length; i++) {
         var table = anoopbox2[i].firstChild;
         var tbody = table.lastChild;
         var thead = table.firstChild;
@@ -336,10 +413,10 @@ function eventpopulator() {
         var rows = tbody.children;
         var arrcount = new Array();
 
-        for (k = 0; k < rows.length; k++) {
+        for (k = 0; k &lt; rows.length; k++) {
             var tdholders = rows[k].children;
             if (tdholders.length == 7) {
-                for (h = 0; h < tdholders.length; h++) {
+                for (h = 0; h &lt; tdholders.length; h++) {
                     if (tdholders[h].className == "fc-event-container") {
                         arrcount.push(h);
                         var time = tdholders[h].querySelector(".fc-time").innerHTML;
@@ -359,7 +436,7 @@ function eventpopulator() {
                     }
                 }
             } else {
-                for (l = 0; l < tdholders.length; l++) {
+                for (l = 0; l &lt; tdholders.length; l++) {
                     var dateindex = arrcount[l];
 
                     console.log("same day ");
@@ -392,10 +469,23 @@ function eventpopulator() {
     gatherEvents();
     populator();
 }
-
+/**
+ * represents the event adder box
+ * @type {Element}
+ */
 
 var taskbox = document.getElementById('external-events-listing');
+/**
+ * represents the button to add an event
+ * @button
+ */
 var addbtn = document.getElementById("eventbutton");
+/**
+ * creates a new event when the user clicks to create one
+ * @method
+ * @param click
+ * @listens click
+ */
 addbtn.addEventListener("click", function () {
     let val = validateForm();
     if (val == true) {
@@ -428,7 +518,7 @@ addbtn.addEventListener("click", function () {
         console.log("event added");
         var dropdowns = document.getElementsByClassName("dropdown-content");
         var i;
-        for (i = 0; i < dropdowns.length; i++) {
+        for (i = 0; i &lt; dropdowns.length; i++) {
             var openDropdown = dropdowns[i];
             if (openDropdown.classList.contains('show')) {
                 openDropdown.classList.remove('show');
@@ -438,7 +528,12 @@ addbtn.addEventListener("click", function () {
         alert("please enter an event description and an event time");
     }
 });
-
+/**
+ * A function to check if event to be created is valid
+ * @method
+ * @type {boolean}
+ * @returns boolean inidicating validity
+ */
 function validateForm() {
     var eventdesc = document.forms["inputevent"]["eventname"].value;
     var eventtime = document.forms["inputevent"]["eventtime"].value;
@@ -452,7 +547,10 @@ function validateForm() {
 
 
 
-/* initialize the calendar */
+/**
+ * @description initializes calendar
+ * 
+ */
 
 $('#calendar').fullCalendar({
     header: {
@@ -463,6 +561,11 @@ $('#calendar').fullCalendar({
     editable: true,
     droppable: true, // this allows things to be dropped onto the calendar
     dragRevertDuration: 0,
+    /**
+     * an function that is called on a drop to update event collection
+     * @method
+     * @listens drop 
+     */
     drop: function () {
 
         eventpopulator();
@@ -473,11 +576,21 @@ $('#calendar').fullCalendar({
             $(this).remove();
         }
     },
+    /**
+     * An event listener that fires when an user stops dragging the event, isnt moving it
+     * @method
+     * 
+     * @param {*} event  
+     * @param {*} jsEvent 
+     * @param {*} ui 
+     * @param {*} view  
+     * @listens eventDragStop
+     */
 
     eventDragStop: function (event, jsEvent, ui, view) {
         if (isEventOverDiv(jsEvent.clientX, jsEvent.clientY)) {
             $('#calendar').fullCalendar('removeEvents', event._id);
-            var el = $("<div class='fc-event'>").appendTo('#external-events-listing').text(event.title);
+            var el = $("&lt;div class='fc-event'>").appendTo('#external-events-listing').text(event.title);
             el.draggable({
                 zIndex: 999,
                 revert: true,
@@ -493,7 +606,13 @@ $('#calendar').fullCalendar({
 
 });
 
-
+/**
+ * A method that deletes events after the dates passed after checking if they are passed, or unrenders them
+ * @type {boolean}
+ * @param {*} x 
+ * @param {*} y 
+ * @returns a boolean indicating if the event has passed or not
+ */
 var isEventOverDiv = function (x, y) {
 
     var external_events = $('#external-events');
@@ -502,10 +621,10 @@ var isEventOverDiv = function (x, y) {
     offset.bottom = external_events.height() + offset.top;
 
     // Compare
-    if (x >= offset.left &&
-        y >= offset.top &&
-        x <= offset.right &&
-        y <= offset.bottom) {
+    if (x >= offset.left &amp;&amp;
+        y >= offset.top &amp;&amp;
+        x &lt;= offset.right &amp;&amp;
+        y &lt;= offset.bottom) {
         return true;
     }
     return false;
@@ -513,9 +632,18 @@ var isEventOverDiv = function (x, y) {
 
 };
 
-
+/**
+ * Used to store the button used to navigate to last week
+ * @type {button}
+ */
 
 var lastweek = document.getElementsByClassName("fc-prev-button fc-button fc-state-default fc-corner-left");
+/**
+ * A listerner for when the user clicks the last week button
+ * @method
+ * @param click
+ * @listens click
+ */
 lastweek[0].addEventListener("click", function () {
     runonce = false;
     gatherEvents();
@@ -524,7 +652,18 @@ lastweek[0].addEventListener("click", function () {
 
 
 });
+/**
+ * Used to store the button used to navigate to next week
+ * @type {button}
+ */
+
 var nextweek = document.getElementsByClassName("fc-next-button fc-button fc-state-default fc-corner-right");
+/**
+ * A listerner for when the user clicks the next week button
+ * @method
+ * @param click
+ * @listens click
+ */
 nextweek[0].addEventListener("click", function () {
     runonce = false;
     gatherEvents();
@@ -532,7 +671,18 @@ nextweek[0].addEventListener("click", function () {
     //eventpopulator();
 
 });
+/**
+ * Used to store the button used to navigate to today
+ * @type {button}
+ */
+
 var tod = document.getElementsByClassName("fc-today-button fc-button fc-state-default fc-corner-left fc-corner-right");
+/**
+ * A listerner for when the user clicks the today button
+ * @method
+ * @param click
+ * @listens click
+ */
 tod[0].addEventListener("click", function () {
     runonce = false;
     gatherEvents();
@@ -541,16 +691,31 @@ tod[0].addEventListener("click", function () {
 
 });
 
-month = document.getElementsByClassName("fc-month-button fc-button fc-state-default fc-corner-left fc-state-active");
-month[0].remove();
-week = document.getElementsByClassName("fc-agendaWeek-button fc-button fc-state-default");
-week[0].remove();
-day = document.getElementsByClassName("fc-agendaDay-button fc-button fc-state-default fc-corner-right");
-day[0].remove();
 //populator();
 //checker();
 //today();
 
 
-// anoopbox1 = anoopbox.querySelectorAll("td.fc-day fc-widget-content fc-sun fc-past");
-//console.log(anoopbox1)
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="evento.html">evento</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addbtn">addbtn</a></li><li><a href="global.html#anoopbox">anoopbox</a></li><li><a href="global.html#drop">drop</a></li><li><a href="global.html#eventDragStop">eventDragStop</a></li><li><a href="global.html#eventMap">eventMap</a></li><li><a href="global.html#eventpopulator">eventpopulator</a></li><li><a href="global.html#gatherEvents">gatherEvents</a></li><li><a href="global.html#isEventOverDiv">isEventOverDiv</a></li><li><a href="global.html#lastweek">lastweek</a></li><li><a href="global.html#nextweek">nextweek</a></li><li><a href="global.html#onetime">onetime</a></li><li><a href="global.html#populator">populator</a></li><li><a href="global.html#reverseformat">reverseformat</a></li><li><a href="global.html#runonce">runonce</a></li><li><a href="global.html#taskbox">taskbox</a></li><li><a href="global.html#tod">tod</a></li><li><a href="global.html#today">today</a></li><li><a href="global.html#updateLS">updateLS</a></li><li><a href="global.html#validateForm">validateForm</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Sat Jun 12 2021 06:33:35 GMT-0400 (Eastern Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

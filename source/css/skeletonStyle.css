@@ -55,6 +55,12 @@ a {
 	background-color: transparent
 }
 
+#getQuote {
+	text-align: center;
+	font: 400 1.5em/125% 'Tangerine', Helvetica, Sans-serif;
+	color: #333;
+}
+
 a:active,
 a:hover {
 	outline: 0
@@ -2054,7 +2060,7 @@ pre code {
 
 .row-no-gutters {
 	margin-right: 0;
-	margin-left: 0
+	margin-left: 0;
 }
 
 .row-no-gutters [class*=col-] {
@@ -6548,11 +6554,12 @@ button.list-group-item-danger.active:hover {
 	border: 1px solid transparent;
 	border-radius: 4px;
 	-webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
-	box-shadow: 0 1px 1px rgba(0, 0, 0, .05)
+	box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+
 }
 
 .panel-body {
-	padding: 15px
+	padding: 15px;
 }
 
 .panel-heading {
@@ -6840,7 +6847,7 @@ button.list-group-item-danger.active:hover {
 }
 
 .panel-primary {
-	border-color: #337ab7
+	border-color: #337ab7;
 }
 
 .panel-primary>.panel-heading {
@@ -7661,13 +7668,13 @@ button.close {
 	margin: 1px;
 	text-indent: -999px;
 	cursor: pointer;
-	background-color: #000\9;
+	background-color: #0009;
 	background-color: rgba(0, 0, 0, 0);
 	border: 1px solid #fff;
 	border-radius: 10px
 }
 .Calendar {
-	visibility: hidden;
+	display: none;
 }
 .carousel-indicators .active {
 	width: 12px;

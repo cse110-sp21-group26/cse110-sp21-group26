@@ -1,0 +1,187 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@400;600;800;900&display=swap');
+
+#moods {
+    list-style: none;
+    text-align: center;
+    width: 100%;
+    padding-left: 1px;
+    margin-bottom: 65px;
+    margin: center;
+}
+
+#moods li {
+    border-radius: 40px;
+    display: inline-block;
+    transition: all .15s ease-in;
+    cursor: pointer;
+    margin-right: 50px;
+    width: 50px;
+    height: 50px;
+}
+
+#moods li:hover {
+    box-shadow: 30px 35px 30px rgb(107, 105, 105);
+    transform: scale(1.1);
+}
+
+#moods li:last-child {
+    margin-right: 0px;
+}
+#moodCap{
+    line-height: 20px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    display: none;
+    font-family: Mulish;
+    text-align: center;
+    margin-top: 30px;
+    transition: .3s;
+}
+
+
+#moodh3{
+    font-family: Mulish;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 15px;
+    color: black;
+    margin-top:35px;
+}
+
+.rates {
+    display: inline-flex;
+    width: 100%;
+}
+
+.top{
+    display:flex;
+    padding-top:1px;
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+}
+
+.rect{
+    width:80px;
+    height:4px;
+    background: black;
+    border-radius:4.3px;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+
+.card-mood .rect:nth-child(1){
+    background: #9ab1d6;
+    margin-right:5px;
+    margin-left: 5px;
+}
+
+.card-motivation .rect:nth-child(2){
+    background: #9ab1d6;
+    margin-right:5px;
+    margin-left: 5px;
+}
+.card-stress .rect:nth-child(3){
+    background: #9ab1d6;
+    margin-right:5px;
+    margin-left: 5px;
+}
+
+.dot{
+    height:50px;
+    width:20%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius: 28px;
+    font-family: Mulish;
+    font-style: normal;
+    font-weight: 450;
+    font-size: 16px;
+    text-align: center;
+    margin-right:5px;
+    color: black;
+    transition:0.3s;
+    cursor:pointer;
+}
+    
+.dot:hover{
+    background: #9ab1d6;
+}
+
+.rates-subscript label{
+    font-family: Mulish;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: center;
+    color: black;
+}
+
+label:first-child{
+  margin-right:180px;
+}
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    background-color:transparent;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.flex-container > div:nth-of-type(1){
+    flex-basis: 100%;
+}
+.flex-container > div:nth-of-type(2){
+    flex-basis: 20px;
+}
+.flex-container > div:nth-of-type(3){
+    flex-basis: 20px;
+}
+
+.mood-btn {
+    /* reset */
+    -webkit-appearance: none;
+    border: 0;
+    outline: 0;
+    /* styles */
+    position: relative;
+    background: linear-gradient(-45deg, #6185ba, #8b8d98, #af8b6d, #d3a06c, #c5c3c0);
+    background-size: 250% 250%;
+     animation: gradientBG 3s ease-in 1s infinite reverse both running;
+    padding: 20px 200px;
+    margin-left: 90px;
+    color: black;
+    text-transform:uppercase;
+    border-radius: 100px;
+    font-size: 10px;
+    transition: .3s;
+    /* place holder */
+    display: none;
+ }
+ @keyframes gradientBG {
+     0% {
+         background-position: 0% 50%;
+     }
+     50% {
+         background-position: 100% 50%;
+     }
+     100% {
+         background-position: 0% 50%;
+     }
+ }
+ 
+ .moodh3 {
+    margin-top: 10px;
+    text-align: center;
+ }
+ .rates-subscript {
+    text-align: center;
+ }
+ 
