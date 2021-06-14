@@ -7,9 +7,9 @@
 
 #### Features:
 
-#### Mood-Tracker
+##### Mood-Tracker
 
-![Mood-Tracker](./specs/users/Mood-Tracker.png)
+![Mood-Tracker](Mood-Tracker.png)
 
 #### Sticky Notes
 ![Sticky Notes]()
