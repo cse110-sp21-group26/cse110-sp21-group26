@@ -8,6 +8,8 @@
 
 ![Final Project Screenshot](https://i.gyazo.com/fd8168fabb1cad7e44e5ef16d2997e90.png)
 
+-   You can find User Guide [here](https://github.com/cse110-sp21-group26/cse110-sp21-group26/blob/main/specs/users/endUserGuide.md)
+
 ## Project Videos
 
 -   [Video presentation](https://www.youtube.com/watch?v=KQjHmw3ifk8)
