@@ -1,7 +1,7 @@
 
 ## Architecture
 
-Our app include four main modules:
+Our app include six main modules:
 - Tasks List
 - Mood Tracker and Summary
 - Sticky Notes
