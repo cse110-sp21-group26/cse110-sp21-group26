@@ -1,4 +1,32 @@
-// tasks_list_script.js
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: tasksListScript.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: tasksListScript.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>// tasks_list_script.js
 // the js for tasks_list part only
 
 import Task from './Task.js';
@@ -33,7 +61,7 @@ export function clearDisplayedTasksItems(){
 */
 function listenOnAndupdateTaskItemDate(){
   const allTaskItems = document.querySelectorAll(".tasks_list_date_in_item_form");
-  for (let i = 0; i < allTaskItems.length; i++) {
+  for (let i = 0; i &lt; allTaskItems.length; i++) {
     allTaskItems[i].addEventListener("input", event => {
       event.preventDefault();
       //get new usr date input
@@ -80,17 +108,17 @@ export function renderOneTaskItem(oneTask){
   const oneTaskItem = document.createElement("li");// create new element
   oneTaskItem.setAttribute('class', `tasks_list_item`);
   oneTaskItem.innerHTML = `
-      <input class="tasks_list_checkornot" id=${taskID} type="checkbox" ${isChecked}/>
-      <span class=${spanCheckedOrCheckedStyle} >${tasktext}</span>
-      <form class="tasks_list_date_in_item_form" id=${tasks_list_date_in_item_form}>
-        <input class="tasks_list_date_in_item" id=${tasks_list_date_in_item} type="date" value=${taskDate}>
-      </form>
-      <button class="important_button">
-        <svg><use href="#important-mark"></use></svg>
-      </button>
-      <button class="delete_task_button">
-        <svg><use href="#delete-icon"></use></svg>
-      </button>
+      &lt;input class="tasks_list_checkornot" id=${taskID} type="checkbox" ${isChecked}/>
+      &lt;span class=${spanCheckedOrCheckedStyle} >${tasktext}&lt;/span>
+      &lt;form class="tasks_list_date_in_item_form" id=${tasks_list_date_in_item_form}>
+        &lt;input class="tasks_list_date_in_item" id=${tasks_list_date_in_item} type="date" value=${taskDate}>
+      &lt;/form>
+      &lt;button class="important_button">
+        &lt;svg>&lt;use href="#important-mark">&lt;/use>&lt;/svg>
+      &lt;/button>
+      &lt;button class="delete_task_button">
+        &lt;svg>&lt;use href="#delete-icon">&lt;/use>&lt;/svg>
+      &lt;/button>
   `;
   tasksListModuleForm.appendChild(oneTaskItem);//inject
 }
@@ -135,7 +163,7 @@ function updateTasksListOrder(oldIndex, newIndex){
   if (allTasksList != null){
     let alreadyInjected = 0;
     counterForOrder = 0;
-    for (let i = 0; i < allTasksList.length;  i++){
+    for (let i = 0; i &lt; allTasksList.length;  i++){
       if ( (counterForOrder === Number(oldIndex)) || (counterForOrder === Number(newIndex)) ){
         if (counterForOrder === Number(oldIndex)){ //skip
           i++; //skip 
@@ -144,7 +172,7 @@ function updateTasksListOrder(oldIndex, newIndex){
           alreadyInjected = 1;
         }
       }
-      if ( (Number(oldIndex) === allTasksList.length-1) && (i === allTasksList.length) ){
+      if ( (Number(oldIndex) === allTasksList.length-1) &amp;&amp; (i === allTasksList.length) ){
         console.log("specila case 2");
         break;//special case 2 when the old Index is the last
       }
@@ -152,7 +180,7 @@ function updateTasksListOrder(oldIndex, newIndex){
       counterForOrder ++;
     }
     //special case when the new Index is the last 
-    if ( (Number(newIndex) === allTasksList.length-1) && (alreadyInjected === 0) ){
+    if ( (Number(newIndex) === allTasksList.length-1) &amp;&amp; (alreadyInjected === 0) ){
       console.log("specila case");
       newAllTasksListArray.push(selectedDragItem);
     }
@@ -229,10 +257,10 @@ function getDefaultDate(){
   let dd = today.getDate();
   let mm =  today.getMonth()+1;
   let yyyy = today.getFullYear();
-  if (mm < 10) {
+  if (mm &lt; 10) {
     mm = "0" + mm;
   } 
-  if (dd < 10) {
+  if (dd &lt; 10) {
     dd = "0" + dd;
   } 
 
@@ -284,7 +312,7 @@ document.getElementById("tasks_list_form").addEventListener("submit", event => {
   let allTasksList = getExistedTasksFromLS();
   let newAllTasksListArray = [];
   if (allTasksList != null){
-    for (let i = 0; i < allTasksList.length;  i++){
+    for (let i = 0; i &lt; allTasksList.length;  i++){
       newAllTasksListArray.push(allTasksList[i]);
     }
   }
@@ -310,13 +338,13 @@ function clickOneTaskUpdateTasksList(features, taskIdClickedOn, usrNewDate){
   let newAllTasksListArray = [];
   if (allTasksList != null){
     if (features == "delete") { // update the taskslist when delete one task
-      for (let i = 0; i < allTasksList.length;  i++){
+      for (let i = 0; i &lt; allTasksList.length;  i++){
         if (Number(allTasksList[i].taskID) !== taskIdClickedOn){
           newAllTasksListArray.push(allTasksList[i]);
         }
       }
     }else if (features == "checkuncheck"){ // update the taskslist when check or uncheck one task
-      for (let i = 0; i < allTasksList.length;  i++){
+      for (let i = 0; i &lt; allTasksList.length;  i++){
         if (Number(allTasksList[i].taskID) !== taskIdClickedOn){
           newAllTasksListArray.push(allTasksList[i]);
         }else{
@@ -326,7 +354,7 @@ function clickOneTaskUpdateTasksList(features, taskIdClickedOn, usrNewDate){
         }
       }
     }else if (features == "changedate"){ // update the taskslist when change date
-      for (let i = 0; i < allTasksList.length;  i++){
+      for (let i = 0; i &lt; allTasksList.length;  i++){
         if (Number(allTasksList[i].taskID) !== taskIdClickedOn){
           newAllTasksListArray.push(allTasksList[i]);
         }else{          
@@ -335,7 +363,7 @@ function clickOneTaskUpdateTasksList(features, taskIdClickedOn, usrNewDate){
         }
       }
     }else if (features == "important"){ // update the taskslist as important or cancel important
-      for (let i = 0; i < allTasksList.length;  i++){
+      for (let i = 0; i &lt; allTasksList.length;  i++){
         if (Number(allTasksList[i].taskID) !== taskIdClickedOn){
           newAllTasksListArray.push(allTasksList[i]);
         }else{
@@ -372,13 +400,13 @@ function clickOneTask(event){
   if (event.target.className !== "tasks_list_date_in_item" ){
     let taskIdClickedOn = Number(event.target.parentElement.querySelector(".tasks_list_checkornot").id);
     
-    if (event.target.tagName === "BUTTON" && event.target.className === "delete_task_button"){//delete
+    if (event.target.tagName === "BUTTON" &amp;&amp; event.target.className === "delete_task_button"){//delete
       console.log("taskIdToBeDeleted: ", taskIdClickedOn);
       clickOneTaskUpdateTasksList("delete", taskIdClickedOn, "");
-    }else if (event.target.tagName === "INPUT" && event.target.className === "tasks_list_checkornot") {//check or uncheck
+    }else if (event.target.tagName === "INPUT" &amp;&amp; event.target.className === "tasks_list_checkornot") {//check or uncheck
       console.log("taskIdToBeCheckedOrUnChecked: ", taskIdClickedOn);
       clickOneTaskUpdateTasksList("checkuncheck", taskIdClickedOn, "");
-    }else if (event.target.tagName === "BUTTON" && event.target.className === "important_button"){//important
+    }else if (event.target.tagName === "BUTTON" &amp;&amp; event.target.className === "important_button"){//important
       console.log("taskIdToBeDeleted: ", taskIdClickedOn);
       console.log("get span: ", event.target.parentElement.children[1]);
       clickOneTaskUpdateTasksList("important", taskIdClickedOn, "");
@@ -388,4 +416,26 @@ function clickOneTask(event){
 
 // when usr click a task item (check/uncheck, change date, mark important, delete)
 let tasksListUlTag = document.getElementById("tasks_list_items_display");
-tasksListUlTag.addEventListener('click', event => clickOneTask(event));
+tasksListUlTag.addEventListener('click', event => clickOneTask(event));</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#clearDisplayedTasksItems">clearDisplayedTasksItems</a></li><li><a href="global.html#clickOneTask">clickOneTask</a></li><li><a href="global.html#clickOneTaskUpdateTasksList">clickOneTaskUpdateTasksList</a></li><li><a href="global.html#getDefaultDate">getDefaultDate</a></li><li><a href="global.html#getExistedTasksFromLS">getExistedTasksFromLS</a></li><li><a href="global.html#listenOnAndupdateTaskItemDate">listenOnAndupdateTaskItemDate</a></li><li><a href="global.html#renderOneTaskItem">renderOneTaskItem</a></li><li><a href="global.html#renderTasksList">renderTasksList</a></li><li><a href="global.html#renderTasksListAndUpdateTasksListDefaultDate">renderTasksListAndUpdateTasksListDefaultDate</a></li><li><a href="global.html#updateTasksListOrder">updateTasksListOrder</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Sun Jun 13 2021 22:29:11 GMT-0700 (Pacific Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
