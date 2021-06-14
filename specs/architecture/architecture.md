@@ -9,5 +9,5 @@ Our app include four main modules:
 - Events
 - Quote of the day
 
-Check out our [C4 disgrams](architecture.png).
+Check out our [C4 disgrams](architecture_v2.png).
 
