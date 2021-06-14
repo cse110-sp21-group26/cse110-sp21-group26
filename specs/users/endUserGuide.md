@@ -18,7 +18,9 @@
 ![Sticky Notes](https://github.com/cse110-sp21-group26/cse110-sp21-group26/blob/main/specs/users/Sticky_notes.png)
 
 ---
-##### Task List
+##### Tasks List
+
+[Intro and features of Tasks List](./intro_taskslist.md)
 
 ![Task List](https://github.com/cse110-sp21-group26/cse110-sp21-group26/blob/main/specs/users/Task_list.png)
 
