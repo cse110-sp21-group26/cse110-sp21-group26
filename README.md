@@ -13,16 +13,15 @@
 -   [Video presentation](https://www.youtube.com/watch?v=KQjHmw3ifk8)
 
 ---
+## End User Guide
+
+-   You can access our end user guide [here](https://github.com/cse110-sp21-group26/cse110-sp21-group26/blob/main/specs/users/endUserGuide.md)
+
+---
 
 ## Onboarding
 
 -   View our onboarding guide [here](https://github.com/cse110-sp21-group26/cse110-sp21-group26/tree/main/docs/onboard.md).
-
----
-
-## End user doc 
-
--   You can find User Guide [here](https://github.com/cse110-sp21-group26/cse110-sp21-group26/blob/main/specs/users/endUserGuide.md)
 
 ---
 
