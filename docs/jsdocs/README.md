@@ -6,3 +6,4 @@ jsdocs for Calendar: [here](https://cse110-sp21-group26.github.io/cse110-sp21-gr
 
 jsdocs for Tabs: [here](https://cse110-sp21-group26.github.io/cse110-sp21-group26/docs/jsdocs/tabs/index.html)
 
+jsdocs for MoodTracker: [here](https://cse110-sp21-group26.github.io/cse110-sp21-group26/docs/jsdocs/MoodTracker/index.html)
