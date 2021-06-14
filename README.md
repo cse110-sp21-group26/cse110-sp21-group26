@@ -6,7 +6,7 @@
 
 -   Click [here](https://cse110-sp21-group26.github.io/cse110-sp21-group26/source/index.html) to acess our website.
 
--![Final Project Screenshot](https://i.gyazo.com/fd8168fabb1cad7e44e5ef16d2997e90.png)
+![Final Project Screenshot](https://i.gyazo.com/fd8168fabb1cad7e44e5ef16d2997e90.png)
 
 ## Project Videos
 
