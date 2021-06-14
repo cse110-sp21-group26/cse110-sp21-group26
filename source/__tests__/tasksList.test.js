@@ -10,11 +10,12 @@ describe('Tests for taskslist ', () => {
     it('Test1: Initial Home Page - Check for tasks list module', async () => {   
         const title = await page.$eval("#tasks_list_title", titleResult => titleResult.textContent);
         expect(title).toContain("Tasks List");
-    });
+        
+    },30000);
 
     it('Test2: Initial Home Page - Check for tasks list form', async () => {      
         const formCN = await page.$eval("#tasks_list_form", formResult => formResult.classList[0]);
         expect(formCN).toBe("tasks_list_form");
-    });
+    },30000);
 
 });
