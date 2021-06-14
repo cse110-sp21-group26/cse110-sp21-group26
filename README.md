@@ -20,6 +20,12 @@
 
 ---
 
+## Architecture 
+
+- View the [architecture of our app](./specs/architecture/architecture.md).
+
+---
+
 ## Steps For Future Developers
 
 o Gain some familiarity [brainstorming](https://github.com/cse110-sp21-group26/cse110-sp21-group26/tree/main/specs/brainstorm) going into the project as well as our [pitch](https://github.com/cse110-sp21-group26/cse110-sp21-group26/tree/main/specs/pitch).
